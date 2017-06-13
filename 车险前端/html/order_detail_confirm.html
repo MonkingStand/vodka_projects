@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="orderDetailConfirmPage" class="page order-detail-confirm-page">
+			<div class="content">
+				<!-- loanPolicyNo输入框，自动填写 -->
+				<input class="hidden submit-input" type="text" value="" id="loanPolicyNo">
+				<div class="info-container text-center summary-info">
+					<p id="usingMoney" class="text-gaint text-yellow text-bold" style="margin:0;margin-top:0.5rem;">--</p>
+					<p class="text-xs text-lightgrey" style="margin:0;">使用中金额(元)</p>
+					<p class="text-sm repay-info" style="margin-top:0;margin-bottom:0;">该笔额度将分<span id="usingPeriod">--</span>期还完</p>
+				</div>
+
+				<div class="content-block-title text-grey text-xs">借款明细</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-loan-amount"></i></div>
+							<div class="item-inner">
+								<div class="item-title">借款金额</div>
+								<div id="verifyCapital" class="item-after">--</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-contract-period"></i></div>
+							<div class="item-inner">
+								<div class="item-title">合同期限</div>
+								<div id="contractExpire" class="item-after">--</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repay-method"></i></div>
+							<div class="item-inner">
+								<div class="item-title">还款方式</div>
+								<div id="refundType" class="item-after">--</div>
+							</div>
+						</li>
+						<li id="contractPopupLink" class="item-content item-link init">
+							<div class="item-media"><i class="img-icon img-loan-contract"></i></div>
+							<div class="item-inner">
+								<div class="item-title">借款合同</div>								
+							</div>						
+						</li>
+					</ul>
+				</div>
+
+				<div class="content-block-title text-grey text-xs">还款明细</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repayed-principal"></i></div>
+							<div class="item-inner">
+								<div class="item-title">已还本金</div>
+								<div id="refundedInstalmentCapital" class="item-after">0.00</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repayed-interest"></i></div>
+							<div class="item-inner">
+								<div class="item-title">已还利息</div>
+								<div id="refundedInstalmentInterest" class="item-after">0.00</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-handling-charge"></i></div>
+							<div class="item-inner">
+								<div class="item-title">手续费</div>
+								<div id="loanInterestObtainFinal" class="item-after">0.00</div>
+							</div>
+						</li>
+						<!-- 还款记录链接 -->
+						<li id="repayRecordLink" class="item-content item-link">
+							<div class="item-media"><i class="img-icon img-repay-record"></i></div>
+							<div class="item-inner">
+								<div class="item-title">还款记录</div>								
+							</div>						
+						</li>
+					</ul>
+				</div>
+
+				<div class="repay-operate-container">
+					<div class="repay-advance">
+						<!-- 还款账单链接 -->
+						<a id="repayBillLink" class="button button-big theme-btn">还款</a>
+					</div>
+					<div class="text-center text-xs">
+						<a id="repayDetailLink" class="theme-color">
+							<!-- 还款详情链接 -->
+							查看还款详情<i class="icon icon-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <div id="contractPopup" class="popup init">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">机动车车辆商业保险分期借款协议</h1>
+			</header>
+			<div class="content">
+				<div class="content-header">
+					<p class="text-center">
+						<span class="text-bold">合同编号：</span>
+						<span id="contract_orderNo" class="contract-num contract-text">--</span>
+					</p>
+				</div>
+				<div class="content-body">
+					<span class="space-division"></span>
+					<p class="contract-tips text-bold">
+						重要提示：本协议采用电子合同形式，各方在操作之前均需仔细阅读并确认同意本协议各条款，并在先用着平台上以线上点击相关按钮的方式签署本协议。
+					</p>
+					<span class="space-division"></span>
+					<p>甲方（出借人）：<span class="text-bold contract-text">胡慧慧</span></p>
+					<p>身份证号：<span class="text-bold contract-text">330727197704302928</span></p>
+					<p>乙方（借款人）：<span id="contract_obtainUserName" class="text-bold contract-text">--</span></p>
+					<p>身份证号：<span id="contract_idCard" class="text-bold contract-text"></span></p>
+					<p>丙方（以下简称“沃德加”）：杭州沃德加资产管理有限公司</p>
+					<p>统一社会信用代码：91330102MA27YYF19T</p>
+					<span class="space-division"></span>
+					<p>（出借人、借款人和丙方在本协议中合称为“各方”）</p>
+					<span class="space-division"></span>
+					<p><span class="text-bold">鉴于：</span></p>
+					<p>1、乙方具有完全民事权利能力和民事行为能力，拟通过“先用着”平台借入资金，已经按照平台规则提交相应的信息，拟通过借款的方式向丙方的合作机构购买机动车车辆商业保险，车辆商业保险的具体内容详见本协议第一条。</p>
+					<p>2、丙方是依法成立且有效存续的有限公司，运营“先用着”平台应用程序，为拟购买机动车车辆商业保险的乙方提供融资居间服务，根据乙方需求寻求合格的出借人。</p>
+					<p>3、甲方同意提供本协议项下的借款（以下简称“标的借款”），并接受乙方的付款委托，为乙方将借款支付给乙方指定的保险公司或保险代理机构。</p>
+					<span class="space-division"></span>
+					<p>现各方就标的借款的委托支付与还款事宜达成以下协议，以资共同遵守：</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第一条 车险项目及标的借款</p>
+					<p>1、乙方从“先用着”平台借入的借款用于支付所购汽车商业险，车险与借款的信息如下：</p>
+					<div class="table-container">
+						<table class="border-table loan-info-table">
+							<tr>
+								<td class="td-title">车型</td><td><span id="contract_brandName" class="text-bold contract-text"></span></td>
+							</tr>
+							<tr>
+								<td class="td-title">车牌号码</td><td><span id="contract_licenseNo" class="text-bold contract-text"></span></td>
+							</tr>
+							<tr>
+								<td class="td-title">车主身份证号<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;或<br>组织机构代码</td><td><span id="contract_idCardCopy" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">发动机号</td><td><span id="contract_engineNo" class="text-bold contract-text"></span></td>
+							</tr>
+							<tr>
+								<td class="td-title">车辆识别代码</td><td><span id="contract_frameNo" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">车主联系电话</td><td><span id="contract_mobile" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">保险订单号</td><td><span id="" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">是否一年内过户</td><td><span id="contract_transferFlag" class="text-bold contract-text"></span></td>
+							</tr>
+							<tr>
+								<td class="td-title">总计金额（元）</td><td><span id="contract_verifyCapital" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">分期期限</td><td><span id="contract_period" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">分期费率</td><td><span id="contract_interestRate" class="text-bold contract-text">7%</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">项目名称</td><td><span id="" class="text-bold contract-text">机动车车辆商业保险</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">标的借款金额</td><td><span id="contract_capitalWithInterest" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">服务费</td><td><span id="contract_loanInterestObtainFinal" class="text-bold contract-text"></span></td>
+							</tr>
+							<tr>
+								<td class="td-title">还款期限</td>
+								<td>
+									<span id="contract_periodCopy" class="text-bold contract-text">--</span>个月，自
+									<span id="startEndDateContainer">
+									</span>
+									<!--<span class="text-bold">2016</span>年
+									<span class="text-bold">01</span>月
+									<span class="text-bold">11</span>日起至
+									<span class="text-bold">2017</span>年
+									<span class="text-bold">01</span>月
+									<span class="text-bold">11</span>日止-->
+								</td>
+							</tr>
+							<tr>
+								<td class="td-title">还款方式</td>
+								<td>等额本金，按月支付本金。还款日为借款发放日的对应日，无对应日的，当月最后一日为还款日。乙方从借款发放的次月开始还款。</td>
+							</tr>
+							<tr>
+								<td class="td-title">每月还款金额</td><td><span id="contract_aveRepayAmount" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">每月还款日</td><td><span id="contract_effectiveDate" class="text-bold contract-text">--</span></td>
+							</tr>
+						</table>
+					</div>
+					<span class="space-division"></span>
+					<p>2、借款流程：乙方经按照先用着的规则提交相应信息，丙方审核相关资料和信息后作出资信评估并提交甲方，甲方同意借款。乙方点击完成按钮，本协议立即成立且生效。本协议生效后，乙方同意，甲方将该笔标的借款扣除服务费后直接支付给指定的机构（即保险公司或保险代理机构）。保单出单后，甲方出借行为完成，丙方届时会以短信或平台信息推送的方式告知借款人借款成功的信息。</p>
+					<span class="space-division"></span>
+					<p>3、乙方需支付给丙方的服务费，由乙方在借款成功时委托甲方从借款中一次性支付给丙方。</p>
+					<span class="space-division"></span>
+					<p>4、乙方应按照本协议约定还款，于还款日之前将应付款项偿还至丙方指定的银行账户（包括支付宝账户、第三方通道账户中）或者授权丙方进行代扣。若乙方授权丙方进行代扣服务，需绑定乙方的银行卡，乙方银行卡账号如下所示：</p>
+					<div class="table-container">
+						<table class="border-table account-info-table">
+							<tbody>
+								<tr>
+									<td>户名</td>
+									<td><span id="contract_realName">--</span></td>
+								</tr>
+								<tr>
+									<td>开户行</td>
+									<td><span id="contract_bankName">--</span></td>
+								</tr>
+								<tr>
+									<td>账号</td>
+									<td><span id="contract_bankCardNum">--</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<span class="space-division"></span>
+					<p>5、还款账户：当乙方按照平台规则成功偿还借款的，丙方届时会以短信或平台信息推送的方式告知乙方还款成功和剩余应付款项信息。丙方有权在还款日之前向乙方发送还款提示，乙方同意并授权丙方将偿还的款项通过银行或第三方支付公司的专款账户返还给甲方和丙方。各方确认，还款的账户信息如下：</p>
+					<div class="table-container">
+						<table class="border-table account-info-table">
+							<tbody>
+								<tr>
+									<td>户名</td>
+									<td>胡慧慧</td>
+								</tr>
+								<tr>
+									<td>开户行</td>
+									<td>中国银行横店支行</td>
+								</tr>
+								<tr>
+									<td>账号</td>
+									<td>6216616202002494189</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第二条 资信证明及借款用途</p>
+					<p>1、乙方应当按照丙方的指示，如实提交所需的相关审核文件和资料，并保证其真实性、有效性及完整性，因材料瑕疵引起的责任及费用由乙方自行承担，丙方只作形式审查。</p>
+					<p>2、乙方成功办理机动车商业险后，保单原件需保留在丙方处，如乙方有特殊要求需要用到保单复印件，丙方把保单复印件通过快递交付给乙方，乙方需提前7个工作日向丙方提出申请，快递费用由乙方承担。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第三条 免责事由</p>
+					<p>1、甲方仅作为标的借款的提供方，不对标的借款用于购买的机动车车辆商业保险承担责任。若乙方与保险公司、保险代理机构存在纠纷，不影响本协议项下乙方向甲方的还款义务。</p>
+					<p>2、丙方仅作为标的借款的居间方，不对标的借款用于购买的机动车车辆商业保险承担责任。乙方与保险公司、保险代理机构的纠纷，丙方均不承担责任。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第四条 甲方的权利和义务</p>
+					<p>1、若乙方对机动车车辆商业保险提出异议，由乙方与保险公司、保险代理机构自行解决。</p>
+					<p>2、甲方在此不可撤销地授权丙方：（1）与银行或第三方支付公司签订资金存款协议及类似协议，委托银行或第三方支付公司为甲方办理代收代付业务，由银行或第三方支付公司将出借资金直接划转给指定的账户，以及在还款日或之前将乙方偿还的借款本金、利息、罚息，通过银行或第三方支付公司的专款账户返还给甲方；（2）贷后管理、债权催收。</p>
+					<p>3、当甲方将借款直接支付给指定的保险公司或保险代理机构时，甲方成为该项保险合同的投保人和受益人，被保险人为乙方。由丙方持有保单原件及退保所需的相关必要文件。</p>
+					<p>4、若乙方未按照本借款协议的约定履行还款义务的，视为乙方同意放弃保单受益人权益，并同意甲方对保单做退保处理，保单剩余价值归甲方所有。乙方剩余应付的款项（包括剩余的借款、逾期利息等），甲方仍有权向乙方进行追偿。</p>
+					<p>5、乙方正常履行还款期间，甲方或丙方不得持投保单向保险公司退保。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第五条 乙方、丙方的权利和义务</p>
+					<p>1、乙方有义务向丙方提供真实的、完整、准确的信息，资料填写必须完整无误，并授权丙方读取乙方手机等通讯工具中的相关信息。</p>
+					<p>2、乙方所留联系方式包括本人与紧急联系人的联系方式必须是真实有效的，如乙方更换联系方式，应第一时间通过电子邮件或电话主动及时通知丙方。如因乙方更换联系方式未及时通知丙方，造成未及时还款而产生责任，需乙方自行承担。</p>
+					<p>3、在还款期内如保险服务投诉等，乙方应继续履行本协议项下的责任和义务。</p>
+					<p>4、在还款期内如因保险投诉或纠纷等，导致保险公司、保险代理机构退还乙方相关费用的，乙方同意并授权甲方收取保险公司、保险代理机构应退还的款项，用于抵偿乙方在本协议下应偿还的借款本金，若划扣金额不足以清偿全部借款本息的，乙方应在3日内付清剩余款项，若划扣完成后应退款项尚有剩余的，乙方有权收取剩余应退款项。</p>
+					<p>5、乙方在还款期限内可以提前还款，若提前还款，乙方已支付的服务费用不予退回。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第六条 违约责任</p>
+					<p>1、乙方若未能依本协议约定按时还款，则须向甲方支付逾期利息，逾期利息以本协议标的借款总金额，按日息0.1%进行征收。</p>
+					<p>2、甲方授权丙方有权以丙方名义对乙方进行债权催收。如乙方未按时还款或累计拖欠甲方款项、服务费及滞纳金（如有）达5日或以上，应当支付违约金（违约金为借款总金额的20%），届时丙方可通过书面、短信、电子邮件、电话等任一形式通知乙方解除本协议，乙方全部未还款项须在本协议解除之日起3日内一次付清。</p>
+					<p>&nbsp;&nbsp;如乙方延迟支付的，每延迟1日，丙方有权加收应付款项（未偿还价款加违约金之和）的0.1%作为罚息，同时甲方有权持投保单向保险公司、保险代理机构进行退保，所退款项优先抵偿乙方应付款项，投保人完成退保的应第一时间通知乙方，并要求乙方支付剩余款项。</p>
+					<p>3、如乙方有逾期还款行为，丙方在追款中产生的费用（包括但不限于往返路费、餐费、住宿费、电话费等）全部由乙方承担，最低为人民币1000元起。</p>
+					<p>4、如丙方发现乙方提供虚假信息或乙方未经甲方同意擅自退保的，将视为合同欺诈，乙方必须在自丙方或甲方提出解除协议之日起3日内付清全部未偿还的款项，并承担相应的法律责任，退款流程参照前款规定。</p>
+					<p>5、乙方违约的，丙方有权将乙方的个人信息及其信用信息向征信机关披露，并有权公布其相关信息，并追究乙方的违约责任。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第七条 争议的解决方式</p>
+					<p>本协议在履行过程中发生任何争议，应当由各方当事人协商解决，协商或调解不成的，任何一方可依法向丙方所在地人民法院提起诉讼。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第八条 其他约定</p>
+					<p>本协议采用电子文本形式制成，经乙方通过先用着平台在线同意发布并以甲方将出借资金支付至乙方指定保险公司、保险代理机构的银行账户之日起生效。双方均认可电子文本形式的协议效力。各方均同意丙方保管所有与本协议有关的书面文件和电子信息。本协议任何一方下载打印本协议文本，均不得添加、修改或者涂改任何条款。本协议的任何修改、补充均以先用着电子文本形式作出。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+</html>

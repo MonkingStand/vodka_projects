@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="userInfoPage" class="page user-info-page">
+			<div class="content">
+                <div class="content-block-title">基础信息</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after" id="realName">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after" id="idCard">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after" id="mobile">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">现居住地</div>
+                                <div class="item-after" id="nowLiveAdress">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位名称</div>
+                                <div class="item-after" id="jobUnitName">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位地址</div>
+                                <div class="item-after" id="jobUnitAdress">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人1：直系亲属</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after" id="linkman1Name">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after" id="linkman1Mobile">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人2：朋友/同事</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after" id="linkman2Name">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after" id="linkman2Mobile">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="link-btn-container padding-horizontal">
+                    <a class="button theme-btn" onclick="router.linkTo('user_info_edit.html');">修改资料</a>
+                </div>	
+			</div>
+		</div>
+	</div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+</html>

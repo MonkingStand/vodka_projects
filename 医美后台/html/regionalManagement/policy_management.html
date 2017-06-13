@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>策略管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+    <div class="page policy-management policy-management-container">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>策略管理 — 策略列表</h5>
+                </div>
+                <div class="filter-container">
+                    <button class="btn btn-xs toggle-btn"><i class="fa fa-angle-down"></i><span class="toggle-text">展开筛选条件</span></button>
+                    <div class="filter-box">
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">区域：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全国</option>
+                                        <option value="">浙江省</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全省</option>
+                                        <option value="">杭州市</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">江干区</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">商户等级：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">将军</option>
+                                        <option value="">士兵</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item">
+                            <div class="filter-label">策略状态：</div>
+                            <div class="filter-options">
+                                <button class="btn active">全部</button>
+                                <button class="btn">新增</button>
+                                <button class="btn">生效中</button>
+                                <button class="btn">已停用</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="search-container form-group">
+                            <div class="col-xs-3 input-container">
+                                <input class="form-control" type="text" name="" value="" placeholder="请输入策略编号">
+                            </div>
+                            <div class="col-xs-3 input-container">
+                                <button id="searchBtn" class="btn btn-default">搜索</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="quick-operate-container">
+                        <button id="addPolicyBtn" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>&nbsp;新增
+                        </button>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>策略编号</th>
+                                <th>商户等级</th>
+                                <th>商户额度</th>
+                                <th>支付周期</th>
+                                <th>策略状态</th>
+                                <th>策略说明</th>
+                                <th>创建时间</th>
+                                <th>详情</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="policyTable">
+                            <tr class="text-center"><td colspan="10"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                            <!--<tr>
+                                <td>1</td>
+                                <td>B20161207001</td>
+                                <td>士兵</td>
+                                <td>5,000,000.00</td>
+                                <td>1天</td>
+                                <td><span class="label label-warning">新增</span></td>
+                                <td>初始注册，中等规模使用</td>
+                                <td>2016-11-11</td>
+                                <td>
+                                    <a class="policy-detail-link" data-index="0">
+                                        <i class="fa fa-search"></i>&nbsp;策略详情
+                                    </a>
+                                </td>
+                                <td><button class="btn btn-primary btn-xs">启用</button></td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 策略详情模态框 -->
+    <div id="policyDetailModal" class="policy-detail-modal modal fade policy-management-container" tabindex="-1" role="dialog" aria-labelledby="policyDetailModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center" id="policyDetailModalLabel">策略详情&nbsp;<span id="policyDetailNo" class="label">--</span></h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">策略状态：</label>
+                                    <div class="col-xs-9">
+                                        <input id="policyDetailStatus" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">支付周期：</label>
+                                    <div class="col-xs-9">
+                                        <input id="policyDetailPeriod" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户等级：</label>
+                                    <div class="col-xs-9">
+                                        <input id="policyDetailLevel" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户额度：</label>
+                                    <div class="col-xs-9">
+                                        <input id="policyDetailLimit" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">策略说明：</label>
+                                    <div class="col-xs-9">
+                                        <textarea id="policyDetailRemark" type="text" readonly="readonly" class="form-control" placeholder="暂无" style="resize:none"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-12">
+                            <table id="detailTable" class="table table-bordered table-hover">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="togglePolicyBtn" type="button" class="btn">启用</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增策略模态框 -->
+    <div id="policyAddModal" class="policy-add-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="policyAddModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center" id="policyAddModalLabel">新增策略</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户等级：</label>
+                                    <div class="col-xs-9">
+                                        <select id="merchantVipLevelSelect" class="submit-input form-control">
+                                            <option data-val="10">商户一级</option>
+                                            <option data-val="20">商户二级</option>
+                                            <option data-val="30">商户三级</option>
+                                            <option data-val="40">商户四级</option>
+                                            <option data-val="50">商户五级</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户额度：</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantCapitalLimitInput" type="number" class="submit-input form-control" placeholder="请输入商户额度（元）" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">支付周期：</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantPaymentPeriodInput" type="number" class="submit-input form-control" placeholder="请输入支付周期（天）" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">策略状态：</label>
+                                    <div class="col-xs-9">
+                                        <input readonly="readonly" type="text" class="form-control" value="新增">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6 col-xs-offset-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">策略说明：</label>
+                                    <div class="col-xs-9">
+                                        <textarea id="loanPolicyRemark" type="text" class="submit-input form-control" placeholder="请输入本策略的说明" value="" style="resize:no;"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="obtainInterestRate" class="col-xs-6 interest-rate-container">
+                            <div class="subtitle">用户利率（单位：%）</div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">3期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="3" type="text" class="submit-input form-control interest-input" placeholder="请输入3期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">6期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="6" type="text" class="submit-input form-control interest-input" placeholder="请输入6期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">9期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="9" type="text" class="submit-input form-control interest-input" placeholder="请输入9期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">12期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="12" type="text" class="submit-input form-control interest-input" placeholder="请输入12期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">18期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input readonly="readonly" type="text" class="form-control" placeholder="--" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">24期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input readonly="readonly" type="text" class="form-control" placeholder="--" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div id="merchantInterestRate" class="col-xs-6 interest-rate-container">
+                            <div class="subtitle">商户利率（单位：%）</div>
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">3期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="3" type="text" class="form-control interest-input" placeholder="请输入3期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">6期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="6" type="text" class="submit-input form-control interest-input" placeholder="请输入6期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">9期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="9" type="text" class="submit-input form-control interest-input" placeholder="请输入9期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">12期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input data-period="12" type="text" class="submit-input form-control interest-input" placeholder="请输入12期的利率" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">18期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input readonly="readonly" type="text" class="form-control" placeholder="--" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">24期利率：</label>
+                                    <div class="col-xs-9">
+                                        <input readonly="readonly" type="text" class="form-control" placeholder="--" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="savePolicyBtn" type="button" class="btn btn-success">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../third/qrcode/qrcode.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/regionalManagement/policy_management.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+
+</html>

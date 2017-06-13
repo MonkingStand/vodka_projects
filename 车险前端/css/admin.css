@@ -1,0 +1,253 @@
+@charset 'utf-8';
+/******************************
+    通用部分（字体颜色等）
+ ******************************/
+ /* 滚动条部分 */
+/*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/  
+::-webkit-scrollbar {
+    width: 5px;  
+    height: 16px;  
+    background-color: #F5F5F5;  
+}
+/*定义滚动条轨道 内阴影+圆角*/  
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.3);  
+    border-radius: 10px;  
+    background-color: #F5F5F5;  
+}
+/*定义滑块 内阴影+圆角*/  
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,.3);  
+    background-color: #555;  
+}
+ /* 字体、颜色 */
+.text-right {
+    text-align: right;
+}
+.text-left {
+    text-align: left;
+}
+.text-center {
+    text-align: center;
+}
+.text-bold {
+    font-weight: bold;
+}
+.text-normal {
+    font-weight: normal;
+}
+.text-lg {
+    font-size: 1.25em;
+}
+.text-md {
+    font-size: 0.85em;
+}
+.text-sm {
+    font-size: 0.65em;
+}
+.text-black {
+    color: #000;
+}
+.text-grey {
+    color: #666;
+}
+hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-top: 1px solid #ccc;
+}
+/******************************
+    通用部分（某个特定的class）
+ ******************************/
+.hidden {
+    display: none;
+}
+.invisible {
+    visibility: hidden;
+}
+.divide-line-vertical, 
+.divide-line-horizontal {
+    position: relative;
+}
+.divide-line-vertical:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1px;
+    height: 100%;
+    right: 0;
+    top: 0;
+    background-color: #ddd;
+}
+.divide-line-horizontal:after {
+    position: absolute;
+    display: block;
+    content: "";
+    height: 1px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: #ddd;
+}
+.section-title {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 10px;
+    font-size: 1.25em;
+    font-weight: bold;
+    color: #666;
+}
+.section-title:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+    left: 0;
+    bottom: -5px;
+}
+.btn.click-ban {
+    pointer-events: none;
+    border-color: #aaa;
+    background-color: #aaa;
+    color: #666;
+}
+/* 自定义弹出警告框 */
+.alert.customer-alert {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    text-align: center;
+    z-index: 99999;
+}
+/******************************
+    特定部分
+ ******************************/
+#mainBody {
+    min-width: 1100px;
+    max-width: 1200px;
+    margin: 25px auto;
+}
+/* 订单列表、详情的container */
+#orderListContainer, 
+#detailContainer {
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+#orderListContainer {
+    min-height: 500px;
+}
+#detailContainer {
+    min-height: 650px;
+}
+/* 订单列表 */
+#toGetPriceList, 
+#hasPayList {
+    height: 500px;
+    overflow-y: auto;
+}
+/* toggle按钮 */
+#orderListContent #filterContainer li.active a {
+    position: relative;
+}
+#orderListContent #filterContainer li.active a:after {
+    content: "";
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #000;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -5px;
+}
+/* 订单列表主体部分 */
+#orderListContent .tab-content {
+    padding: 10px 0;
+}
+/* 订单列表加载图标 */
+#toGetPriceList .loading-container, 
+#hasPayList .loading-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/* 单个订单item */
+#orderListContent .no-order:after {
+    display: block;
+    content: "暂无订单";
+    margin: 10px 0;
+    text-align: center;
+}
+#orderListContent .order-item {
+    position: relative;
+    padding-right: 10px;
+    border-bottom: 1px solid #ddd;
+}
+#orderListContent .order-item.active {
+    background-color: #ddd;
+}
+#orderListContent .order-item.active:after {
+    content: "";
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 5px solid #000;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -10px;
+}
+#orderListContent .order-item > .row > div {
+    height: 30px;
+    line-height: 30px;
+}
+/* 订单详情 */
+#detailContainer .panel-title {
+    font-size: 16px;
+}
+#toGetPriceDetailPanelGroup .panel-title a.collapsed .fa-caret-down, 
+#toGetPriceDetailPanelGroup .panel-title a:not(.collapsed) .fa-caret-right, 
+#hasPayDetailPanelGroup .panel-title a.collapsed .fa-caret-down, 
+#hasPayDetailPanelGroup .panel-title a:not(.collapsed) .fa-caret-right  {
+    display: none;
+}
+/* 订单详情，报价信息录入部分 */
+#companyToggleContainer {
+    min-height: 500px;
+    border-bottom: none;
+}
+#cpicCompany, 
+#pinganCompany,
+#piccCompany {
+    padding-bottom: 15px;
+}
+#carAndInsuranceInfo .control-label, 
+#cpicCompany .control-label, 
+#pinganCompany .control-label,
+#piccCompany .control-label {
+    font-weight: bold;
+}
+#cpicCompany .form-group, 
+#pinganCompany .form-group,
+#piccCompany .form-group {
+    margin-bottom: 5px;
+}
+/* 完成报价按钮容器 */
+#finishPriceBtnContainer {
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+}
+/* 已投保支付订单详情 */
+#hasPayDetail .page-header, 
+#hasPayDetail .page-header h2 {
+    margin: 0;
+}
+#hasPayInsuranceInfo .control-label {
+    font-weight: bold;
+}
+#hasPayInsuranceInfo .form-group {
+    margin-bottom: 5px;
+}

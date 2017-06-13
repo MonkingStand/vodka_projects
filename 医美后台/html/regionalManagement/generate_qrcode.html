@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>生成商户二维码</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/bootstrap-select/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+    <div class="page generate-qrcode">
+        <div class="col-sm-6 col-xs-12 options-container">
+            <div class="page-header"><h4>商户选择</h4></div>
+            <div class="options-content">
+                <div class="options-list">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="merchantIdSelect" class="col-xs-2 control-label">商户列表：</label>
+                            <div class="col-xs-10">
+                                <select id="merchantIdSelect" class="selectpicker show-tick form-control" data-live-search="true">
+                                    <!--<option value="val1">商户一</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="options-list">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label for="merchantTypeSelect" class="col-xs-2 control-label">商户类别：</label>
+                            <div class="col-xs-10">
+                                <select id="merchantTypeSelect" class="form-control">
+                                    <!--<option value="val1">商户一</option>-->
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="operate-container">
+                    <button class="btn btn-primary" id="generateBtn">生成二维码</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12 qrcode-container">
+            <div class="page-header"><h4>二维码生成区域</h4></div>
+            <div id="qrcodeImg" class="qrcode-content">请选择商户并生成对应商户的二维码</div>
+            <div id="qrcodeText" class="hidden qrcode-text text-center"><span class="merchant-name">--</span><br>扫码进行咨询师账户注册</div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../../third/bootstrap-select/defaults-zh_CN.min.js"></script>
+    <script src="../../third/qrcode/qrcode.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/regionalManagement/generate_qrcode.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+
+</html>

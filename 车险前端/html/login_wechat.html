@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="loginWechatPage" class="page register-page invisible">
+            <div class="content">
+                <div id="contentContainer">
+                    <div id="mainHeader">
+                        <div id="mainHeaderMask"></div>
+                        <div id="logoContainer"></div>
+                    </div>
+                    <div id="mainBody">
+                        <div class="list-block">
+                            <ul>
+                                <li class="bottom-border">
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="img-icon img-mobile"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-input">
+                                                <input id="mobile" type="text" placeholder="请输入手机号">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="bottom-border">
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="img-icon img-pwd"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-input">
+                                                <input id="password" type="password" placeholder="请输入密码">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="bottom-border">
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="img-icon img-pwd"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-input">
+                                                <input id="verifyPassword" type="password" placeholder="请再次输入密码">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li id="verifyCodeContainer" class="bottom-border">
+                                    <div class="item-content">
+                                        <div class="item-media"><i class="img-icon img-code"></i></div>
+                                        <div class="item-inner">
+                                            <div class="item-input">
+                                                <input id="verifyCode" type="text" placeholder="请输入验证码">
+                                            </div>
+                                            <div class="item-after">
+                                                <a id="getVerifyCodeBtn" href="#" class="button button-fill text-xs text-center">获取验证码</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <p><a id="registerWechatBtn" href="#" class="button button-fill button-big">注册</a></p>
+                            <input id="openId" type="text" style="display:none;">
+                        </div>
+                        <div id="externalLinkContainer" class="list-block text-xs text-center">
+                            <a id="bindWechatLink">已有账号，绑定微信</a>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+    </div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+
+</html>

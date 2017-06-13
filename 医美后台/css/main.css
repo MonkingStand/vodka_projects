@@ -1,0 +1,516 @@
+@charset 'utf-8';
+/* 个人合同 */
+.modal .content {
+    padding: 0.25rem;
+}
+.modal p {
+    margin: 0;
+}
+.modal .text-bold {
+    font-weight: bold;
+}
+.modal .content-body {
+    font-size: 15px;
+}
+.modal .underline {
+    text-decoration: underline;
+    text-decoration-color: red;
+    -moz-text-decoration-color: red;
+}
+.modal .content-body .space-division {
+    display: block;
+    height: 10px;
+}
+.modal .content-body .contract-tips {
+    text-indent: 40px;
+}
+.modal .content-body .table-container table {
+    width: 100%;
+}
+.modal .content-body .border-table td, 
+.modal .content-body .border-table th {
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+.modal .content-body .loan-info-table .td-title {
+    width: 150px;
+}
+.modal .content-body .account-info-table th {
+    width: 50%;
+}
+
+/* 每个页面对应的样式，采用多一级的方式区分 */
+
+/*
+ *  preloanRiskManagement
+ */
+.preloan-risk .order-detail-link, 
+.loan-business .order-detail-link {
+    cursor: pointer;
+}
+/* 订单详情 */
+.preloan-risk-detail .page-header {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.preloan-risk-detail .form-horizontal .form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.preloan-risk-detail .modal-link {
+    height: 34px;
+    line-height: 34px;
+    cursor: pointer;
+}
+.preloan-risk-detail .fa {
+    margin-right: 5px;
+}
+.preloan-risk-detail .operate-btn-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.preloan-risk-detail .operate-btn-container .btn {
+    padding-left:25px;
+    padding-right: 25px;
+    margin: 0 25px;
+}
+.preloan-risk-detail .modal-body {
+    min-height: 300px;
+    max-height: 750px;
+    overflow-y: auto;
+}
+.preloan-risk-detail .panel-body-header {
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+.preloan-risk-detail .detail-list {
+    padding: 5px 25px;
+}
+.preloan-risk-detail .carousel-inner .item img {
+    width: 360px;
+    height: 360px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+.preloan-risk-detail .carousel-caption {
+    padding-top: 0;
+    padding-bottom: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    margin-left: -180px;
+    width: 360px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    background: rgba(0, 0, 0, .7);
+}
+.preloan-risk-detail .carousel-control.left,
+.preloan-risk-detail .carousel-control.right {
+    color: #000;
+    background-image: none;
+}
+.carousel-control:focus, 
+.carousel-control:hover {
+    color: #000;
+    filter: alpha(opacity=60);
+    opacity: .6;
+}
+
+/*
+ * financeManagement
+ */
+/* 放款订单列表 */
+.remit-orders .order-detail-link, 
+.remit-orders-overdue .order-detail-link {
+    cursor: pointer;
+}
+/* 放款订单详情 */
+.remit-detail .page-header {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.remit-detail .page-header .toggle-link {
+    color: #000;
+    cursor: pointer;
+}
+.remit-detail .form-horizontal .form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.remit-detail .refund-record-container {
+    padding: 15px 20px 20px 20px;
+}
+.remit-detail .table > thead > tr > th {
+    background-color: #F5F5F6;
+    border-bottom-width: 1px;
+}
+.remit-detail .table tbody td {
+    text-align: center;
+    vertical-align: middle;
+}
+/* 头寸状态 */
+.remit-statistics {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.remit-statistics-container {
+    padding: 15px;
+}
+.remit-statistics-container .page-header {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.remit-statistics-container .page-header .toggle-link {
+    color: #000;
+    cursor: pointer;
+}
+.remit-statistics-container .form-horizontal .form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+/* 筛选container（针对select选择列表） */
+.remit-statistics .filter-item.select-filter {
+    height: 34px;
+}
+.remit-statistics .filter-item.select-filter .filter-label {
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    float: left;
+}
+.remit-statistics .filter-item.select-filter .filter-options {
+    display: block;
+    height: 34px;
+    padding: 0 15px;
+}
+/* 自定义选择时间段 */
+.picker-modal .modal-body {
+    min-height: 130px;  /* 15 + 100 + 15 */
+}
+.picker-modal .modal-footer {
+    text-align: center;
+}
+.picker-modal .modal-footer .btn {
+    margin-left: 15px;
+    margin-right: 15px; 
+}
+.picker-modal .form-horizontal .form-group {
+    margin: 8px;
+    margin-top: 8px;
+}
+
+/*
+ * regionalManagement
+ */
+/* 策略管理 */
+/* 针对select选择列表 */
+.policy-management .filter-item.select-filter {
+    height: 34px;
+}
+.policy-management .filter-item.select-filter .filter-label {
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    float: left;
+}
+.policy-management .filter-item.select-filter .filter-options {
+    display: block;
+    height: 34px;
+    padding: 0 15px;
+}
+.policy-management .quick-operate-container {
+    margin-bottom: 15px;
+}
+.policy-management .quick-operate-container:before {
+    display: inline-block;
+    content: "快捷操作：";
+    margin-right: 15px;
+    font-size: 1.05em;
+    font-weight: bold;
+}
+.policy-management .policy-detail-link {
+    cursor: pointer;
+}
+/* 策略详情、新增策略模态框 */
+/* 通用部分 */
+.policy-detail-modal .modal-footer, 
+.policy-add-modal .modal-footer {
+    text-align: center;
+}
+.policy-detail-modal .modal-footer .btn, 
+.policy-add-modal .modal-footer .btn {
+    margin-left: 15px;
+    margin-right: 15px; 
+}
+/* 策略详情 */
+.policy-detail-modal .table .role-name {
+    display: inline-block;
+    width: 4em;
+    text-align: right;
+}
+.policy-detail-modal .table th, 
+.policy-detail-modal .table td {
+    text-align: center;
+}
+/* 策略新增 */
+.policy-add-modal .interest-rate-container .subtitle {
+    font-size: 1.05em;
+    font-weight: bold;
+}
+.policy-add-modal .modal-body {
+    max-height: 500px;
+    overflow-y: auto; 
+}
+/* 商户管理 */
+/* 针对select选择列表 */
+.merchant-management .filter-item.select-filter {
+    height: 34px;
+}
+.merchant-management .filter-item.select-filter .filter-label {
+    width: 100px;
+    height: 34px;
+    line-height: 34px;
+    float: left;
+}
+.merchant-management .filter-item.select-filter .filter-options {
+    display: block;
+    height: 34px;
+    padding: 0 15px;
+}
+/* 商户列表table */
+.merchant-management .quick-operate-container {
+    margin-bottom: 15px;
+}
+.merchant-management .quick-operate-container:before {
+    display: inline-block;
+    content: "快捷操作：";
+    margin-right: 15px;
+    font-size: 1.05em;
+    font-weight: bold;
+}
+.merchant-management .table tbody .btn {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+/* 新增商户模态框 */
+.merchant-add-modal .modal-footer {
+    text-align: center;
+}
+.merchant-add-modal .modal-footer .btn {
+    margin-left: 15px;
+    margin-right: 15px; 
+}
+.merchant-add-modal .modal-body {
+    max-height: 500px;
+    overflow-y: auto; 
+}
+.merchant-add-modal #provinceSelectContainer {
+    padding-right: 0;
+}
+.merchant-add-modal #citySelectContainer {
+    padding: 0;
+}
+.merchant-add-modal #regionSelectContainer {
+    padding-left: 0;
+}
+.merchant-add-modal .table .role-name {
+    display: inline-block;
+    width: 4em;
+    text-align: right;
+}
+.merchant-add-modal .table th, 
+.merchant-add-modal .table td {
+    text-align: center;
+}
+/* 商户管理——商户详情 */
+.merchant-detail .page-header {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+/* 商户修改模态框 */
+.merchant-update-modal .modal-footer {
+    text-align: center;
+}
+.merchant-update-modal .modal-footer .btn {
+    margin-left: 15px;
+    margin-right: 15px; 
+}
+.merchant-update-modal .modal-body {
+    max-height: 500px;
+    overflow-y: auto; 
+}
+.merchant-update-modal #provinceSelectContainer {
+    padding-right: 0;
+}
+.merchant-update-modal #citySelectContainer {
+    padding: 0;
+}
+.merchant-update-modal #regionSelectContainer {
+    padding-left: 0;
+}
+.merchant-update-modal .table .role-name {
+    display: inline-block;
+    width: 4em;
+    text-align: right;
+}
+.merchant-update-modal .table th, 
+.merchant-update-modal .table td {
+    text-align: center;
+}
+/* 商户管理——咨询师详情 */
+.merchant-user .page-header {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+.merchant-user .page-header .toggle-link {
+    color: #000;
+    cursor: pointer;
+}
+.merchant-user .form-horizontal .form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.merchant-user .merchant-user-overview, 
+.merchant-user .order-list-overview {
+    margin-bottom: 10px;
+}
+.merchant-user .edit-user-link, 
+.merchant-user .delete-user-link {
+    margin: 0 10px;
+}
+/* 生成商户二维码 */
+.generate-qrcode {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+}
+.generate-qrcode .page-header {
+    margin: 10px 0;
+}
+.generate-qrcode .operate-container {
+    margin: 50px 0 20px;
+    text-align: right;
+}
+.generate-qrcode .operate-container .btn {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.generate-qrcode .qrcode-content {
+    height: 170px;
+    line-height: 150px;
+    padding: 10px 0;
+    text-align: center;
+}
+.generate-qrcode .qrcode-content img {
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+.generate-qrcode .merchant-name {
+    font-size: 1.15em;
+    font-weight: bold;
+}
+/*
+ * APP管理--banner图管理
+ * app_banner.html
+ */
+ .app-banner .upload-container {
+     position: relative;
+     margin: 0 auto;
+     max-width: 400px;
+     max-height: 250px;
+     border: 1px solid #ccc;
+     text-align: center;
+ }
+ .app-banner .upload-container .img-container {
+     width: 400px;
+     height: 250px;
+     line-height: 250px;
+ }
+.app-banner .upload-container .img-container.not-uploaded {
+    background: url('../images/add.png') no-repeat center center;
+    background-size: 60px 40px;
+}
+.app-banner .upload-container .img-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 11;
+}
+.app-banner .operate-container {
+    margin-top: 40px;
+}
+.app-banner .operate-container .btn-save {
+    width: 180px;
+    height: 60px;
+    line-height: 40px;
+}
+.app-banner .upload-container img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+/*
+ * 管理员系统
+ */
+/* role.html */
+.menu-wrap {
+    margin-top: 5px;
+    color: red;
+}
+/* permission.html */
+.permisson .nav-tabs {
+    border-color: #c5d0dc;
+    margin-bottom: 0;
+    margin-left: 0;
+    position: relative;
+    top: 1px;
+}
+.permisson .nav-tabs>li:first-child>a {
+    margin-left: 0;
+}
+.permisson .nav-tabs>li>a, .nav-tabs>li>a:focus {
+    border-radius: 0!important;
+    background-color: #f9f9f9;
+    color: #999;
+    margin-right: -1px;
+    line-height: 16px;
+    /* position: relative; */
+    z-index: 11;
+    border-color: #c5d0dc;
+}
+.permisson .nav-tabs>li.active>a, 
+.permisson .nav-tabs>li.active>a:hover, 
+.permisson .nav-tabs>li.active>a:focus {
+    color: #576373;
+    border-color: #c5d0dc;
+    border-top: 2px solid #4c8fbd;
+    border-bottom-color: transparent;
+    background-color: #FFF;
+    z-index: 12;
+    line-height: 16px;
+    margin-top: -1px;
+    box-shadow: 0 -2px 3px 0 rgba(0,0,0,0.15);
+}
+.permisson .nav-tabs>li>a:hover {
+    background-color: #FFF;
+    color: #4c8fbd;
+    border-color: #c5d0dc;
+}
+.permisson .tab-content {
+    padding: 16px 12px;
+    position: relative;
+    z-index: 11;
+}

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>头寸状态</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+    <div class="page remit-statistics">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center text-lg text-bold">
+                    头寸状态
+                </h3>
+            </div>
+            <div class="panel-body remit-statistics-container">
+                <div class="page-header"><a class="toggle-link expanded" data-target="#statisticsOverview"><i class="fa fa-caret-down"></i>&nbsp;头寸信息概览</a></div>
+                <div id="statisticsOverview" class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">未来应回收：</label>
+                                <div class="col-xs-9">
+                                    <input  type="text" readonly="readonly" class="form-control" placeholder="暂无" value="125,698,990.00">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">实际回收：</label>
+                                <div class="col-xs-9">
+                                    <input type="text" readonly="readonly" class="form-control" placeholder="暂无" value="130,698,990.00">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">当前总需求：</label>
+                                <div class="col-xs-9">
+                                    <input type="text" readonly="readonly" class="form-control" placeholder="暂无" value="-66,752.00">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#statisticsToCollect"><i class="fa fa-caret-right"></i>&nbsp;未来应收情况</a></div>
+                <div id="statisticsToCollect" class="row" style="display:none;">
+                    <div class="filter-container">
+                    <button class="btn btn-xs toggle-btn"><i class="fa fa-angle-down"></i><span class="toggle-text">展开筛选条件</span></button>
+                    <div class="filter-box">
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">区域：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全国</option>
+                                        <option value="">浙江省</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全省</option>
+                                        <option value="">杭州市</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">江干区</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item">
+                            <div class="filter-label">时段：</div>
+                            <div class="filter-options">
+                                <button class="btn active">全部</button>
+                                <button class="btn">明天</button>
+                                <button class="btn">下周</button>
+                                <button class="btn">下个月</button>
+                                <button class="btn customer-btn" data-toggle="modal" data-target="#toCollectPickerModal">自定义时段</button>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="statistics-container">
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">未来应回收：</label>
+                                    <div class="col-xs-9">
+                                        <input type="text" readonly="readonly" class="form-control" placeholder="暂无" value="125,698,990.00">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>                  
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#statisticsHasCollect"><i class="fa fa-caret-right"></i>&nbsp;实收情况</a></div>
+                <div id="statisticsHasCollect" class="row" style="display:none;">
+                    <div class="filter-container">
+                        <button class="btn btn-xs toggle-btn"><i class="fa fa-angle-down"></i><span class="toggle-text">展开筛选条件</span></button>
+                        <div class="filter-box">
+                            <div class="filter-item select-filter">
+                                <div class="filter-label">区域：</div>
+                                <div class="filter-options">
+                                    <div class="col-xs-3">
+                                        <select class="form-control">
+                                            <option value="">全国</option>
+                                            <option value="">浙江省</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <select class="form-control">
+                                            <option value="">全省</option>
+                                            <option value="">杭州市</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <select class="form-control">
+                                            <option value="">全部</option>
+                                            <option value="">江干区</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="filter-item">
+                                <div class="filter-label">时段：</div>
+                                <div class="filter-options">
+                                    <button class="btn active">全部</button>
+                                    <button class="btn">昨天</button>
+                                    <button class="btn">上周</button>
+                                    <button class="btn">上个月</button>
+                                    <button type="button" class="btn customer-btn" data-toggle="modal" data-target="#hasCollectPickerModal">自定义时段</button>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="statistics-container">
+                            <div class="col-sm-6 col-xs-12">
+                                <form class="form-horizontal" role="form">
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label text-bold">实际回收：</label>
+                                        <div class="col-xs-9">
+                                            <input  type="text" readonly="readonly" class="form-control" placeholder="暂无" value="130,698,990.00">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#statisticsCensus"><i class="fa fa-caret-right"></i>&nbsp;头寸统计</a></div>
+                <div id="#statisticsCensus" class="row" style="display:none;">
+                    头寸统计图表，TODO..
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 未来应收时间段选择模态框 -->
+    <div id="toCollectPickerModal" class="picker-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="toCollectPickerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center" id="toCollectPickerModalLabel">时间段选择</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12">
+                         <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">开始时间：</label>
+                                <div class="col-xs-9">
+                                    <input id="toCollectStart" size="16" type="text" value="" readonly class="form-control form_datetime start-time">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12">
+                         <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">结束时间：</label>
+                                <div class="col-xs-9">
+                                    <input id="toCollectEnd" size="16" type="text" value="" readonly class="form-control form_datetime end-time">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary confirm-btn">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 实收时间段选择模态框 -->
+    <div id="hasCollectPickerModal" class="picker-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="hasCollectPickerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center" id="hasCollectPickerModalLabel">时间段选择</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="col-xs-12">
+                         <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">开始时间：</label>
+                                <div class="col-xs-9">
+                                    <input id="hasCollectStart" size="16" type="text" value="" readonly class="form-control form_datetime start-time">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12">
+                         <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">结束时间：</label>
+                                <div class="col-xs-9">
+                                    <input id="hasCollectEnd" size="16" type="text" value="" readonly class="form-control form_datetime end-time">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary confirm-btn">确定</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../../third/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/financeManagement/remit_statistics.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>权限</title>
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    <div class="page role">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>角色</h5>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-sm-7">
+                        <button id="addRole" class="btn btn-info" type="button" alt="新增管理员" data-backdrop="static">
+                            <i class="fa fa-plus"></i>新增角色
+                        </button>                     
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" placeholder="请输入姓名或手机号">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-success" type="button">搜索</button>
+                    </div>                    
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>角色名</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listTable">
+                            <tr class="text-center"><td colspan="10"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 角色添加 -->
+        <div class="modal fade" id="addRoleModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">新增角色</h4>
+                    </div>
+                    <div class="modal-body J_newAdmin">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="roleNameSecond" class="col-sm-3 control-label">角色名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="roleNameSecond" placeholder="请输入角色名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">权限列表（可多选）：</div>
+                            </div>
+                            <div class="form-group role-checkbox" id="new-roleList">
+
+                            </div>                        
+                        </form>                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="sure" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- 角色修改 -->
+        <div class="modal fade modifyModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">修改角色</h4>
+                    </div>
+                    <div class="modal-body J_newAdmin">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">角色名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control submit-input" id="roleName" placeholder="请输入角色名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-sm-12">权限列表（可多选）：</div>
+                            </div>
+                            <div class="form-group role-checkbox" id="roleList">
+
+                            </div>                        
+                        </form>                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="modifySure" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/administratorManagement/role.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+
+</body>
+</html>

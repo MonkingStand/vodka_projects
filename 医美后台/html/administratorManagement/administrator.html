@@ -1,0 +1,165 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理员</title>
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    <div class="page administrator">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>管理员</h5>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-sm-7">
+                        <button id="addAdmin" class="btn btn-info" type="button" alt="新增管理员" data-backdrop="static">
+                            <i class="fa fa-plus"></i>新增管理员
+                        </button>                     
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" placeholder="请输入姓名或手机号">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-success" type="button">搜索</button>
+                    </div>                    
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>用户名</th>
+                                <th>密码</th>
+                                <th>手机号码</th>
+                                <th>角色</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listTable">
+                            <tr class="text-center"><td colspan="10"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 新增 -->
+        <div class="modal fade" id="addAdminModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">新增管理员</h4>
+                    </div>
+                    <div class="modal-body J_newAdmin">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="usernameSecond" class="col-sm-3 control-label">用户名：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" id="usernameSecond" value="" placeholder="请输入登录用户名">
+                                </div>
+                                <div class="col-sm-2">
+                                    <button class="btn btn-success J_validate" type="button">验证</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordSecond" class="col-sm-3 control-label">密码(默认)：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" readonly id="passwordSecond" value="123456" placeholder="请输入密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobileSecond" class="col-sm-3 control-label">手机号码：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="mobileSecond" value="" placeholder="请输入用户手机号码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="adminList" class="col-sm-3 control-label">角色：</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control role-select" id="adminList">
+                                        
+                                    </select>
+                                </div>                               
+                            </div>
+                        </form>                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="addSure" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+        <!-- 修改 -->
+        <div class="modal fade modifyModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">修改管理员</h4>
+                    </div>
+                    <div class="modal-body J_newAdmin">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="username" class="col-sm-3 control-label">用户名：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control submit-input" readonly id="username" value="" placeholder="请输入登录用户名">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">密码：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control submit-input" id="password" value="" placeholder="请输入角色密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="mobile" class="col-sm-3 control-label">手机号码：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control submit-input" id="mobile" value="" placeholder="请输入用户手机号码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="roleName" class="col-sm-3 control-label">角色：</label>
+                                <div class="col-sm-9">
+                                    <!--<input type="text" class="form-control submit-input" readonly id="roleName" value="" placeholder="请输入用户手机号码">-->
+                                    <select class="form-control role-select" id="roleName">
+                                        
+                                    </select>
+                                </div>
+                            </div>
+                        </form>                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="modifySure" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/administratorManagement/administrator.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+
+</body>
+</html>

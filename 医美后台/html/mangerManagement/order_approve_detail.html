@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>详情</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    <div class="page preloan-risk-detail">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center text-lg text-bold">
+                    <a class="pull-left" onclick="window.history.back(-1);"><i class="fa fa-mail-reply"></i></a>
+                    详情
+                </h3>
+            </div>
+            <div class="panel-body order-info-container">
+                <div class="page-header">基本信息</div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">申请人姓名：</label>
+                                <div class="col-xs-9">
+                                    <input id="realName" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">申请人手机号：</label>
+                                <div class="col-xs-9">
+                                    <input id="mobile" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">身份证号：</label>
+                                <div class="col-xs-9">
+                                    <input id="idCard" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">现居住地：</label>
+                                <div class="col-xs-9">
+                                    <input id="nowLiveAdress" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">工作单位名称：</label>
+                                <div class="col-xs-9">
+                                    <input id="jobUnitAdress" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">工作单位地址：</label>
+                                <div class="col-xs-9">
+                                    <input id="jobUnitName" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">紧急联系人一姓名：</label>
+                                <div class="col-xs-9">
+                                    <input id="linkman1Name" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">紧急联系人一手机号：</label>
+                                <div class="col-xs-9">
+                                    <input id="linkman1Mobile" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">紧急联系人二姓名：</label>
+                                <div class="col-xs-9">
+                                    <input id="linkman2Name" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">紧急联系人二手机号：</label>
+                                <div class="col-xs-9">
+                                    <input id="linkman2Mobile" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">申请贷款时间：</label>
+                                <div class="col-xs-9">
+                                    <input id="effectiveDate" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">申请贷款金额：</label>
+                                <div class="col-xs-9">
+                                    <input id="applyCapital" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">期数：</label>
+                                <div class="col-xs-9">
+                                    <input id="period" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">还款方式：</label>
+                                <div class="col-xs-9">
+                                    <input id="refundType" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">银行卡号：</label>
+                                <div class="col-xs-9">
+                                    <input id="bankCardNum" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">银行预留手机号：</label>
+                                <div class="col-xs-9">
+                                    <input id="bankCardMobile" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">贷款类型：</label>
+                                <div class="col-xs-9">
+                                    <input id="loanType" type="text" readonly="readonly" class="form-control" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">贷款用途：</label>
+                                <div class="col-xs-9">
+                                    <input id="purpose" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">审核意见：</label>
+                                <div class="col-xs-9">
+                                    <textarea id="checkRemark" type="text" readonly="readonly" class="form-control order-input" placeholder="未填写"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header">合同/协议/申请表</div>
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">个人合同:</label>
+                                <div class="col-xs-9">
+                                    <a id="personalContactModalLink" target="_blank" class="modal-link not-created"><i class="fa fa-search"></i>查看</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">三方协议:</label>
+                                <div class="col-xs-9">
+                                    <a id="tripartiteAgreementModalLink" class="modal-link" data-toggle="modal" data-target="#tripartiteAgreementModal"><i class="fa fa-search"></i>查看</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">融资人版:</label>
+                                <div class="col-xs-9">
+                                    <a id="financierEdModalLink" class="modal-link" data-toggle="modal" data-target="#financierEdModal"><i class="fa fa-search"></i>查看</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">融资申请表:</label>
+                                <div class="col-xs-9">
+                                    <a id="financialApplyModalLink" class="modal-link" data-toggle="modal" data-target="#financialApplyModal"><i class="fa fa-search"></i>查看</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header">审批意见</div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-1 control-label">经理审批意见:</label>
+                                <div class="col-xs-11">
+                                    <textarea id="bossComments" type="text" class="form-control order-input" maxlength="100" placeholder="请输入经理审批意见..."></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12 text-center operate-btn-container hidden">
+                        <button id="approvePass" type="button" class="btn btn-success">同意</button>
+                        <button id="approveRefuse" type="button" class="btn btn-danger">驳回</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 三方协议模态框 -->
+    <div id="tripartiteAgreementModal" class="modal fade preloan-risk-detail" tabindex="-1" role="dialog" aria-labelledby="tripartiteAgreementModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title text-center" id="tripartiteAgreementModalLabel">三方协议</h4>
+                </div>
+                <div class="modal-body">
+                    显示三方协议的地方
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 融资人版模态框 -->
+    <div id="financierEdModal" class="modal fade preloan-risk-detail" tabindex="-1" role="dialog" aria-labelledby="financierEdModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title text-center" id="financierEdModalLabel">融资人版</h4>
+                </div>
+                <div class="modal-body">
+                    显示融资人版的地方
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 融资申请表模态框 -->
+    <div id="financialApplyModal" class="modal fade preloan-risk-detail" tabindex="-1" role="dialog" aria-labelledby="financialApplyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title text-center" id="financialApplyModalLabel">融资申请表</h4>
+                </div>
+                <div class="modal-body">
+                    显示融资申请表的地方
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/mangerManagement/order_approve_detail.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+</html>

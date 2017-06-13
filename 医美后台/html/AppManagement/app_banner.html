@@ -1,0 +1,113 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>banner图管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    <div class="page app-banner">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>APP管理 — banner图管理</h5>
+                </div>
+                <div class="form-group clearfix">
+                    <div class="col-sm-7">
+                        <button id="addAdmin" class="btn btn-info" type="button" alt="新增banner图" data-toggle="modal" data-target="#addModal">
+                            <i class="fa fa-plus"></i>新增banner图
+                        </button>                     
+                    </div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" placeholder="">
+                    </div>
+                    <div class="col-sm-2">
+                        <button class="btn btn-success" type="button">搜索</button>
+                    </div>                    
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>版本号</th>
+                                <th>创建时间</th>
+                                <th>下载链接</th>
+                                <th>升级提示</th>
+                                <th>文件大小</th>
+                                <th>不升级是否可用</th>
+                            </tr>
+                        </thead>
+                        <tbody id="versionTable">
+                            <tr class="text-center"><td colspan="7"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>           
+        </div>
+        <div class="modal fade" id="addModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title">新增banner图</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="text-center">上传banner图</h3>
+                        <div class="upload-container">
+                            <div class="img-container not-uploaded"></div>
+                            <form id="bannerImg" name="proofImg" accept="multipart/form-data" method="post">
+                                <input class="img-input" type="file" name="file" accept="image/png,image/gif,image/jpeg">
+                                <input class="hidden" value="bannerImg" type="text" name="remotePath" >
+                            </form>
+                        </div>
+                        <div class="operate-container text-center">
+                            <a class="btn btn-primary btn-lg btn-save click-ban">上传</a>
+                        </div>
+
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="imgUrl" class="col-sm-3 control-label">banner图链接：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control submit-input" id="imgUrl" value="" placeholder="请输入banner图URL">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="link" class="col-sm-3 control-label">跳转链接：</label>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control submit-input" id="link" value="" placeholder="跳转链接">
+                                </div>
+                            </div>
+                        </form>                   
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="addBannerImg" type="button" class="btn btn-primary">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/AppManagement/app_banner.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+</html>

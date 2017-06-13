@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="newInsurancePayPage" class="page new-insurance-pay-page">
+            <header class="bar bar-nav">
+                <h1 class="title">确认支付</h1>
+            </header>
+            <nav class="bar bar-tab">
+                <div class="row no-gutter">
+                    <div class="col-60 text-left info-container">
+                        实付<span id="sumPrem" class="pay-summary">--</span>
+                    </div>
+                    <div class="col-40 text-right operate-container">
+                        <a id="payMethodPopupLink" class="text-center operate-btn pay-btn click-ban">立即支付</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="content">
+                <div class="buttons-tab fixed-tab">
+                    <a href="#tab1" class="tab-link active button">投保详情</a>
+                    <a href="#tab2" class="tab-link button">投保资料附件</a>
+                </div>
+                <div class="content-block" style="margin:0;padding:0;">
+                    <div class="tabs">
+                        <div id="tab1" class="tab active">
+                            <div class="list-block list-mar-top-bottom">
+                                <ul>
+                                    <li class="item-content item-link no-image">
+                                        <div class="item-inner flex-direction-col">
+                                            <div class="flex-item">
+                                                <div class="item-title">投保人姓名</div>
+                                                <div id="carOwner" class="item-after">--</div>
+                                            </div>
+                                            <div class="flex-item">
+                                                <div class="item-title">手机号码</div>
+                                                <div id="mobile" class="item-after">--</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">保单邮寄地址</div>
+                                            <div class="item-after">
+                                                <div class="item-input">
+                                                    <input id="contactAddressDetails" class="submit-input text-right" type="text" value="" placeholder="请输入保单邮寄地址">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block list-mar-top-bottom">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div id="company" class="item-title">--</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="row no-gutter">
+                                            <div class="col-50 text-left text-bold">投保城市</div>
+                                            <div id="placeName" class="col-50 text-right">--</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-25 text-left text-bold">
+                                                    <div class="pay-item-name">交强险</div>
+                                                </div>
+                                                <div class="col-75">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div class="flex-item-3">
+                                                            起保期：<span id="tpfStartDate">--</span>
+                                                        </div>
+                                                        <div id="tpfPrem" class="flex-item-1 text-right">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex-box pay-item-info">
+                                                        <div class="flex-item-3">
+                                                            车船税：代缴
+                                                        </div>
+                                                        <div id="taxPrem" class="flex-item-1 text-right">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content added-info-title">
+                                            <div class="row no-gutter">
+                                                <div class="col-25 text-left text-bold">
+                                                    <div class="pay-item-name">商业险</div>
+                                                </div>
+                                                <div class="col-75">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div class="flex-item-3">
+                                                            起保期：<span id="bizStartDate">--</span>
+                                                        </div>
+                                                        <div id="bizPrem" class="flex-item-1 text-right">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <div id="productKind">
+                                        
+                                    </div>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">专享优惠</div>
+                                            <div id="promotionFee" class="item-after fz discount-val">-0</div>
+                                        </div>
+                                    </li>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">总额</div>
+                                            <div id="amount" class="item-after fz">--</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="content-block-title">服务电话 <a href="">4008-357-100</a></div>
+                            <div class="list-block no-margin-top">
+                                <ul>
+                                    <li class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title">车辆信息</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-50 text-left text-bold">
+                                                    <div class="pay-item-name">车牌号码</div>
+                                                </div>
+                                                <div class="col-50">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div id="licenseNo" class="flex-item-1 text-right text-lightgrey">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-50 text-left text-bold">
+                                                    <div class="pay-item-name">品牌型号</div>
+                                                </div>
+                                                <div class="col-50">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div id="brandName" class="flex-item-1 text-right text-lightgrey">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-50 text-left text-bold">
+                                                    <div class="pay-item-name">车辆识别码</div>
+                                                </div>
+                                                <div class="col-50">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div id="frameNo" class="flex-item-1 text-right text-lightgrey">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-50 text-left text-bold">
+                                                    <div class="pay-item-name">发动机号</div>
+                                                </div>
+                                                <div class="col-50">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div id="engineNo" class="flex-item-1 text-right text-lightgrey">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="item-content">
+                                            <div class="row no-gutter">
+                                                <div class="col-50 text-left text-bold">
+                                                    <div class="pay-item-name">注册日期</div>
+                                                </div>
+                                                <div class="col-50">
+                                                    <div class="flex-box pay-item-info">
+                                                        <div id="enrollDate" class="flex-item-1 text-right text-lightgrey">
+                                                            --
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="list-block media-list no-margin-top">
+                                <ul>
+                                    <li class="agreement-operate">
+                                        <label class="label-checkbox item-content">
+                                            <input type="checkbox" name="agreementCheckbox">
+                                            <div class="item-media">
+                                                <i class="icon icon-form-checkbox"></i>
+                                            </div>
+                                            <div class="item-inner">
+                                                <div class="item-title-row">
+                                                    <div class="item-title text-sm">
+                                                        已阅读并同意<a id="insuranceTermsPopupLink">《服务协议》</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="autoSubmitFormContainer" class="hidden">
+                                <form id="submitForm" method="post" action="https://h5pay.jd.com/jdpay/saveOrder">
+                                    <input id="form_version" type="hidden" name="version" value="">
+                                    <input id="form_merchant" type="hidden" name="merchant" value="">
+                                    <input id="form_tradeNum" type="hidden" name="tradeNum" value="">
+                                    <input id="form_tradeName" type="hidden" name="tradeName" value="">
+                                    <input id="form_tradeTime" type="hidden" name="tradeTime" value="">
+                                    <input id="form_amount" type="hidden" name="amount" value="">
+                                    <input id="form_orderType" type="hidden" name="orderType" value="">
+                                    <input id="form_currency" type="hidden" name="currency" value="">
+                                    <input id="form_callbackUrl" type="hidden" name="callbackUrl" value="">
+                                    <input id="form_notifyUrl" type="hidden" name="notifyUrl" value="">
+                                    <input id="form_sign" type="hidden" name="sign" value="">
+                                    <input id="form_userId" type="hidden" name="userId" value="">
+                                </form>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab">
+                            <div class="list-block" style="margin:0;">
+                                <ul>
+                                    <li id="idCardImgEmblemUploadPopupLink" class="item-content popup-link has-uploaded upload-popup-link" data-popup="idCardImgEmblem">
+                                        <div class="item-inner">
+                                            <div class="item-title">身份证照A面（国徽所在面）</div>
+                                            <div class="item-after">
+                                                <a class="icon-link">
+                                                    <i class="img-icon img-camera-active"></i>
+                                                </a>
+                                                <div id="idCardImgEmblemPreview" class="hidden"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li id="idCardImgHeadUploadPopupLink" class="item-content popup-link has-uploaded upload-popup-link" data-popup="idCardImgHead">
+                                        <div class="item-inner">
+                                            <div class="item-title">身份证照B面（肖像所在面）</div>
+                                            <div class="item-after">
+                                                <a class="icon-link">
+                                                    <i class="img-icon img-camera-active"></i>
+                                                </a>
+                                                <div id="idCardImgHeadPreview" class="hidden"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li id="drivingLicenseFirstUploadPopupLink" class="item-content popup-link has-uploaded upload-popup-link" data-popup="drivingLicenseFirst">
+                                        <div class="item-inner">
+                                            <div class="item-title">行驶证正本</div>
+                                            <div class="item-after">
+                                                <a class="icon-link">
+                                                    <i class="img-icon img-camera-active"></i>
+                                                </a>
+                                                <div id="drivingLicenseFirstPreview" class="hidden"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li id="drivingLicenseSecondUploadPopupLink" class="item-content popup-link has-uploaded upload-popup-link" data-popup="drivingLicenseSecond">
+                                        <div class="item-inner">
+                                            <div class="item-title">行驶证副本</div>
+                                            <div class="item-after">
+                                                <a class="icon-link">
+                                                    <i class="img-icon img-camera-active"></i>
+                                                </a>
+                                                <div id="drivingLicenseSecondPreview" class="hidden"></div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		</div>
+        
+        <!--保险条款-->
+        <div id="insuranceTerms" class="popup">
+			<header class="bar bar-nav">
+				<a id="insuranceTermsClosePopup" class="icon icon-down pull-right text-grey"></a>
+				<h1 class="title">服务协议</h1>
+			</header>
+			<div class="content">
+                <p class="contract-tips text-bold">
+                    沃德加车险平台(以下简称“平台”)服务协议(以下简称“本协议”)是杭州沃德加资产管理有限公司 (以下简称“本公司”)与平台用户(以下简称“您”)就平台服务相关事项所订立的有效合约。您通过网络页面点击确认接受本协议,即表示您与本公司已达成协议并同意接受本协议的全部约定内容以及与本协议有关的各项规则及本公司网站所包含的其他与本协议或本协议项下各项规则的条款和条件有关的各项规定。
+                </p>
+                <span class="space-division"></span>
+                <p>
+                    <span class="text-bold">在接受本协议之前, 请您仔细阅读本协议的全部内容(特别是以粗体标注的内容)。如果您不同意本协议的任意内容,或者无法准确理解该条款的含义,请不要进行后续操作。</span>
+                </p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">一、定义</span></p>
+                <p>除非本协议另有约定, 本协议下列术语定义如下:</p>
+                <p>1.1沃德加车险平台/本平台：指本公司向您提供的供您查询车险产品信息,进行信息交流,达成交易意向及向您提供其他与车险有关的辅助信息服务的特定空间。</p>
+                <p>1.2保险公司：指经中国保险监督管理机构(保监会)批准设立,并依法登记注册的向您提供车险产品的商业保险机构。</p>
+                <p>1.3投保：指您借助平台技术支持通过浙江腾保网络科技有限公司、其他保险代理公司提供的服务接口向保险公司或直接向保险公司购买保险产品。</p>
+                <p>1.4核保：指保险公司根据自身承保能力和市场环境对您的投保需求进行风险评估、风险识别和风险选择的行为。</p>
+                <p>1.5承保：指保险公司在您提出投保请求后,经核保认为符合承保条件并同意接受您的投保申请,承担保险合同规定的保险责任的行为。</p>
+                <p>1.6出单：指保险公司根据您提出的投保请求,进行承保并向您发放保单之行为。</p>
+                <p>1.7身份信息：指您在使用沃德加平台及第三方支付渠道相关款项代收代付功能过程中所预留的各项身份信息,包括但不限于您的姓名、身份证件号码、手机号码、银行卡号、第三方支付账号以及地址信息等。</p>
+                <p>1.8车辆信息：指您的机动车行驶证与机动车登记证记載的相关信息以及与车辆相关的其他信息。包括但不限于您的机动车车牌号、车架号、发动机号、车辆品牌、排量、型号、配置、登记注册日期以及保险情况等。</p>
+                <p>1.9推荐套餐：指平台根据业务数据分析及与保险公司的商务洽谈结果，为所有平台用户统一推荐的常用车险产品的排序或组合。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">二、声明与承话</span></p>
+                <p>2.1除应遵守本协议约定外,您还应遵守第三方支付渠道的规则及平台制定的相关规则等约定,特别是在前述协议中关于个人信息更新、第三方支付账户安全、第三方支付服务使用规则等方面的约定。</p>
+                <p>2.2您已注册沃德加平台账户并完成用户身份认证。</p>
+                <p>2.3您承诺不为任何非法目的或以任何非法方式使用平台服务,并承话遵守中国相关法律、 法规及互联网之使用惯例。</p>
+                <p>2.4您同意，在交易达成或交易申请提交后您不得变更撤回或撤销，但本协议另有约定或您签著的其他协议另有约定的除外。</p>
+                <p>2.5您同意,即便您已符合本协议约定的条件,车险产品购买的实现仍受制于其他因素,平台对此不作任何必然实现的承诺或担保。</p>
+                <p>2.6您同意,在您购买车险产品后,保险合同的履行（包括退保）由您和保险公司完成,平台不对此承担任何责任。</p>
+                <p>2.7您同意，在您购买车险产品后，除非使用平台分期支付，您投保所需的资金划扣等支付所产生的责任或后果由您个人承担，平台对此不承担任何责任。</p>
+                <p>2.8您同意,若出现因平台自身原因、系统差错、故障或其他原因引发的展示延误、错误或者用户不当获利等情形的, 您同意平台可以采取更正差错、扣划款项暂停服务等适当纠正措施。您同意并授权平台可以直接或通过第三方机构从您的资金渠道商通过直接扣款等方式，扣划相应款项。您同意并授权第三方机构（包括但不限于第三方支付渠道或银行等机构）根据本公司的指令进行相应操作，且第三方机构不因前述操作对您承担任何责任。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">三、平台服务</span></p>
+                <p>本公司提供的平台服务包括如下内容:</p>
+                <p>3.1产品购买</p>
+                <p>&nbsp;&nbsp;您可以通过平台获知各保险公司对于保险产品及推荐套餐的报价,并可在选定保险公司后进行险种及保额的调整。</p>
+                <p>3.2出险报案</p>
+                <p>&nbsp;&nbsp;若发生保险事故,您可通过平台进行报案，平台收集信息后将出险情况通知保险公司 。</p>
+                <p>3.3其他服务</p>
+                <p>&nbsp;&nbsp;您在通过平台购买车险产品后,可获得保险公司提供的各类增値服务（服务内容以实际提供为准）。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">四、风险提示</span></p>
+                <p>4.1您知晓并同意，您通过平台所从事的交易可能面临如下风险，这些风险需由您自行承担：</p>
+                <p>监管风险：有关法律、法规及相关政策、规则发生变化，导致无法实现您的车险产品购买交易，您由此可能遭受损失；</p>
+                <p>违约风险：因保险公司无力或无意愿按保险合同履约，您由此可能遭受损失；</p>
+                <p>成交风险：您所购买的保险产品无法最终承保出单，您由此无法获得保险产品及服务；</p>
+                <p>不可抗力风险：本协议约定的不可抗力因素导致的风险；</p>
+                <p>操作风险：因您的过错导致的任何损失，该过错包括但不限于：决策失误、操作不当、遗忘或泄露第三方支付密码、密码被人破解、您使用的计算机系统被第三方侵入、您委托他人代理交易时他人恶意或不当操作而造成的损失。</p>
+                <p>4.2 本公司不对您及/任何交易提供任何担保或承诺，无论是明示、默示或法定的。本公司向您提供的各种信息及资料仅为参考，您应依其独立判断作出决策。您据此购买保险产品的，产生的风险由您自行承担，您无权据此向本公司提出任何法律主张。在交易过程中，您与保险公司、保险代理公司之间发生的纠纷，由纠纷各方各自解决，本公司不承担任何责任。在资金支付过程中，除使用本公司提供的分期服务外的其他任何支付行为，若因此发生的纠纷，由纠纷各方各自解决，本公司不承担任何责任。保险分期服务过程中的各方责任由具体的分期协议进行约定，本协议不在此作赘述。</p>
+                <p>4.3 以上并不能涵盖您通过本公司（本平台）进行交易的全部风险及市场的全部情形，您在做出交易决策前，应全面了解相关交易，谨慎决策，并自行承担全部风险。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">五、除外责任</span></p>
+                <p>平台因下列状况无法正常运作，使您无法使用平台服务时，平台不承担任何责任，该状况包括但不限于：</p>
+                <p>5.1 平台系统停机维护或升级；</p>
+                <p>5.2 平台所以来的电信设备出现故障；</p>
+                <p>5.3 因台风、地震、海啸、洪水、雷电、停电、战争或恐怖袭击、罢工等不可抗力原因；</p>
+                <p>5.4 您的电脑（手机）软件、系统、硬件和通信线路、供电线路出现故障的；</p>
+                <p>5.5 用户操作不当或通过非平台授权或认可的方式使用平台服务的；</p>
+                <p>5.6 因病毒、木马、恶意程序攻击、网络拥堵、系统不稳定、系统或设备故障、通讯故障、银行原因、第三方服务瑕疵或政府行为等原因；</p>
+                <p>5.7 其他不可归因于平台的原因。</p>
+                <p>您同意并确认，在任何情况下，平台对本协议所承担的违约赔偿责任总额不超过平台向您收取的当次服务费用总额。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">六、信息收集、使用</span></p>
+                <p><span class="text-bold">6.1 收集您的信息</span></p>
+                <p>6.1.1 为了更好地向您提供平台服务，您同意并授权本公司通过以下途径获取、使用您的信息：（1）收集您留存在本公司、与本平台对接的第三方支付渠道或其他数据平台的信息；（2）向行政机关、司法机关查询、打印、留存您的信息；（3）向其他合法留存您信息的自然人、法人以及其他组织收集您的信息；（4）通过使用您个人信息，从第三方服务商查询获取相关车辆信息。</p>
+                <p>6.1.2 您同意并授权本公司获取的信息包括但不限于：（1）您在本公司、与本平台对接的第三方支付渠道或其他数据平台的任何数据和信息，包括您的身份信息及车辆信息；（2）您在申请、使用保险服务时所提供以及形成的任何数据和信息；（3）与您申请或使用的车险平台服务相关的、您留存的其他自然人、法人和组织的其他相关信息；（4）与车险服务相关的，您在车辆使用过程中形成的信息，以及您的历史车辆信息等。</p>
+                <p><span class="text-bold">6.2 使用您的信息</span></p>
+                <p>为了更好地为您提供服务，您同意并授权本公司将您的信息用于如下用途：（1）向保险公司、保险代理公司提供以签订、履行保险合同及本协议约定服务之用；（2）向其他相关主体提供以为履行本协议约定服务之用；（3）其他有利用本公司提供服务之用途。</p>
+                <p><span class="text-bold">6.3 分享您的信息</span></p>
+                <p>本公司对您的信息承担保密义务，仅在以下情况下才经您的信息与第三方共享：（1）获得您的同意或授权；（2）为了向您提供或推荐本公司、本公司的关联公司的服务/产品的需要，将您的信息提供给本公司的关联公司使用；（3）某些服务/产品、推广活动由本公司的合作伙伴提供或由本公司与合作伙伴共同提供，本公司会与其共享并使用；（4）在您违反本协议及其他相关协议时，向您的交易对手，本公司合作方、本公司的关联公司等第三方提供；（5）根据法律法规的规定及行政、司法机关的要求。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">七、协议变更、解除、提前终止</span></p>
+                <p><span class="text-bold">7.1 协议变更与解除</span></p>
+                <p>本公司有权随时单方面修改本协议中与您之间相关的权利义务，并根据本协议约定的方式通知您，若您不同意修改本协议，则应当立即停止使用本平台服务；否则，视为您同意并接受修改后的协议。经修改的协议一经发布在本平台上，立即生效。</p>
+                <p><span class="text-bold">7.2 协议终止</span></p>
+                <p>7.2.1 您在使用本平台服务的过程中，如果有下列情形发生，本公司有权单方面解除本协议</p>
+                <p>（1）您在本平台注册的账户因任何原因注销的；（2）冒用他人名义、滥用他人账户使用本平台服务的；（3）为非法目标使用本平台服务的；（4）从事任何可能侵害平台系统、资料之行为；（5）违反任何法律法规、本协议约定的；（6）监管机构认为本平台的服务不再符合相关监管规定的；</p>
+                <p>7.2.2 除上述原因外，本公司有权根据风险及自身业务运营情况需要随时终止向您提供本服务，因此导致您无法使用本服务或服务受到限制的，不视为本公司违约。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">八、争议的解决</span></p>
+                <p>本协议的订立、效力、解释、履行及争议的解决均适用中华人民共和国法律，在协议履行期间，凡由本协议引起的或与本协议有关的一切争议、纠纷，当事人应首先协商解决，协商不成的，各方一致同意提交杭州沃德加资产管理有限公司所在地的人民法院通过诉讼方式解决。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">九、通知</span></p>
+                <p>本协议履行过程中，本公司向您发出的书面通知方式包括但不限于邮寄纸质通知、电子邮件、手机短信等方式。如本公司以邮寄方式向您发出书面通知的，则在本公司按照您在本平台或第三方支付渠道、保险凭证上留存的通讯地址交邮后的第三个自然日即视为送达。如以手机短信等电子方式发出书面通知的，则在通知发送成功即视为送达。</p>
+                <span class="space-division"></span>
+                <p><span class="text-bold">十、其他</span></p>
+                <p>10.1 本协议的附件及各项补充、修订或变更，为本协议不可分割的组成部分，与本协议正文具有同等法律效力。</p>
+                <p>10.2 协议任一方通过平台页面点击确认或与其他方式（包括但不限于签字或盖章确认等方式）接受本协议具有同等法律效力。</p>
+                <p>10.3 本协议未尽事宜，由双方协商处理，或者按照国家有关法律、法规的规定执行。</p>
+			</div>
+		</div>
+
+        <!-- 身份证照片A面上传popup -->
+        <div id="idCardImgEmblemUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey upload-close-popup" data-popup="idCardImgEmblem"></a>
+                <h1 class="title">身份证照A面（国徽所在面）</h1>
+            </header>
+            <div class="content">
+                <iframe id="idCardImgEmblemFrame" src="./upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 身份证照片B面上传popup -->
+        <div id="idCardImgHeadUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey upload-close-popup" data-popup="idCardImgHead"></a>
+                <h1 class="title">身份证照B面（肖像所在面）</h1>
+            </header>
+            <div class="content">
+                <iframe id="idCardImgHeadFrame" src="./upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 行驶证正本上传popup -->
+        <div id="drivingLicenseFirstUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey upload-close-popup" data-popup="drivingLicenseFirst"></a>
+                <h1 class="title">行驶证正本</h1>
+            </header>
+            <div class="content">
+                <iframe id="drivingLicenseFirstFrame" src="./upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 行驶证副本上传popup -->
+        <div id="drivingLicenseSecondUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey upload-close-popup" data-popup="drivingLicenseSecond"></a>
+                <h1 class="title">行驶证副本</h1>
+            </header>
+            <div class="content">
+                <iframe id="drivingLicenseSecondFrame" src="./upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+
+        <!--选择支付方式-->
+        <div id="payMethodPopup" class="popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">选择支付方式</h1>
+			</header>
+			<div class="content">
+                <div class="content-block-title">
+                    保单金额
+                    <span id="amout">--</span>
+                </div>
+                <div class="list-block media-list no-margin">
+                    <ul>
+                        <li>
+                            <a id="jdPay" class="item-link item-content">
+                                <div class="item-media"><img src="../images/icons/jd_pay.png" style='width: 2.2rem;'></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">京东支付</div>
+                                        </div>
+                                    <div class="item-subtitle">极速安全支付</div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="bfPay" class="item-link item-content">
+                                <div class="item-media"><img src="../images/icons/bf_pay.png" style='width: 2.2rem;'></div>
+                                <div class="item-inner">
+                                    <div class="item-title-row">
+                                        <div class="item-title">保单分期</div>
+                                        </div>
+                                    <div class="item-subtitle">车险0首付，分期更有免洗等好礼相送</div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+			</div>
+		</div>
+    </div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+
+</html>

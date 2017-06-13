@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>车险管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../third/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/admin.min.css">
+</head>
+
+<body>
+    <div id="mainBody" class="row">
+        <div id="orderListContainer" class="col-xs-3">
+            <div class="section-title">订单列表</div>
+            <div id="orderListContent">
+                <ul id="filterContainer" class="nav nav-tabs nav-justified" role="tablist">
+                    <li role="presentation" class="text-bold active">
+                        <a href="#toGetPriceList" aria-controls="toGetPriceList" role="tab" data-detail="#toGetPriceDetail">
+                            未录入报价
+                        </a>
+                    </li>
+                    <li role="presentation" class="text-bold">
+                        <a href="#hasPayList" aria-controls="hasPayList" role="tab" data-detail="#hasPayDetail">
+                            已投保支付
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="toGetPriceList" role="tabpanel" class="tab-pane fade in active" data-type="toGetPrice">
+                        <div class="loading-container"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+                        <!--<div class="order-item active">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <i class="fa fa-user"></i>&nbsp;
+                                    张三
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <i class="fa fa-car"></i>&nbsp;
+                                    浙A00000
+                                </div>
+                                <div class="col-xs-12 text-right">
+                                    <i class="fa fa-calendar"></i>&nbsp;
+                                    2017-03-03 11:11:11
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div id="hasPayList" role="tabpanel" class="tab-pane fade" data-type="hasPay">
+                        <div class="loading-container"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="detailContainer" class="col-xs-9" data-detail="#toGetPriceDetail">
+            <div id="toGetPriceDetail" class="detail-content active">
+                <div class="section-title">
+                    <div class="col-xs-6">
+                        订单详情：<span class="text-normal order-no">--</span>
+                    </div>
+                    <div class="col-xs-6 text-right status-container"></div>
+                </div>
+                <div id="toGetPriceDetailPanelGroup" class="panel-group" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div id="toGetPrice_headingOne" class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#toGetPriceDetailPanelGroup" href="#toGetPrice_collapseOne" aria-expanded="true" aria-controls="toGetPrice_collapseOne">
+                                    <i class="fa fa-info-circle"></i>&nbsp;车辆信息&险种信息&nbsp;
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="toGetPrice_collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="toGetPrice_headingOne">
+                            <div class="panel-body">
+                                <div id="toGetPrice_carAndInsuranceInfo" class="row">
+                                    <div class="col-xs-6 divide-line-vertical">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车主姓名：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_userInfo_carOwner" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">身份证号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_userInfo_identifyNumber" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">是否新车：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_newCarTag" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">是否一年内过户：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_transferFlag" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车牌号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_userInfo_licenseNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">品牌型号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_brandName" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车辆识别码：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_frameNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">发动机号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_engineNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">注册日期：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_enrollDate" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">投保城市：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_carInfo_placeName" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">交强险：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="toGetPrice_insurance_999" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车损险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_63" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A63" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">第三方责任险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_68" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A68" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">司机座位险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_73" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A73" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">乘客座位险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_89" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A89" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">盗抢险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_74" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A74" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">自燃险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_36" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_A36" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">玻璃险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_34" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">划痕险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="toGetPrice_insurance_75" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div id="toGetPrice_headingTwo" class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#toGetPriceDetailPanelGroup" href="#toGetPrice_collapseTwo" aria-expanded="false" aria-controls="toGetPrice_collapseTwo">
+                                    <i class="fa fa-edit"></i>&nbsp;录入报价信息&nbsp;
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="toGetPrice_collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="toGetPrice_headingTwo">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-3 divide-line-vertical">
+                                        <ul id="companyToggleContainer" class="nav nav-tabs nav-pills nav-stacked" role="tablist">
+                                            <li role="presentation" class="text-bold active">
+                                                <a href="#cpicCompany" aria-controls="cpicCompany" role="tab">
+                                                    太平洋保险
+                                                </a>
+                                            </li>
+                                            <li role="presentation" class="text-bold">
+                                                <a href="#pinganCompany" aria-controls="pinganCompany" role="tab">
+                                                    中国平安
+                                                </a>
+                                            </li>
+                                            <li role="presentation" class="text-bold">
+                                                <a href="#piccCompany" aria-controls="piccCompany" role="tab">
+                                                    中国人民保险
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-xs-9">
+                                        <div class="tab-content">
+                                            <div id="cpicCompany" role="tabpanel" class="tab-pane fade in active">
+                                                <div class="alert alert-info text-center" role="alert">若某个险种未投保，对应的险种价格可以不填。</div>
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_tpfPrem" type="text" class="form-control submit-input" placeholder="交强险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车船税：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_taxPrem" type="text" class="form-control submit-input" placeholder="车船税价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车损险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premCarDamage" type="text" class="form-control submit-input" placeholder="车损险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premCarDamageIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">第三方责任险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premThirdDuty" type="text" class="form-control submit-input" placeholder="第三方责任险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premThirdDutyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">司机座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premDriverSeat" type="text" class="form-control submit-input" placeholder="司机座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premDriverSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">乘客座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premPassagerSeat" type="text" class="form-control submit-input" placeholder="乘客座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premPassagerSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">盗抢险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premRobbery" type="text" class="form-control submit-input" placeholder="盗抢险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premRobberyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">自燃险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premNaturalLoss" type="text" class="form-control submit-input" placeholder="自燃险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_premNaturalLossIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">玻璃险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_premPlastic" type="text" class="form-control submit-input" placeholder="玻璃险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">划痕险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_premScratches" type="text" class="form-control submit-input" placeholder="划痕险价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_tpfStartDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_tpfEndDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_bizStartDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="cpicCompany_bizEndDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">优惠金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_promotionFee" type="text" class="form-control submit-input" placeholder="请输入商家优惠金额" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_bizPrem" type="text" class="form-control" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_amount" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">实际支付总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="cpicCompany_sumPrem" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-left">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="TAI_PING_YANG" data-type="count">计算报价</button>
+                                                    </div>
+                                                    <div class="col-xs-6 text-right">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="TAI_PING_YANG" data-type="save">保存【太平洋保险】报价</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="pinganCompany" role="tabpanel" class="tab-pane fade">
+                                                <div class="alert alert-info text-center" role="alert">若某个险种未投保，对应的险种价格可以不填。</div>
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_tpfPrem" type="text" class="form-control submit-input" placeholder="交强险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车船税：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_taxPrem" type="text" class="form-control submit-input" placeholder="车船税价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车损险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premCarDamage" type="text" class="form-control submit-input" placeholder="车损险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premCarDamageIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">第三方责任险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premThirdDuty" type="text" class="form-control submit-input" placeholder="第三方责任险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premThirdDutyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">司机座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premDriverSeat" type="text" class="form-control submit-input" placeholder="司机座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premDriverSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">乘客座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premPassagerSeat" type="text" class="form-control submit-input" placeholder="乘客座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premPassagerSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">盗抢险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premRobbery" type="text" class="form-control submit-input" placeholder="盗抢险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premRobberyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">自燃险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premNaturalLoss" type="text" class="form-control submit-input" placeholder="自燃险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_premNaturalLossIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">玻璃险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_premPlastic" type="text" class="form-control submit-input" placeholder="玻璃险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">划痕险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_premScratches" type="text" class="form-control submit-input" placeholder="划痕险价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_tpfStartDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_tpfEndDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_bizStartDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="pinganCompany_bizEndDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">优惠金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_promotionFee" type="text" class="form-control submit-input" placeholder="请输入商家优惠金额" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_bizPrem" type="text" class="form-control" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_amount" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">实际支付总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="pinganCompany_sumPrem" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-left">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="PING_AN" data-type="count">计算报价</button>
+                                                    </div>
+                                                    <div class="col-xs-6 text-right">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="PING_AN" data-type="save">保存【中国平安】报价</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="piccCompany" role="tabpanel" class="tab-pane fade">
+                                                <div class="alert alert-info text-center" role="alert">若某个险种未投保，对应的险种价格可以不填。</div>
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_tpfPrem" type="text" class="form-control submit-input" placeholder="交强险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车船税：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_taxPrem" type="text" class="form-control submit-input" placeholder="车船税价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">车损险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premCarDamage" type="text" class="form-control submit-input" placeholder="车损险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premCarDamageIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">第三方责任险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premThirdDuty" type="text" class="form-control submit-input" placeholder="第三方责任险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premThirdDutyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">司机座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premDriverSeat" type="text" class="form-control submit-input" placeholder="司机座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premDriverSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">乘客座位险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premPassagerSeat" type="text" class="form-control submit-input" placeholder="乘客座位险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premPassagerSeatIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">盗抢险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premRobbery" type="text" class="form-control submit-input" placeholder="盗抢险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premRobberyIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">自燃险：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premNaturalLoss" type="text" class="form-control submit-input" placeholder="自燃险价格">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_premNaturalLossIndemnity" type="text" class="form-control submit-input" placeholder="不计免赔价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">玻璃险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_premPlastic" type="text" class="form-control submit-input" placeholder="玻璃险价格">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">划痕险：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_premScratches" type="text" class="form-control submit-input" placeholder="划痕险价格">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">交强险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_tpfStartDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_tpfEndDate" type="text" class="form-control form_datetime submit-input" placeholder="交强险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险保单有效期：</label>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_bizStartDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期开始时间">
+                                                        </div>
+                                                        <div class="col-xs-4">
+                                                            <input id="piccCompany_bizEndDate" type="text" class="form-control form_datetime submit-input" placeholder="商业险有效期截止时间">
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">优惠金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_promotionFee" type="text" class="form-control submit-input" placeholder="请输入商家优惠金额" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">商业险金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_bizPrem" type="text" class="form-control" value="0">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_amount" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="col-xs-4 control-label">实际支付总金额：</label>
+                                                        <div class="col-xs-8">
+                                                            <input id="piccCompany_sumPrem" readonly="readonly" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                                <div class="row">
+                                                    <div class="col-xs-6 text-left">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="REN_BAO" data-type="count">计算报价</button>
+                                                    </div>
+                                                    <div class="col-xs-6 text-right">
+                                                        <button type="button" class="btn btn-primary save-price-btn" data-company="REN_BAO" data-type="save">保存【中国人民保险】报价</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="finishPriceBtnContainer" class="text-center">
+                                    <button id="finishPriceBtn" type="button" class="btn btn-success">完成报价</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="hasPayDetail" class="detail-content" style="display:none;">
+                <div class="section-title">
+                    <div class="col-xs-6">
+                        订单详情：<span class="text-normal order-no">--</span>
+                    </div>
+                    <div class="col-xs-6 text-right status-container"></div>
+                </div>
+                <div id="hasPayDetailPanelGroup" class="panel-group" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div id="hasPay_headingOne" class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#hasPayDetailPanelGroup" href="#hasPay_collapseOne" aria-expanded="true" aria-controls="hasPay_collapseOne">
+                                    <i class="fa fa-info-circle"></i>&nbsp;车辆信息&险种信息&nbsp;
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="hasPay_collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="hasPay_headingOne">
+                            <div class="panel-body">
+                                <div id="hasPay_carAndInsuranceInfo" class="row">
+                                    <div class="col-xs-6 divide-line-vertical">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车主姓名：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_userInfo_carOwner" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">身份证号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_userInfo_identifyNumber" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">是否新车：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_userInfo_newCarTag" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">是否一年内过户：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_transferFlag" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车牌号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_userInfo_licenseNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">品牌型号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_brandName" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车辆识别码：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_frameNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">发动机号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_engineNo" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">注册日期：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_enrollDate" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">投保城市：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_carInfo_placeName" readonly="readonly" type="text" class="form-control submit-input" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">交强险：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="hasPay_insurance_999" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">车损险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_63" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A63" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">第三方责任险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_68" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A68" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">司机座位险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_73" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A73" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">乘客座位险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_89" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A89" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">盗抢险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_74" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A74" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">自燃险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_36" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_A36" readonly="readonly" type="text" class="form-control submit-input insuranceA" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">玻璃险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_34" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-4 control-label">划痕险：</label>
+                                                <div class="col-xs-4">
+                                                    <input id="hasPay_insurance_75" readonly="readonly" type="text" class="form-control submit-input insurance_" value="不投保">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div id="hasPay_headingTwo" class="panel-heading" role="tab">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#hasPayDetailPanelGroup" href="#hasPay_collapseTwo" aria-expanded="false" aria-controls="hasPay_collapseTwo">
+                                    <i class="fa fa-edit"></i>&nbsp;投保信息&nbsp;
+                                    <i class="fa fa-caret-right"></i>
+                                    <i class="fa fa-caret-down"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="hasPay_collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hasPay_headingTwo">
+                            <div class="panel-body">
+                                <div id="hasPayInsuranceInfo">
+                                    <div class="page-header">
+                                        <h2>
+                                            <small>
+                                                承保公司：
+                                                <span id="selectedCompany" class="text-black text-bold">【太平洋保险】</span>
+                                            </small>
+                                        </h2>
+                                    </div>
+                                    <div class="row">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">总金额：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_amount" readonly="readonly" type="text" class="form-control" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">优惠金额：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_promotionFee" readonly="readonly" type="text" class="form-control" value="0">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">实付总金额：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_sumPrem" readonly="readonly" type="text" class="form-control" value="0">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <hr>
+                                    <div class="page-header">
+                                        <h2><small>保单邮寄信息</small></h2>
+                                    </div>
+                                    <div class="row">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">收件人：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_carOwner" readonly="readonly" type="text" class="form-control" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">联系电话：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_mobile" readonly="readonly" type="text" class="form-control" value="--">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">详细地址：</label>
+                                                <div class="col-xs-10">
+                                                    <input id="hasPay_insuranceInfo_contactAddressDetails" readonly="readonly" type="text" class="form-control" value="--">
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <hr>
+                                    <div class="page-header">
+                                        <h2>
+                                            <small>
+                                                用户资料资料附件
+                                            </small>
+                                        </h2>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <a id="idCardImgEmblem" class="btn" target="_blank">身份证照A面（国徽所在面）</a>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a id="idCardImgHead" class="btn" target="_blank">身份证照B面（肖像所在面）</a>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a id="drivingLicenseFirst" class="btn" target="_blank">行驶证正本</a>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <a id="drivingLicenseSecond" class="btn" target="_blank">行驶证副本</a>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="page-header">
+                                        <h2><small>保单号</small></h2>
+                                    </div>
+                                    <div class="row">
+                                        <form class="form-horizontal">
+                                            <div class="form-group">
+                                                <label class="col-xs-2 control-label">保单号：</label>
+                                                <div class="col-xs-8">
+                                                    <input id="policyNo" type="text" class="form-control" placeholder="保单号还未提交保存...">
+                                                </div>
+                                                <div class="col-xs-2 text-right">
+                                                    <button id="savePolicyNoBtn" type="button" class="btn btn-primary click-ban">保存</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../third/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="../third/bootstrap-datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script src="../js/admin.min.js"></script>
+</body>
+
+</html>

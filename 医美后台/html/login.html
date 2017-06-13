@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> - 登录</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="stylesheet" href="../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../third/font-awesome/css/font-awesome.min.css">
+
+    <style>
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            color: #676a6c;
+            background-color: #f0f3f4;
+            overflow-x: hidden;
+        }
+        .animated {
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            z-index: 100;
+        }
+        @-webkit-keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-20px);
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                -webkit-transform: translateY(-20px);
+                -ms-transform: translateY(-20px);
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                -webkit-transform: translateY(0);
+                -ms-transform: translateY(0);
+                transform: translateY(0);
+            }
+        }
+        .fadeInDown {
+            -webkit-animation-name: fadeInDown;
+            animation-name: fadeInDown;
+        }
+        .loginscreen.middle-box {
+            width: 300px;
+        }
+        .middle-box {
+            max-width: 400px;
+            z-index: 100;
+            margin: 0 auto;
+            padding-top: 40px;
+        }
+        .middle-box h1 {
+            font-size: 170px;
+        }
+        .logo-name {
+            color: #e6e6e6;
+            font-size: 180px;
+            font-weight: 800;
+            letter-spacing: -10px;
+            margin-bottom: 0px;
+        }
+        .m-t {
+            margin-top: 15px;
+        }
+        .form-control, .single-line {
+            display: block;
+            border-color: #cfdadd;
+            border-radius: 2px;
+            width: 100%;
+            height: 30px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #cfdadd;
+            box-shadow: none;
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        }
+        
+        .btn-submit {
+            display: block;
+            margin-bottom: 15px;
+            width: 100% !important;
+        }
+        .text-muted {
+            color: #d6d3e6;
+        }
+    </style>
+    <script>if(window.top !== window.self){ window.top.location = window.location;}</script>
+</head>
+
+<body>
+
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">h</h1>
+            </div>
+            <h3>欢迎使用</h3>
+            <form class="m-t" role="form" id="loginForm">
+                <div class="form-group">
+                    <input type="text" name="username" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <button type="button" id="login" class="btn btn-primary btn-submit">登 录</button>
+                <!--<div class="text-muted text-center">
+                    <a href="javascript:;">
+                        <small>忘记密码了？</small>
+                    </a> | 
+                    <a href="javascript:;">注册一个新账号</a>
+                </div>-->
+            </form>
+        </div>
+    </div>
+    <script>
+        /* 解决缓存问题 */
+        var scriptArr = document.querySelectorAll('script');
+
+        for (var i = 0, len = scriptArr.length; i < len; i ++) {
+            var originSrc = scriptArr[i].getAttribute('src'),
+                ignoreTag = (scriptArr[i].getAttribute('data-ignore') == 'ignore') ? true : false;
+
+            if (originSrc && !ignoreTag) {
+                var originSrcVal = originSrc.split('?')[0];
+                var timeStamp = Date.parse(new Date());
+
+                scriptArr[i].setAttribute('src', originSrcVal + '?' + timeStamp);
+            }
+        }
+    </script>
+    <script src="../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/modules.js?2017_05_31"></script>
+    <script src="../js/login.js?2017_05_31"></script>
+
+</body>
+
+</html>

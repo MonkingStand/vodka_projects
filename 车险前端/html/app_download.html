@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>app下载</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="appDownloadPage" class="page app-download-page">
+            <div class="content">
+                <div id="downloadContainer">
+                    <img src="../images/app_download_bg.jpg">
+                    <!-- 根据访问的设备，显示对应平台的下载链接 -->
+                    <div id="downloadLinkContainer">
+                        <div id="downloadLinkSingle"></div>
+                    </div>
+                    <!-- 没法判断哪个平台的，显示两个平台的下载链接 -->
+                    <div id="downloadLinkContainerCopy" class="hidden">
+                        <div id="downloadLinkBoth" class="row no-gutter">
+                            <div class="col-50 android-version"><span class="invisible">-</span></div>
+                            <div class="col-50 ios-version"><span class="invisible">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="advertiseContainer">
+                    <img src="../images/app_download_advertise.jpg">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        #downloadContainer, 
+        #advertiseContainer {
+            position: relative;
+        }
+        #downloadContainer img, 
+        #advertiseContainer img {
+            display: block;
+            width: 100%;
+            z-index: 1;
+        }
+        #downloadLinkContainer, 
+        #downloadLinkContainerCopy {
+            position: absolute;
+            width: 100%;
+            height: 40%;
+            left: 0;
+            bottom: 0;
+            background: rgba(200, 200, 200, 0.5);
+            z-index: 999;
+        }
+        #downloadLinkSingle {
+            position: absolute;
+            width: 8rem;
+            height: 2rem;
+            top: 50%;
+            left: 50%;
+            margin-top: -1rem;
+            margin-left: -4rem;
+        }
+        #downloadLinkSingle.android-version {
+            background: url(../images/app_android.png) no-repeat center center;
+            background-size: contain;
+        }
+        #downloadLinkSingle.ios-version {
+            background: url(../images/app_ios.png) no-repeat center center;
+            background-size: contain;
+        }
+        #downloadLinkBoth {
+            position: absolute;
+            width: 100%;
+            height: 2rem;
+            top: 50%;
+            margin-top: -1rem;
+        }
+        #downloadLinkBoth .android-version {
+            height: 100%;
+            background: url(../images/app_android.png) no-repeat center center;
+            background-size: contain;
+        }
+        #downloadLinkBoth .ios-version {
+            height: 100%;
+            background: url(../images/app_ios.png) no-repeat center center;
+            background-size: contain;
+        }
+    </style>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务逻辑 -->
+    <script>
+        var appDownloadPage = {
+            init: function() {
+                this.checkDevice();
+            },
+            checkDevice: function() {
+                var userAgent = navigator.userAgent,
+                    isAndroid = userAgent.indexOf('Android') > -1 || userAgent.indexOf('Adr') > -1,
+                    isIOS     = !!userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+                
+                if (isAndroid) {
+                    $('#downloadLinkSingle').addClass('android-version');
+                }
+                else if (isIOS) {
+                    $('#downloadLinkSingle').addClass('ios-version');
+                }
+                else {
+                    $('#downloadLinkContainer').addClass('hidden');
+                    $('#downloadLinkContainerCopy').removeClass('hidden');
+                }
+
+                this.domListener();
+            },
+            domListener: function() {
+                /* IOS版本下载链接 */
+                $('#appDownloadPage').on('click', '.ios-version', function() {
+                    $.confirm('是否前往Apple Store进行下载？', function() {
+                        window.location.href = 'https://itunes.apple.com/cn/app/id1192573592?l=zh&ls=1&mt=8';
+                    });
+                });
+
+                /* 安卓版本下载链接 */
+                $('#appDownloadPage').on('click', '.android-version', function() {
+                    $.confirm('是否前往腾讯应用宝进行下载？', function() {
+                        window.location.href = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.znzzc.installment';
+                    });
+                });
+            }
+        };
+
+        appDownloadPage.init();
+    </script>
+</body>
+
+</html>

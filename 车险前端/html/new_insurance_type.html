@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="newInsuranceTypePage" class="page new-insurance-type-page">
+            <header class="bar bar-nav">
+                <h1 class="title">选择投保方案</h1>
+            </header>
+            <nav class="bar bar-tab step-link-container">
+                <a class="button button-big theme-btn">确定</a>
+            </nav>
+            <div class="content">
+                <div class="content-block-title">交强险</div>
+                <div class="list-block no-margin-bottom">
+                    <ul>
+                        <li class="item-content item-single-radio single-option-item active">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    交通强制险
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info">投保</span>&nbsp;
+                                    <input id="kindCode999" class="submit-input hidden" type="text" name="" value="1">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">商业险</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content item-single-radio active single-option-item" data-valArr="0,1">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        机动车损失险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode63_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info">投保</span>&nbsp;
+                                    <input id="kindCode63" class="submit-input hidden" type="text" name="" value="1">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon item-icon-caret-dowm-active complex-option-item" data-textArr="5万,10万,15万,20万,30万,50万,100万,不投保" data-valArr="val1,val2,val3,val4,val5,val6,val7,val8">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        第三者责任险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode68_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info radio-val" data-val="val6">50万</span>&nbsp;
+                                    <input id="kindCode68" class="submit-input hidden radio-val" type="text" name="" value="50万">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon item-icon-caret-dowm-active complex-option-item" data-textArr="1万,2万,3万,5万,10万,20万,不投保" data-valArr="val1,val2,val3,val4,val5,val6,val7">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        司机险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode73_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info radio-val" data-val="val1">1万</span>&nbsp;
+                                    <input id="kindCode73" class="submit-input hidden radio-val" type="text" name="" value="1万">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon item-icon-caret-dowm-active complex-option-item" data-textArr="1万,2万,3万,5万,10万,20万,不投保" data-valArr="val1,val2,val3,val4,val5,val6,val7">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        乘客险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode89_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info radio-val" data-val="val1">1万</span>&nbsp;
+                                    <input id="kindCode89" class="submit-input hidden radio-val" type="text" name="" value="1万">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-single-radio active single-option-item" data-valArr="0,1">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        盗抢险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode74_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info">投保</span>&nbsp;
+                                    <input id="kindCode74" class="submit-input hidden" type="text" name="" value="1">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon item-icon-caret-dowm-active complex-option-item not-selected" data-textArr="进口,国产,不投保" data-valArr="val1,val2,val3">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        玻璃险
+                                    </div>
+                                    <!--<div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode34_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>-->
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info radio-val">不投保</span>&nbsp;
+                                    <input id="kindCode34" class="submit-input hidden radio-val" type="text" name="" value="0">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-single-radio single-option-item not-selected" data-valArr="0,1">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        划痕险
+                                    </div>
+                                    <!--<div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode75_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>-->
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info">不投保</span>&nbsp;
+                                    <input id="kindCode75" class="submit-input hidden" type="text" name="" value="0">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-single-radio single-option-item not-selected" data-valArr="0,1">
+                            <div class="item-inner">
+                                <div class="item-title row no-gutter">
+                                    <div class="col-60 main-title">
+                                        自燃损失险
+                                    </div>
+                                    <div class="col-40 sub-title">
+                                        <i class="pull-left img-icon img-checkbox-active"></i>不计免赔
+                                        <input id="kindCode36_CDW" class="submit-input hidden" type="text" name="" value="1">
+                                    </div>
+                                </div>
+                                <div class="item-after">
+                                    <span class="select-info">不投保</span>&nbsp;
+                                    <input id="kindCode36" class="submit-input hidden" type="text" name="" value="0">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+		</div>
+
+        <div id="popup" class="popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">--</h1>
+			</header>
+			<div class="content">
+
+			</div>
+		</div>
+    </div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+
+</html>

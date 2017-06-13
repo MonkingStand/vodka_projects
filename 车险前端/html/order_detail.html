@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="orderDetailPage" class="page order-detail-page">
+			<div class="content">
+                <div class="summary-info">
+                    <div class="info-container text-center" id="orderStatusTip">
+                        <!--<p class="text-lg text-bold apply-result invisible">status</p>
+                        <p class="invisible">status-text</p>-->
+                        <p class="text-lg text-bold apply-result">请稍等</p>
+                        <p>您的借款申请正在审核</p>
+                    </div>
+                    <div class="row no-gutter text-center top-border bottom-border credit-info">
+                        <div class="col-50 right-border">
+                            <div class="info-item final-amount">
+                                <div class="info-item-left pull-left"></div>
+                                <div class="info-item-right">
+                                    <p class="info-desc">借款金额</p>
+                                    <p class="info-val submit-input" id="applyCapital">--</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-50">
+                            <div class="info-item loan-period">
+                                <div class="info-item-left pull-left"></div>
+                                <div class="info-item-right">
+                                    <p class="info-desc">借期</p>
+                                    <p class="info-val"><span class="submit-input" id="period">--</span>个月</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center amount-info">
+                        服务费<span id="loanInterestObtainFinal" class="text-orange">0.00</span>元
+                    </div>
+                </div>
+
+                <div class="detail-info">
+                    <div class="list-block">
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-media"><i class="img-icon img-insurance-company"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title text-grey">保险公司</div>
+                                    <div class="item-after text-right" id="merchantName">太平洋保险有限公司</div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-media"><i class="img-icon img-insurance-type"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title text-grey">保险类型</div>
+                                    <div class="item-after text-right" id="realName">车辆保险</div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-media"><i class="img-icon img-repay-type"></i></div>
+                                <div class="item-inner">
+                                    <div class="item-title text-grey">还款方式</div>
+                                    <div class="item-after text-right submit-input" id="refundType">--</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="operate-container content-padded text-center hidden" id="applyBtnContainer">
+                    <div class="row">
+                        <div class="col-50">
+                            <a id="applyRemit" class="button button-big theme-btn">确认订单</a>
+                        </div>
+                        <div class="col-50">
+                            <a class="button button-big theme-btn-hollow" onclick="$.router.back();">返回</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="list-block text-center text-sm" style="margin: 0.75rem 0;">
+                    <a id="repayDetailPopupLink" class="hidden">查看订单分期详情</a>
+                </div>
+            </div>
+		</div>
+	</div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+</html>

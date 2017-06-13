@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>详情</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+<body>
+    <div class="page remit-detail">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title text-center text-lg text-bold">
+                    <a class="pull-left" onclick="window.history.back();"><i class="fa fa-mail-reply"></i></a>
+                    详情
+                </h3>
+            </div>
+            <div class="panel-body remit-detail-container">
+                <div class="page-header">
+                    <a class="toggle-link expanded" data-target="#basicInfo">
+                        <i class="fa fa-caret-down"></i>&nbsp;基本信息
+                    </a>
+                    <a id="loanFormModalLink" class="button pull-right modal-link"  data-toggle="modal" data-target="#loanFormModal">查看分期消费放款单</a>
+                </div>
+                <div id="basicInfo" class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">订单号：</label>
+                                <div class="col-xs-9">
+                                    <input id="orderNo" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">订单状态：</label>
+                                <div class="col-xs-9">
+                                    <input id="orderStatus" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">客户姓名：</label>
+                                <div class="col-xs-9">
+                                    <input id="obtainUserName" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">客户手机号：</label>
+                                <div class="col-xs-9">
+                                    <input id="obtainUserMobile" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">商户名：</label>
+                                <div class="col-xs-9">
+                                    <input id="merchantName" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">本金金额：</label>
+                                <div class="col-xs-9">
+                                    <input id="verifyCapital" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">贷款期数：</label>
+                                <div class="col-xs-9">
+                                    <input id="period" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">还款状态：</label>
+                                <div class="col-xs-9">
+                                    <input id="refundInfo" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label">资金来源：</label>
+                                <div class="col-xs-9">
+                                    <input id="sourceFundText" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#collectInfo"><i class="fa fa-caret-right"></i>&nbsp;收款概览</a></div>
+                <div id="collectInfo" class="row" style="display:none;">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">用户利息：</label>
+                                    <div class="col-xs-9">
+                                        <input id="refundedInstalmentInterest" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">商户利息：</label>
+                                    <div class="col-xs-9">
+                                        <input id="refundedLoanInterestMerchant" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">本金：</label>
+                                    <div class="col-xs-9">
+                                        <input id="refundedInstalmentCapital" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">违约金：</label>
+                                    <div class="col-xs-9">
+                                        <input id="refundedInstalmentLatefee" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">已收总金额：</label>
+                                    <div class="col-xs-9">
+                                        <input id="refundedTotal" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>                    
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#toCollectInfo"><i class="fa fa-caret-right"></i>&nbsp;待还概览</a></div>
+                <div id="toCollectInfo" class="row" style="display:none;">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">用户利息：</label>
+                                    <div class="col-xs-9">
+                                        <input id="toRefundInstalmentInterest" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">商户利息：</label>
+                                    <div class="col-xs-9">
+                                        <input id="toRefundedLoanInterestMerchant" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">本金：</label>
+                                    <div class="col-xs-9">
+                                        <input id="toRefundInstalmentCapital" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">待还总金额：</label>
+                                    <div class="col-xs-9">
+                                        <input id="toRefundTotal" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="page-header"><a class="toggle-link" data-target="#refundRecord"><i class="fa fa-caret-right"></i>&nbsp;用户还款记录</a></div>
+                <div id="refundRecord" class="row" style="display:none;">
+                    <div class="refund-record-container">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>编号</th>
+                                    <th>还款期数</th>
+                                    <th>商户操作员</th>
+                                    <th>当期本金金额</th>
+                                    <th>客户承担利息</th>
+                                    <th>商户承担利息</th>
+                                    <th>应付商户余额</th>
+                                    <th>当期应还本息</th>
+                                    <th>违约金</th>
+                                    <th>应还日期</th>
+                                    <th>实还日期</th>
+                                    <th>还款状态</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="refundRecordTable">
+                                <tr class="text-center"><td colspan="13">暂无还款记录</td></tr>
+                                <!--
+                                <tr>
+                                    <td>3</td>
+                                    <td>3/10</td>
+                                    <td>李思</td>
+                                    <td>10,000.00</td>
+                                    <td>1,000.00</td>
+                                    <td>500.00</td>
+                                    <td>9,500.00</td>
+                                    <td>11,000.00</td>
+                                    <td>35.27</td>
+                                    <td>2016-12-15</td>
+                                    <td>--</td>
+                                    <td>
+                                        <div>
+                                            <span class="label label-danger">未支付</span>
+                                        </div>
+                                        <span class="divide-space"></span>
+                                        <div>
+                                            <span class="label label-danger">已逾期</span>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div>
+                                            <button class="btn btn-warning btn-xs">转催收</button>
+                                        </div>
+                                        <span class="divide-space"></span>
+                                        <div>
+                                            <button class="btn btn-danger btn-xs">坏账</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 查看分期消费放款单 -->
+    <div id="loanFormModal" class="modal fade remit-detail" tabindex="-1" role="dialog" aria-labelledby="loanFormModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title text-center" id="loanFormModalLabel">分期消费放款单预览</h4>
+                </div>
+                <div id="printContainer">
+                    <div id="printBody" class="modal-body">
+                        <div class="content-header">
+                            <h3 class="text-center">
+                                沃德加分期消费放款单
+                            </h3>
+                        </div>
+                        <div class="content-body">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>合同编号：</td>
+                                        <td colspan="3">
+                                            <span id="remit_orderNo" class="filled-val">--</span>
+                                        </td>
+                                        <td>合同链接：</td>
+                                        <td>
+                                            <a id="remit_contractLink" target="_blank">下载</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>甲方（出借人）：</td>
+                                        <td colspan="3">
+                                            <span id="remit_partyA" class="filled-val">--</span>
+                                        </td>
+                                        <td>身份证号：</td>
+                                        <td>
+                                            <span id="remit_partyAID" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>乙方（借款人）：</td>
+                                        <td colspan="3">
+                                            <span id="remit_realName" class="filled-val">--</span>
+                                        </td>
+                                        <td>身份证号：</td>
+                                        <td>
+                                            <span id="remit_idCard" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="6" class="active"></td></tr>
+                                    <tr>
+                                        <td>放款金额：</td>
+                                        <td>
+                                            <span id="remit_verifyCapital" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>总服务费：</td>
+                                        <td>
+                                            <span id="remit_loanInterest" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>总利率：</td>
+                                        <td>
+                                            <span id="remit_loanInterestRate" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>合同金额：</td>
+                                        <td>
+                                            <span id="remit_contractAmount" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>商户服务费：</td>
+                                        <td>
+                                            <span id="remit_loanInterestMerchant" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>商户利率：</td>
+                                        <td>
+                                            <span id="remit_loanInterestRateMerchant" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>期数：</td>
+                                        <td>
+                                            <span id="remit_period" class="filled-val">--</span>
+                                        </td>
+                                        <td>客户服务费：</td>
+                                        <td>
+                                            <span id="remit_loanInterestObtainFinal" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>客户利率：</td>
+                                        <td>
+                                            <span id="remit_loanInterestRateObtain" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>借款日期：</td>
+                                        <td>
+                                            <span id="remit_effectiveDate" class="filled-val">--</span>
+                                        </td>
+                                        <td>客户还款总金额：</td>
+                                        <td>
+                                            <span id="remit_repayAmountAll" class="filled-val amount-val">--</span>
+                                        </td>
+                                        <td>客户每月还款金额：</td>
+                                        <td>
+                                            <span id="remit_average" class="filled-val amount-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="6" class="active"></td></tr>
+                                    <tr>
+                                        <td>收款单位：</td>
+                                        <td colspan="2">
+                                            <span id="remit_merchantBankUsername" class="filled-val">--</span>
+                                        </td>
+                                        <td>收款账户：</td>
+                                        <td colspan="2">
+                                            <span id="remit_merchantBankCardNum" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>开户行：</td>
+                                        <td colspan="2">
+                                            <span id="remit_bankNameWithBranch" class="filled-val">--</span>
+                                        </td>
+                                        <td>支付金额：</td>
+                                        <td colspan="2">
+                                            <span id="remit_collectAmount" class="filled-val amount-val">--</span>
+                                        </td>
+                                    </tr>
+                                    <tr><td colspan="6" class="active"></td></tr>
+                                    <tr>
+                                        <td colspan="4" class="text-center">风控部门意见</td>
+                                        <td colspan="2" class="text-center">事业部总经理意见</td>
+                                    </tr>
+                                    <tr>
+                                        <td>风控审核人：</td>
+                                        <td>
+                                            <span id="remit_preloanApprovePerson" class="filled-val">杜蒙</span>
+                                        </td>
+                                        <td>贷款审批人：</td>
+                                        <td>
+                                            <span id="remit_preloanApproveManager" class="filled-val">陈杰云</span>
+                                        </td>
+                                        <td>审批人：</td>
+                                        <td>
+                                            <span id="remit_manager" class="filled-val">姚杰</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2">
+                                            <span id="remit_checkRemark" class="filled-val">--</span>
+                                        </td>
+                                        <td colspan="2">
+                                            <span id="remit_approveRemark" class="filled-val">--</span>
+                                        </td>
+                                        <td colspan="2">
+                                            <span id="remit_bossComments" class="filled-val">--</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="formPrint" type="button" class="btn btn-primary">打印</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/financeManagement/remit_detail.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+</html>

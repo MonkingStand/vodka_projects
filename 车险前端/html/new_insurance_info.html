@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="newInsuranceInfoPage" class="page new-insurance-info-page">
+            <nav class="bar bar-tab step-link-container">
+                <a class="button button-big theme-btn">下一步</a>
+            </nav>
+            <div class="content">
+                <div class="advertise-container">
+                </div>
+                <div class="list-block no-margin-top">
+                    <ul>
+                        <li class="item-content item-icon item-icon-position popup-link" data-popup="#citySelectPopup">
+                            <div class="item-inner">
+                                <div class="item-title">投保城市</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="placeName" class="submit-input" type="text" value="" readonly="readonly" placeholder="请选择投保城市">
+                                        <input id="placeCode" class="submit-input hidden" type="text" value="">
+                                        <input id="provinceCode" class="submit-input hidden" type="text" value="">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">车牌号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="licenseNo" class="submit-input" type="text" name="" value="" placeholder="请输入车牌号码">                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">品牌型号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="brandName" class="submit-input" type="text" name="" value="" placeholder="请输入品牌型号">                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">车辆识别代号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="frameNo" class="submit-input" type="text" name="" value="" placeholder="请输入车辆识别代号">                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">发动机号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="engineNo" class="submit-input" type="text" name="" value="" placeholder="请输入发动机号">                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">注册日期</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="enrollDate" class="submit-input" type="text" data-toggle='date' placeholder="请选择日期">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">车主信息</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">车主姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="carOwner" class="submit-input" type="text" name="" value="" placeholder="请输入车主姓名">                                                                                
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-icon">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <input id="identifyNumber" class="submit-input" type="text" name="" value="" placeholder="请输入身份证号">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content item-single-radio">
+                            <div class="item-inner">
+                                <div class="item-title">新车（还未上车牌）</div>
+                                <input id="newCarTag" class="submit-input hidden" type="text" name="" value="0">
+                            </div>
+                        </li>
+                        <li class="item-content item-single-radio">
+                            <div class="item-inner">
+                                <div class="item-title">是否一年内过户</div>
+                                <input id="transferFlag" class="submit-input hidden" type="text" name="" value="0">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-sm text-center service-tel-container">
+                    <span>服务电话：</span>
+                    <span class="text-theme">4008-357-100</span>
+                </div>
+			</div>
+		</div>
+
+        <!-- 城市选择popup -->
+        <div id="citySelectPopup" class="popup city-select-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">选择投保城市</h1>
+			</header>
+			<div class="content">
+                <div class="list-block contacts-block no-margin-top">
+                    <div id="cityListContainer" class="list-group">
+                        
+                    </div>
+                </div>
+			</div>
+		</div>
+    </div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+
+</html>

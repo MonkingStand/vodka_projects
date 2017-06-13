@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>商户管理</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../third/bootstrap-select/bootstrap-select.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+    <div class="page merchant-management">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>策略管理 — 策略列表</h5>
+                </div>
+                <div class="filter-container">
+                    <button class="btn btn-xs toggle-btn"><i class="fa fa-angle-down"></i><span class="toggle-text">展开筛选条件</span></button>
+                    <div class="filter-box">
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">区域：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全国</option>
+                                        <option value="">浙江省</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全省</option>
+                                        <option value="">杭州市</option>
+                                    </select>
+                                </div>
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">江干区</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">商户等级：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">将军</option>
+                                        <option value="">士兵</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item select-filter">
+                            <div class="filter-label">商户类型：</div>
+                            <div class="filter-options">
+                                <div class="col-xs-3">
+                                    <select class="form-control">
+                                        <option value="">全部</option>
+                                        <option value="">医院</option>
+                                        <option value="">保险</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="search-container form-group">
+                            <div class="col-xs-3 input-container">
+                                <input class="form-control" type="text" name="" value="" placeholder="请输入商户名">
+                            </div>
+                            <div class="col-xs-3 input-container">
+                                <button id="searchBtn" class="btn btn-default">搜索</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <div class="quick-operate-container">
+                        <button id="addMerchantBtn" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>&nbsp;新增
+                        </button>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>商户编号</th>
+                                <th>商户名称</th>
+                                <th>商户区域</th>
+                                <th>商户地址</th>
+                                <th>商户类型</th>
+                                <th>商户等级</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="merchantTable">
+                            <tr class="text-center"><td colspan="8"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                            <!--<tr>
+                                <td>1</td>
+                                <td>hza001</td>
+                                <td>杭州华山连天美</td>
+                                <td>西湖</td>
+                                <td>浙江省/杭州市/江干区</td>
+                                <td>医院</td>
+                                <td>士兵</td>
+                                <td>
+                                    <button data-merchant="对应的商户id" class="merchant-detail-link btn btn-primary btn-xs">查看商户详情</button>
+                                    <button data-merchant="对应的商户id" class="merchant-user-link btn btn-primary btn-xs">查看咨询师详情</button>
+                                </td>
+                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 新增商户模态框 -->
+    <div id="merchantAddModal" class="merchant-add-modal modal fade" tabindex="-1" role="dialog" aria-labelledby="merchantAddModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title text-center" id="merchantAddModalLabel">新增商户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <!-- 登录用户的roleId，表示是否有权限新增（暂时写死） -->
+                            <input id="roleId" type="text" class="hidden submit-input" value="12">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">所属区域</label>
+                                    <div id="provinceSelectContainer" class="col-xs-3">
+                                        <select id="provinceSelect" class="selectpicker show-tick form-control">
+                                        </select>
+                                    </div>
+                                    <div id="citySelectContainer" class="col-xs-3">
+                                        <select id="citySelect" class="selectpicker show-tick form-control" readonly="readonly">
+                                        </select>
+                                    </div>
+                                    <div id="regionSelectContainer" class="col-xs-3">
+                                        <select id="regionSelect" class="selectpicker show-tick form-control" readonly="readonly">
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- 区域编号 -->
+                            <input id="areaNo" type="text" class="submit-input hidden" value="">
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户类别</label>
+                                    <div class="col-xs-9">
+                                        <select id="merchantTypeSelect" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- 商户类别对应的value值，用于存入数据库 -->
+                            <input id="merchantType" type="text" class="submit-input hidden" value="">
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户等级</label>
+                                    <div class="col-xs-9">
+                                        <select id="merchantVipLevelSelect" class="form-control">
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- 商户等级对应的value值，用于存入数据库 -->
+                            <input id="merchantVipLevel" type="text" class="submit-input hidden" value="10">
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户名字</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantName" type="text" class="submit-input form-control" placeholder="请输入商户名字" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户电话</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantTel" type="number" class="submit-input form-control" placeholder="请输入商户电话" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户地址</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantAddress" type="text" class="submit-input form-control" placeholder="请输入商户地址" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">开户行</label>
+                                    <div class="col-xs-9">
+                                        <select id="merchantBankSelect" class="selectpicker show-tick form-control" data-live-search="true">
+                                            <!--<option data-id="10001">中国银行</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- 银行对应的id，用于传给后台存入数据库 -->
+                            <input id="merchantBankId" type="text" class="hidden submit-input" value="">
+                            <!-- 银行对应的name，用于传给后台存入数据库 -->
+                            <input id="merchantBankName" type="text" class="hidden submit-input" value="">
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">支行名称</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantBankBranchname" type="text" class="form-control submit-input" placeholder="请输入商户开户行支行名称" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户账户</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantBankCardNum" type="text" class="form-control submit-input" placeholder="请输入商户银行账户" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">账户用户名</label>
+                                    <div class="col-xs-9">
+                                        <input id="merchantBankUserName" type="text" class="form-control submit-input" placeholder="请输入商户银行用户名" value="">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-xs-6">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label text-bold">商户策略</label>
+                                    <div class="col-xs-9">
+                                        <select id="loanPolicyList" class="selectpicker show-tick form-control" data-live-search="true">
+                                            <!--<option data-id="bd529a5ad8814166a414aa443879d61d">2016-12-16，新增的策略，测试的</option>-->
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">策略编号</label>
+                                <div class="col-xs-9">
+                                    <input id="loanPolicyNo" type="text" readonly="readonly" class="form-control submit-input" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">支付周期</label>
+                                <div class="col-xs-9">
+                                    <input id="policyDetailPeriod" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">商户等级</label>
+                                <div class="col-xs-9">
+                                    <input id="policyDetailLevel" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-6">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label class="col-xs-3 control-label text-bold">商户额度</label>
+                                <div class="col-xs-9">
+                                    <input id="policyDetailLimit" type="text" readonly="readonly" class="form-control" placeholder="暂无" value="">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-xs-12">
+                        <table id="detailTable" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>角色类型\期数</th>
+                                    <th>3</th>
+                                    <th>6</th>
+                                    <th>9</th>
+                                    <th>12</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th><span class="role-name">借款用户</span></th>
+                                    <td>--</td><td>--</td><td>--</td><td>--</td>
+                                </tr>
+                                <tr>
+                                    <th><span class="role-name">商户</span></th>
+                                    <td>--</td><td>--</td><td>--</td><td>--</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="saveMerchantBtn" type="button" class="btn btn-success">保存</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../third/bootstrap-select/bootstrap-select.min.js"></script>
+    <script src="../../third/bootstrap-select/defaults-zh_CN.min.js"></script>
+    <script src="../../third/qrcode/qrcode.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/regionalManagement/merchant_management.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+
+</html>

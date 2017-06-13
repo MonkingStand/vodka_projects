@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>贷款业务</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../third/smartpaginator/smartpaginator.min.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/main.css">
+</head>
+
+<body>
+    <div class="page loan-business">
+        <div class="col-xs-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>贷款业务 — 订单列表</h5>
+                </div>
+                <div class="filter-container">
+                    <button class="btn btn-xs toggle-btn"><i class="fa fa-angle-up"></i><span class="toggle-text">收拢筛选条件</span></button>
+                    <div class="filter-box">
+                        <div class="filter-item available" data-filterType="loanType">
+                            <div class="filter-label">订单类型：</div>
+                            <div class="filter-options">
+                                <button class="btn active" data-loanType="2">医美</button>
+                                <button class="btn" data-loanType="4">车险</button>
+                            </div>
+                        </div>
+                        <!-- 筛选按钮 -->
+                        <!--<hr>
+                        <div class="filter-item">
+                            <div class="filter-label">订单状态：</div>
+                            <div class="filter-options">
+                                <button class="btn active">全部</button>
+                                <button class="btn">待审核</button>
+                                <button class="btn">审核通过</button>
+                                <button class="btn">审核不通过</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item">
+                            <div class="filter-label">贷款期数：</div>
+                            <div class="filter-options">
+                                <button class="btn active">全部</button>
+                                <button class="btn">3个月</button>
+                                <button class="btn">6个月</button>
+                                <button class="btn">12个月</button>
+                                <button class="btn">24个月</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="filter-item">
+                            <div class="filter-label">贷款金额：</div>
+                            <div class="filter-options">
+                                <button class="btn active">全部</button>
+                                <button class="btn">≤ 10000</button>
+                                <button class="btn">≤ 20000</button>
+                                <button class="btn">≤ 50000</button>
+                                <button class="btn">> 50000</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="search-container form-group">
+                            <div class="col-xs-3 input-container">
+                                <input class="form-control" type="text" name="" value="" placeholder="请输入贷款用户姓名">
+                            </div>
+                            <div class="col-xs-3 input-container">
+                                <input class="form-control" type="text" name="" value="" placeholder="请输入手机号">
+                            </div>
+                            <div class="col-xs-3 input-container">
+                                <input class="form-control" type="text" name="" value="" placeholder="请输入商户名">
+                            </div>
+                            <div class="col-xs-3 input-container">
+                                <button id="searchBtn" class="btn btn-default">搜索</button>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>编号</th>
+                                <th>订单号</th>
+                                <th>提交时间</th>
+                                <th>姓名</th>
+                                <th>手机号</th>
+                                <th>商户名</th>
+                                <th>申请金额</th>
+                                <th>贷款期数</th>
+                                <th>订单状态</th>
+                                <th>已通过金额</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTable">
+                            <tr class="text-center"><td colspan="10"><i class="fa fa-spinner fa-pulse fa-2x"></i></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pager-container">
+                    <div id="pager" class="init"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../third/smartpaginator/smartpaginator.min.js"></script>
+    <script src="../../js/modules.js?2017_05_31"></script>
+    <script>
+        var scriptSrcArr = [
+                '../../js/preloanRiskManagement/loan_business.js'
+            ];
+        
+        $.loadJsFiles(scriptSrcArr);
+    </script>
+</body>
+
+</html>

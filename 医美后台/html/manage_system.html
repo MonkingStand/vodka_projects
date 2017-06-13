@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <link rel="stylesheet" href="../third/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../third/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/public.min.css">
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini" style="overflow:hidden;">
+    <div id="ajax-loader">
+        <img src="../images/ajax-loader.gif">
+    </div>
+    <div class="wrapper">
+        <!--头部信息-->
+        <header class="main-header">
+            <a href="http://www.learun.cn/adms/index.html?2017_05_31" target="_blank" class="logo">
+                <span class="logo-mini">LR</span>
+                <span class="logo-lg"><strong>管理界面</strong></span>
+            </a>
+            <nav class="navbar navbar-static-top">
+                <a class="sidebar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!--<li class="dropdown messages-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o "></i>
+                                <span class="label label-success"></span>
+                            </a>
+                        </li>
+                        <li class="dropdown notifications-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning"></span>
+                            </a>
+                        </li>
+                        <li class="dropdown tasks-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-flag-o"></i>
+                                <span class="label label-danger"></span>
+                            </a>
+                        </li>-->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../images/user1.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs username">肖戴</span>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a class="menuItem" data-id="userInfo" href="/SystemManage/User/Info"><i class="fa fa-user"></i>个人信息</a></li>
+                                <!--<li><a href="javascript:void();"><i class="fa fa-trash-o"></i>清空缓存</a></li>
+                                <li><a href="javascript:void();"><i class="fa fa-paint-brush"></i>皮肤设置</a></li>-->
+                                <li class="divider"></li>
+                                <li><a id="loginOut" href="javascript:;"><i class="ace-icon fa fa-power-off"></i>安全退出</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!--左边导航-->
+        <div class="main-sidebar">
+            <div class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../images/user1.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p class="username">肖戴</p>
+                        <!--<a><i class="fa fa-circle text-success"></i>在线</a>-->
+                    </div>
+                </div>
+                <!--<form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+                            <a class="btn btn-flat"><i class="fa fa-search"></i></a>
+                        </span>
+                    </div>
+                </form>-->
+                <ul class="sidebar-menu" id="sidebar-menu">
+                    <!--<li class="header">导航菜单</li>-->
+                    <li class="treeview active hidden"  data-menuName="riskManage">
+                        <a class="menu" href="#">
+                            <i class="fa fa-desktop"></i><span>风控管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu" style="display: block;">
+                            <li data-subMenuName="evaluate:select">
+                                <a class="menuItem" href="preloanRiskManagement/preloan_risk.html?2017_05_31">
+                                    <i class="fa fa-desktop"></i>风险评估
+                                </a>
+                            </li>
+                            <li data-subMenuName="passOrder:see">
+                                <a class="menuItem" href="preloanRiskManagement/loan_business.html?2017_05_31">
+                                    <i class="fa fa-desktop"></i>贷款业务
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview hidden"  data-menuName="riskManage">
+                        <a class="menu" href="#">
+                            <i class="fa fa-dollar"></i><span>经理管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li data-subMenuName="passOrder:see">
+                                <a class="menuItem" href="mangerManagement/order_approve.html?2017_05_31"><i class="fa fa-dollar"></i>经理审批</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview hidden"  data-menuName="financeManage">
+                        <a class="menu" href="#">
+                            <i class="fa fa-dollar"></i><span>财务管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li data-subMenuName="financeOrder:see">
+                                <a class="menuItem" href="financeManagement/remit_orders.html?2017_05_31"><i class="fa fa-dollar"></i>放款管理</a>
+                            </li>
+                            <li data-subMenuName="overdueOrder:see">
+                                <a class="menuItem" href="financeManagement/remit_orders_overdue.html?2017_05_31"><i class="fa fa-dollar"></i>逾期管理</a>
+                            </li>
+                            <li style="display: none">
+                                <a class="menuItem" href="financeManagement/remit_statistics.html?2017_05_31"><i class="fa fa-dollar"></i>头寸状态</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--<li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-phone"></i><span>客服管理</span>
+                        </a>
+                    </li>-->
+                    <!--<li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-modx"></i><span>综合报表管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a class="menuItem"><i class="fa fa-modx"></i>汇总信息</a>
+                            </li>
+                        </ul>
+                    </li>-->
+                    <li class="treeview hidden" data-menuName="merchantManage">
+                        <a class="menu" href="#">
+                            <i class="fa fa-road"></i><span>商户管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li data-subMenuName="merchant:see">
+                                <a class="menuItem" href="regionalManagement/merchant_management.html?2017_05_31">
+                                    <i class="fa fa-road"></i>商户管理
+                                </a>
+                            </li>
+                            <li data-subMenuName="merchantUser:codeCreate">
+                                <a class="menuItem" href="regionalManagement/generate_qrcode.html?2017_05_31">
+                                    <i class="fa fa-qrcode"></i>生成商户二维码
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview hidden" data-menuName="interestManage">
+                        <a class="menu" href="#" >
+                            <i class="fa fa-road"></i><span>利率管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li data-subMenuName="interestList:see">
+                                <a class="menuItem" href="regionalManagement/policy_management.html?2017_05_31">
+                                    <i class="fa fa-road"></i>策略管理
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview hidden">
+                        <a class="menu" href="#">
+                            <i class="fa fa-mobile"></i><span>APP管理</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a class="menuItem" href="AppManagement/app_version.html?2017_05_31"><i class="fa fa-mobile"></i>版本管理</a>
+                            </li>
+                            <li>
+                                <a class="menuItem" href="AppManagement/app_banner.html?2017_05_31"><i class="fa fa-mobile"></i>banner图管理</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="treeview hidden" data-menuName="adminManage">
+                        <a class="menu" href="#">
+                            <i class="fa fa-user-o"></i><span>管理员系统</span><i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li data-subMenuName="adminUser:select">
+                                <a class="menuItem" href="administratorManagement/administrator.html?2017_05_31">
+                                    <i class="fa fa-user-o"></i>管理员
+                                </a>
+                            </li>
+                            <li data-subMenuName="adminRole:select">
+                                <a class="menuItem" href="administratorManagement/role.html?2017_05_31">
+                                    <i class="fa fa-user-o"></i>角色
+                                </a>
+                            </li>
+                            <li data-subMenuName="adminPermission:select">
+                                <a class="menuItem" href="administratorManagement/permisson.html?2017_05_31">
+                                    <i class="fa fa-user-o"></i>权限
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--中间内容-->
+        <div id="content-wrapper" class="content-wrapper">
+            <div class="content-tabs">
+                <button class="roll-nav roll-left tabLeft">
+                    <i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs menuTabs">
+                    <div class="page-tabs-content" style="margin-left: 0px;">
+                        <a href="javascript:;" class="menuTab active" data-id="default.html?2017_05_31">欢迎首页</a>
+                        <!--<a href="javascript:;" class="menuTab" data-id="/SystemManage/Organize/Index">机构管理 <i class="fa fa-remove"></i></a>
+                        <a href="javascript:;" class="menuTab" data-id="/SystemManage/Role/Index">角色管理 <i class="fa fa-remove"></i></a>
+                        <a href="javascript:;" class="menuTab" data-id="/SystemManage/Duty/Index">岗位管理 <i class="fa fa-remove"></i></a>
+                        <a href="javascript:;" class="menuTab" data-id="/SystemManage/User/Index">用户管理 <i class="fa fa-remove"></i></a>-->
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right tabRight">
+                    <i class="fa fa-forward" style="margin-left: 3px;"></i>
+                </button>
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown tabClose" data-toggle="dropdown">
+                        页签操作<i class="fa fa-caret-down" style="padding-left: 3px;"></i>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="tabReload" href="javascript:void();">刷新当前</a></li>
+                        <li><a class="tabCloseCurrent" href="javascript:void();">关闭当前</a></li>
+                        <li><a class="tabCloseAll" href="javascript:void();">全部关闭</a></li>
+                        <li><a class="tabCloseOther" href="javascript:void();">除此之外全部关闭</a></li>
+                    </ul>
+                </div>
+                <button class="roll-nav roll-right fullscreen"><i class="fa fa-arrows-alt"></i></button>
+            </div>
+            <div class="content-iframe">
+                <div class="mainContent" id="content-main" style="margin: 10px; margin-bottom: 0px; padding: 0;">
+                    <iframe class="LRADMS_iframe"src="default.html?2017_05_31" frameborder="0" data-id="default.html?2017_05_31" style="position: absolute;top: 0;right: 0;bottom: 0;left: 0;overflow:auto;"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        /* 解决缓存问题 */
+        var scriptArr = document.querySelectorAll('script');
+
+        for (var i = 0, len = scriptArr.length; i < len; i ++) {
+            var originSrc = scriptArr[i].getAttribute('src'),
+                ignoreTag = (scriptArr[i].getAttribute('data-ignore') == 'ignore') ? true : false;
+
+            if (originSrc && !ignoreTag) {
+                var originSrcVal = originSrc.split('?')[0];
+                var timeStamp = Date.parse(new Date());
+
+                scriptArr[i].setAttribute('src', originSrcVal + '?' + timeStamp);
+            }
+        }
+    </script>
+    <script src="../third/jquery/2.2/jquery.min.js"></script>
+    <script src="../third/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../js/modules.js?2017_05_31"></script>
+    <script src="../js/public.js?2017_05_31"></script>
+
+</body>
+
+</html>

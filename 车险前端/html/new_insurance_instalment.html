@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="newInsuranceInstalmentPage" class="page new-insurance-instalment-page">
+            <header class="bar bar-nav">
+                <h1 class="title">确认分期信息</h1>
+            </header>
+            <nav class="bar bar-tab step-link-container">
+                <a id="submitInstalmentOrderBtn" class="button button-big theme-btn">提交分期申请</a>
+            </nav>
+            <div class="content">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">投保人（车主）</div>
+                                <div id="carOwner" class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">车牌号</div>
+                                <div id="licenseNo" class="item-after">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block no-margin-top">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">分期信息</div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">分期金额</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div id="sumPremVal" class="flex-item-1 text-right text-lightgrey">--</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">分期期数</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div id="period" class="flex-item-1 text-right text-lightgrey">10个月</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">每月还款日</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div id="refundDate" class="flex-item-1 text-right text-lightgrey">--</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">每月还款金额</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div id="refundAmountPer" class="flex-item-1 text-right text-lightgrey">--</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">首笔还款日期</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div id="refundDateFirst" class="flex-item-1 text-right text-lightgrey">--</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="row no-gutter">
+                                    <div class="col-50 text-left text-bold">
+                                        <div class="pay-item-name">利息方式</div>
+                                    </div>
+                                    <div class="col-50">
+                                        <div class="flex-box pay-item-info">
+                                            <div class="flex-item-1 text-right text-lightgrey">等额本息</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title text-center">服务电话 <a href="">4008-357-100</a></div>
+			</div>
+		</div>
+    </div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+
+</html>

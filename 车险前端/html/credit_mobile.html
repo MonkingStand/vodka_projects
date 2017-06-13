@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../css/common.min.css">
+    <link rel="stylesheet" href="../css/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="creditMobilePage" class="page credit-mobile-page">
+			<div class="content">
+                <div class="promise-container text-grey text-xs text-center">
+                    <p>【先用着分期】承诺：不授权将不对外提供</p>
+                </div>
+
+                <div class="submit-container">
+                    <div class="submit-content">
+                        <div class="mobile-input-container">
+							<label for="mobile" class="input-label">
+								<input type="tel" readonly="readonly" class="mobile-input" id="mobile" placeholder="请输入实名认证的手机号">
+							</label>
+						</div>
+						<div class="pwd-input-container">
+							<label for="password" class="input-label">
+								<input type="password" class="pwd-input" id="password" placeholder="请输入手机号对应的服务商密码">
+							</label>
+						</div>
+						<div class="verify-code-container row no-gutter">
+							<div class="col-50">
+								<label for="verifyCode" class="input-label">
+									<input type="text" class="verify-code" id="verifyCode" placeholder="请输入验证码">
+								</label>
+							</div>
+							<div class="col-50">
+								<a id="requestCodeBtn" class="button theme-btn">获取验证码</a>
+							</div>
+						</div>
+                    </div>
+                </div>
+                <!-- taskId输入框，用于暂存 -->
+                <input id="taskId" class="hidden" type="text" value="">
+                
+                <div class="operate-container">
+                    <div class="row operate-content">
+                        <div class="col-50 btn-container left-container">
+                            <a id="authorizeBtn" class="button button-big button-fill button-success init">确认授权</a>
+                        </div>
+                        <div class="col-50 btn-container right-container">
+                            <a id="unauthorizeBtn" class="button button-big button-fill button-danger">取消授权</a>
+                        </div>
+                        <div class="col-100 btn-container center-container">
+                            <a class="button button-big" onclick="$.router.back()">返回</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="added-info text-center text-xs text-grey">
+                    <p>请确保您的信息真实有效，否则将影响授权结果</p>
+                </div>
+
+                <div class="added-info text-center text-sm text-bold">
+                    <p>
+                        <a id="tipsPopupLink">Tips：忘记密码，如何重置？</a>
+                    </p>
+                </div>
+			</div>
+		</div>
+
+        <!-- 密码重置tips内容 -->
+        <div id="tipsPopup" class="popup tips-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey"></a>
+                <h2 class="title">重置运营商服务密码</h2>
+            </header>
+            <div class="content">
+                <div class="tips-container">
+                    <div>
+                        <h4>移动用户</h4>
+                        <p><span class="text-bold">方法1</span>：拨打10086，转人工客服重置（推荐）</p>
+                        <p><span class="text-bold">方法2</span>：点击访问<a href="http://www.10086.cn/zj/index_571_571.html">移动官网</a>，选择省份,点击“忘记密码”（北京/江西用户请用方法1）</p>
+                        <p><span class="text-bold">方法3</span>：编辑短信“2010”至10086</p>
+                    </div>
+                    <div>
+                        <h3>联通用户</h3>
+                        <p><span class="text-bold">方法1</span>：拨打10010，转人工客服重置（推荐，山东用户请用方法2）</p>
+                        <p><span class="text-bold">方法2</span>：点击访问<a href="http://www.chinaunicom.com.cn/">联通官网</a>，输入手机号，点击“下一步”</p>
+                        <p><span class="text-bold">方法3</span>：编辑短信“MMCZ#6位新密码#证件号后6位”至10010</p>
+                    </div>
+                    <div>
+                        <h3>电信用户</h3>
+                        <p><span class="text-bold">方法1</span>：拨打10000，转人工客服重置（推荐）</p>
+                        <p><span class="text-bold">方法2</span>：点击访问<a href="http://www.189.cn/">电信官网</a>，输入手机号，重置密码</p>
+                        <p><span class="text-bold">方法3</span>：编辑短信“551”至10001</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../js/modules.min.js"></script>
+    <!-- 业务相关 -->
+    <script type="text/javascript" src="../js/router.min.js"></script>
+    <script type="text/javascript" src="../js/app.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>车险智慧选</title>
+    <link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+    <!-- 框架相关 -->
+	<script type="text/javascript" src="../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../third/sui/js/sm-extend.min.js"></script>
+    <!-- 微信分享 -->
+    <script type="text/javascript" src="../third/jsweixin.js"></script>
+</head>
+<body>
+	<div class="page-group">
+		<div class="page">
+			<div class="content">
+                <!--<img src="../images/logo.jpg" style="width:0;height:0;padding:0;margin:0;clear:both;">-->
+                <img src="../images/advertise_insurance.png" alt="先保着" style="display:block;width:100%;max-width:20rem;margin:0 auto;">
+                <!--<div style="position: absolute;left: 50%;bottom: 1rem;margin-left: -3.12rem;width: 6.25rem;height: 2.1rem;z-index: 10;">
+                    <a id="insuranceLink" class="button external" href="http://insurance.xianyongzhe.com/html/login.html"></a>
+                </div>-->
+                <div style="position: relative;width: 6.25rem; height: 2rem;margin: -5rem auto 0;">
+                    <a id="insuranceLink" class="button external" href="http://insurance.xianyongzhe.com/html/login.html"></a>
+                </div>
+            </div>
+		</div>
+	</div>
+
+    <style>
+        #insuranceLink {
+            width: 100%;
+            height: 100%;
+            background: url(../images/insurance_btn.png) center center no-repeat;
+            background-size: cover;
+            border: none;
+        }
+    </style>
+
+    <script>
+        $.ajaxAction = function(requestUrl, jsonData, successCallback, failCallback) {
+            $.ajax({
+                url     : requestUrl,
+                type    : 'post',
+                dataType: 'json',
+                data    : jsonData,
+                success : function(data) {
+                    successCallback(data);
+                },
+                error   : function(error) {
+                    failCallback(error);
+                }
+            })
+        };
+        
+        var defaultConfig = {
+                domain : 'http://' + document.URL.split('/')[2],
+                project: ''
+            };
+        
+        var advertise = {
+            init: function() {
+                this.wxConfigInit();
+            },
+            wxConfigInit: function() {
+                /* 微信配置初始化 */
+                var self = this,
+                    jsonData = {
+                        url: document.URL
+                    },
+                    successFunc = function(data) {
+                        if (data.status == 'success') {
+                            wx.config({
+                                debug: false,
+                                appId: data.object.appId,
+                                timestamp: data.object.timestamp,
+                                nonceStr: data.object.nonceStr,
+                                signature: data.object.signature,
+                                jsApiList: ['checkJsApi', 'openLocation', 'getLocation', 'onMenuShareTimeline', 'onMenuShareAppMessage']
+                            });
+                            self.invokeWechatShare();
+                        }
+                    },
+                    failFunc = function(err) {
+                        $.alert('微信接口初始化失败<br>请检查微信版本是否是最新版');
+                    };
+                
+                $.ajaxAction(defaultConfig.domain + defaultConfig.project + '/share/wechatShareSign.json', jsonData, successFunc, failFunc);
+            },
+            invokeWechatShare: function() {
+                wx.ready(function() {
+                    wx.onMenuShareAppMessage({
+                        title : '买车险这事儿套路太深',
+                        desc  : '先保着，毕竟我们没有什么套路，也玩不来套路',
+                        link  : 'http://insurance.xianyongzhe.com/html/advertise.html',
+                        imgUrl: 'http://insurance.xianyongzhe.com/images/logo.jpg',
+                        success: function (res) { },
+                        cancel: function (res) { }
+                    });
+                    wx.onMenuShareTimeline({
+                        title : '买车险这事儿套路太深',
+                        link  : 'http://insurance.xianyongzhe.com/html/advertise.html',
+                        imgUrl: 'http://insurance.xianyongzhe.com/images/logo.jpg',
+                        success: function (res) { },
+                        cancel: function (res) { }
+                    });
+                });
+            }
+        };
+
+        advertise.init();
+    </script>
+</body>
+</html>

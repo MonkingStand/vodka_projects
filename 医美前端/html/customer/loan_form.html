@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>借款信息</title>
+	<link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+	<link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+	<link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+	<!-- 页面样式 -->
+	<link rel="stylesheet" href="../../css/common.min.css">
+	<link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+
+<body>
+	<div class="page-group">
+		<div id="loanFormPage" class="page loan-form-page">
+			<nav class="bar bar-tab agreement-checkbox-container invisible">
+				<div class="list-block media-list">
+					<ul>
+						<li class="agreement-operate">
+							<label class="label-checkbox item-content">
+								<input type="checkbox" name="agreementCheckbox">
+								<div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+								<div class="item-inner">
+									<div class="item-title-row">
+										<div class="item-title text-sm">
+											同意<a class="open-agreement popup-link" data-popup="#authorizePopup">《授权委托书》</a>，提交申请。
+										</div>
+									</div>
+								</div>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div id="orderContent" class="content invisible">
+				<!-- 订单号input -->
+				<input class="hidden submit-input" type="text" name="" value="" id="orderNo">
+				<div class="content-block-title">消费医院及咨询师</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">医院</div>
+								<div id="merchantName" class="item-after">--</div>
+								<!-- 商户id -->
+								<input class="hidden submit-input" type="text" value="" id="merchantNo">
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">咨询师</div>
+								<div id="merchantUserName" class="item-after">--</div>
+								<!-- 商户下面的对应userid -->
+								<input class="hidden submit-input" type="text" value="" id="merchantUserId">
+								<!-- 商户下面的对应用户的手机号 -->
+								<input class="hidden submit-input" type="text" value="" id="merchantUserMobile">
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="content-block-title">借款信息</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">姓名</div>
+								<div class="item-after">
+									<div class="item-input">
+										<!-- 借款用户真实姓名 -->
+										<input class="text-right submit-input" type="text" placeholder="输入您的姓名" id="obtainUserName">
+										<input class="hidden submit-input" type="text" id="obtainUserId">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">手机号码</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" readonly="true" type="text" placeholder="仅限实名注册号码" id="obtainUserMobile">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">借款金额</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" type="text" placeholder="请输入借款金额" id="applyCapital">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">借款用途</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" type="text" placeholder="请输入借款用途" id="purpose">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li id="peroidRadioModalLink" class="item-content radio-modal-link">
+							<div class="item-inner">
+								<div class="item-title">借期</div>
+								<div class="item-after">
+									<span class="radio-val" data-val="val2">6个月</span>
+									<i class="img-icon img-caret-down"></i>
+									<input class="hidden radio-val submit-input" type="text" value="6个月" data-val="val1" id="period">
+								</div>
+							</div>
+						</li>
+						<li id="refundRadioModalLink" class="item-content radio-modal-link">
+							<div class="item-inner">
+								<div class="item-title">借款方式</div>
+								<div class="item-after">
+									<span class="radio-val" data-val="val1">等额本息</span>
+									<i class="img-icon img-caret-down"></i>
+									<input class="hidden radio-val submit-input" type="text" value="等额本息" data-val="val1" id="refundType">
+								</div>
+							</div>
+						</li>
+						<li id="proofImgUploadPopupLink" class="item-content popup-link" data-popup="proofImg">
+							<div class="item-inner">
+								<div class="item-title">凭证/单据照片</div>
+								<div class="item-after">
+									<a class="icon-link">
+										<i class="img-icon img-camera"></i>
+									</a>
+									<input class="hidden submit-input" type="text" id="proofImg">
+								</div>
+							</div>
+						</li>
+						<!-- 默认必填字段，默认为空 -->
+						<input class="hidden submit-input" type="text" value="" id="applyLogId">
+						<input class="hidden submit-input" type="text" value="" id="effectiveDate">
+						<input class="hidden submit-input" type="text" value="" id="deadDate">
+						<input class="hidden submit-input" type="text" value="" id="createDate">
+					</ul>
+				</div>
+			</div>
+			<div id="orderStatus" class="content hidden">
+				<div class="status-container">
+					<div class="icon-container"></div>
+					<p class="text-info">您的订单已经提交申请<br>请在“我的”—“分期”中进行查看</p>
+					<p class="order-num">20162374834</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- 先用着协议弹出框 -->
+		<div id="authorizePopup" class="popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">授权委托书</h1>
+			</header>
+			<div class="content">
+				<span class="space-division"></span>
+				<p>本人同意并授权杭州沃德加资产管理有限公司或其指定的第三方机构有权获取本人手机等通讯工具中的相关信息，且杭州沃德加资产管理有限公司或第三方机构有权向依法设立的征信机构及其他机构查询本人的资讯、个人信用信息等，并保留相关资料。</p>
+				<span class="space-division"></span>
+ 				<p>本人同意无论拟申请的业务是否获批，该授权均有效且杭州沃德加资产管理有限公司无需退还本人的业务申请资料。本授权一经做出，不可撤销或变更。特此授权。</p>
+			</div>
+		</div>
+		<!-- 手机验证弹出框 -->
+		<div id="mobileVerificationPopup" class="popup">
+			<header class="bar bar-nav">
+				<h1 class="title">身份验证</h1>
+			</header>
+			<div class="content content-padded text-center">
+				<div class="verify-content">
+					<div class="verify-title text-center">
+						订单预留的手机号为<br>
+						<span class="mobile-val"></span><br>
+						请进行验证
+					</div>
+					<div class="verify-code">
+						<label for="verifyCode">
+							<input id="verifyCode" type="text" name="verify-code" placeholder="请输入短信验证码">
+						</label>
+						<a id="resendCodeBtn" class="button theme-btn">获取验证码</a>
+					</div>
+					<p>
+						<a id="verifyBtn" class="button button-big theme-btn">验证</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- 用户登录弹出框 -->
+		<div id="loginPopup" class="popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">用户登录</h1>
+			</header>
+			<div class="content">
+				<div class="login-container">
+					<div class="login-content">
+						<div class="mobile-input-container">
+							<label for="mobileNumber" class="input-label">	
+								<i class="img-icon img-mobile"></i>
+								<input readonly="readonly" type="tel" class="mobile-input" id="mobileNumber" placeholder="请输入手机号">
+							</label>
+						</div>
+						<div class="pwd-input-container">
+							<label for="password" class="input-label">
+								<i class="img-icon img-pwd"></i>
+								<input type="password" class="pwd-input" id="password" placeholder="请输入密码">
+							</label>
+						</div>
+						<!-- 用户类型，写死为1，即借款用户 -->
+						<input class="hidden" type="text" class="type-input" id="userType" value="1">
+						<div class="login-btn-container">
+							<a id="loginBtn" class="button button-big theme-btn">登录</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 凭证/单据照片上传 -->
+		<div id="proofImgUploadPopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey" data-popup="#proofImg"></a>
+				<h1 class="title">凭证/单据照片上传</h1>
+			</header>
+			<div class="content">
+				<iframe id="proofImgFrame" src="../upload_img.html?init=1" class="upload-frame">
+				</iframe>
+			</div>
+		</div>
+	</div>
+	
+    <!-- 框架相关 -->
+	<script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+	<script type="text/javascript" src="../../third/qrcode.min.js"></script>
+	<!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>还款账单</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+        <!-- 还款账单（针对某一笔订单） -->
+        <div id="repayBillPerPage" class="page repay-bill-per-page">
+            <nav class="bar bar-tab text-center">
+                <div class="repay-summary pull-left">
+                    已选<span class="summary-val"></span>
+                </div>
+                <div class="repay-btn pull-right">
+                    <a id="repayBillBtn">立即还款</a>
+                </div>
+            </nav>
+	        <div class="content">
+                <div class="content-block-title">
+                    <div class="pull-left">分期账单</div>
+                    <div id="repayBillOverview" class="pull-right">
+                        <!--(已还5000.00元，待还7000.00元)-->
+                    </div>
+                </div>
+                <div id="repayBillList" class="list-block media-list repay-list">
+                    <!--<ul>
+                        <li>
+                            <label class="label-checkbox item-content">                                
+                                <div class="item-inner">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <div class="text-left repay-amount text-yellow text-lg text-bold">1000.00</div>
+                                            <div class="text-right repay-status text-grey text-xs">08.23&nbsp;待还</div>
+                                        </div>
+                                        <div class="card-content added-info">
+                                            <div class="card-content-inner">
+                                                <div class="row no-gutter">
+                                                    <div class="col-50 repayed-principal">
+                                                        本金：<span class="text-lg">901.77</span>元
+                                                    </div>
+                                                    <div class="col-50 repayed-interest">
+                                                        滞纳金：<span class="text-lg">98.23</span>元
+                                                    </div>
+                                                    <div class="col-50 repayed-interest">
+                                                        利息：<span class="text-lg">98.23</span>元
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="checkbox" name="repay-item" value="160823" data-amount="1000.00">
+                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                            </label>
+                        </li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+        <div id="autoSubmitFormContainer" class="hidden">
+        </div>
+	</div>
+	
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+</html>

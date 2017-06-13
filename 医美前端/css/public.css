@@ -1,0 +1,192 @@
+@charset "utf-8";
+/*
+--public样式目录说明：
+----1.一个html文件对应一个.xxx-page
+----2.本样式文件主要针对通用公共html页面（login.html和register.html）
+*/
+
+/* login.html */
+.login-page {
+    background: url(../images/login_bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+.login-page .logo-container {
+    width: 10.5rem;
+    margin: 2rem auto 0;
+}
+.login-page .logo-container img {
+    width: 100%;
+}
+.login-page .login-container {
+    margin: 1.25rem 1rem;
+}
+.login-page .login-container .login-content {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+.login-page .login-container .login-content .input-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.login-page .login-content .mobile-input-container,
+.login-page .login-content .pwd-input-container,
+.login-page .login-content .type-input-container, 
+.login-page .login-content .code-input-container {
+    margin: 0.5rem 0;
+    border: 1px solid #e0e0e0;
+}
+.login-page .login-content .login-btn-container {
+    margin: 1rem 0;
+}
+.login-page .mobile-input-container, 
+.login-page .pwd-input-container,
+.login-page .type-input-container {
+    position: relative;
+    height: 2rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.login-page .mobile-input-container .img-icon, 
+.login-page .pwd-input-container .img-icon, 
+.login-page .type-input-container .img-icon {
+    margin: 0.4rem 0.5rem;
+}
+.login-page .mobile-input-container .mobile-input, 
+.login-page .pwd-input-container .pwd-input, 
+.login-page .type-input-container .type-input {
+    position: absolute;
+    width: 80%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    margin: 0.4rem 0;
+    border: none;
+}
+.login-page .register-link-container a {
+    cursor: pointer;
+}
+.login-page .help-container {
+    width: 100%;
+    margin-top: 0.5rem;
+}
+.login-page .help-container .help-content {
+    display: inline-block;
+    margin: 0 auto;
+}
+.login-page .help-content p {
+    margin: 0.25rem 0;
+}
+
+/* register.html、merchant_register.html */
+.register-page, 
+.merchant-register-page {
+    background: url(../images/login_bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+.register-page .logo-container, 
+.merchant-register-page .logo-container {
+    width: 10.5rem;
+    margin: 2rem auto 0;
+}
+.register-page .logo-container img, 
+.merchant-register-page .logo-container img {
+    width: 100%;
+}
+.register-page .register-container, 
+.merchant-register-page .register-container {
+    margin: 1.25rem 1rem;
+}
+.register-page .register-container .register-content, 
+.merchant-register-page .register-container .register-content {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+.register-page .register-container .register-content .input-label, 
+.merchant-register-page .register-container .register-content .input-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.register-page .register-content .mobile-input-container,
+.register-page .register-content .pwd-input-container,
+.register-page .register-content .confirm-input-container, 
+.register-page .register-content .verify-code-container,
+.merchant-register-page .register-content .name-input-container, 
+.merchant-register-page .register-content .mobile-input-container,
+.merchant-register-page .register-content .pwd-input-container,
+.merchant-register-page .register-content .confirm-input-container, 
+.merchant-register-page .register-content .verify-code-container {
+    margin: 0.5rem 0;
+    border: 1px solid #e0e0e0;
+}
+.register-page .register-content .register-btn-container,
+.register-page .register-content .register-agreement-container, 
+.merchant-register-page .register-content .register-btn-container,
+.merchant-register-page .register-content .register-agreement-container  {
+    margin: 1rem 0;
+}
+.register-page .mobile-input-container, 
+.register-page .pwd-input-container,
+.register-page .confirm-input-container, 
+.register-page .verify-code-container, 
+.merchant-register-page .name-input-container, 
+.merchant-register-page .mobile-input-container, 
+.merchant-register-page .pwd-input-container,
+.merchant-register-page .confirm-input-container, 
+.merchant-register-page .verify-code-container {
+    position: relative;
+    height: 2rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.register-page .verify-code-container, 
+.merchant-register-page .verify-code-container {
+	background-color: transparent;
+}
+.register-page .verify-code-container label, 
+.merchant-register-page .verify-code-container label {
+	height: 2rem;
+	margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.register-page .verify-code-container #requestCodeBtn, 
+.merchant-register-page .verify-code-container #requestCodeBtn {
+	height: 2rem;
+	line-height: 2rem;
+	margin-left: 0.5rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+.register-page .mobile-input-container .mobile-input, 
+.register-page .pwd-input-container .pwd-input, 
+.register-page .confirm-input-container .confirm-input, 
+.register-page .verify-code-container .verify-code,
+.merchant-register-page .name-input-container .name-input,  
+.merchant-register-page .mobile-input-container .mobile-input, 
+.merchant-register-page .pwd-input-container .pwd-input, 
+.merchant-register-page .confirm-input-container .confirm-input, 
+.merchant-register-page .verify-code-container .verify-code {
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 0.75rem;
+    margin: 0.4rem 0;
+    border: none;
+}
+/* 注册协议 */
+#agreementPopup .content {
+    padding: 0.25rem;
+    font-size: 0.75em;
+}
+#agreementPopup p {
+    margin: 0;
+}
+#agreementPopup .space-division {
+    display: block;
+    height: 0.5rem;
+}

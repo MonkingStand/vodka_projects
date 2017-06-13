@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>修改资料</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/business/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+        <div id="editCustomerPage" class="page edit-customer-page">
+			<div class="content">
+                <div class="content-block-title">基础信息</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 真实姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入真实姓名" id="name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 身份证号 -->
+                                        <input class="text-right submit-input" type="number" placeholder="输入身份证号" id="idNum">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 手机号码 -->
+                                        <input class="text-right submit-input" type="tel" placeholder="输入实名认证的手机号" id="mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">银行卡号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 银行卡号 -->
+                                        <input class="text-right submit-input" type="number" placeholder="输入银行卡号" id="bankNum">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">现居住地</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 现居住地 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入现居住地" id="homeAddress">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位名称</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 工作单位名称 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入工作单位名称" id="workName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位地址</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 工作单位地址 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入工作单位地址" id="workAddress">
+                                    </div></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人1：直系亲属</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人1姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入联系人姓名" id="contact1Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人1手机号 -->
+                                        <input class="text-right submit-input" type="tel" placeholder="输入联系人手机号" id="contact1Mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人2：朋友/同事</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人2姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入联系人姓名" id="contact2Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人2手机号 -->
+                                        <input class="text-right submit-input" type="tel" placeholder="输入联系人手机号" id="contact2Mobile">
+                                    </div></div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">图片/照片附件上传</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content popup-link" data-popup="#idImgAUploadPopup">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照A面</div>
+                                <div class="item-after">
+                                    <a id="idImgAUploadPopupLink" class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="idImgHead">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content popup-link" data-popup="#idImgBUploadPopup">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照B面</div>
+                                <div class="item-after">
+                                    <a id="idImgBUploadPopupLink" class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="idImgBack">
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content popup-link" data-popup="#idImgHandedUploadPopup">
+                            <div class="item-inner">
+                                <div class="item-title">手持身份证照片</div>
+                                <div class="item-after">
+                                    <a id="idImgHandedUploadPopupLink" class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="proofImg">
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block save-btn-container">
+                    <div class="row">
+                        <div class="col-50">
+                            <a id="saveInfoBtn" class="button button-big theme-btn">保存</a>
+                        </div>
+                        <div class="col-50">
+                            <a class="button button-big theme-btn-hollow back">取消</a>
+                        </div>
+                    </div>
+                </div>					
+			</div>
+		</div>
+
+        <!-- 身份证照片A面显示popup -->
+		<div id="idImgAUploadPopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">身份证照A面上传</h1>
+			</header>
+			<div class="content">			
+				<div class="upload-container">
+					<div class="img-container not-uploaded"></div>
+					<form id="idImgAForm" name="idImgA" enctype="multipart/form-data" method="post">
+						<input class="img-input" type="file" name="file" accept="image/png,image/gif,image/jpeg">
+						<input class="hidden" value="idImgA" type="text" name="remotePath">
+					</form>
+				</div>
+				<div class="upload-status text-center init">
+					<i class="img-icon img-uploading"></i>
+				</div>
+				<div class="row operate-container">
+					<div class="col-50 upload-btn-container">
+						<a class="button button-big theme-btn save-btn click-ban" data-type="idImg">上传</a>
+					</div>
+					<div class="col-50 cancel-btn-container">
+						<a class="button button-big theme-btn-hollow cancel-btn close-popup">取消</a>
+					</div>
+				</div>															
+			</div>
+		</div>
+		<!-- 身份证照片B面显示popup -->
+		<div id="idImgBUploadPopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">身份证照B面上传</h1>
+			</header>
+			<div class="content">			
+				<div class="upload-container">
+					<div class="img-container not-uploaded"></div>
+					<form id="idImgBForm" name="idImgB" enctype="multipart/form-data" method="post">
+						<input class="img-input" type="file" name="file" accept="image/png,image/gif,image/jpeg">
+						<input class="hidden" value="idImgB" type="text" name="remotePath">
+					</form>
+				</div>
+				<div class="upload-status text-center init">
+					<i class="img-icon img-uploading"></i>
+				</div>
+				<div class="row operate-container">
+					<div class="col-50 upload-btn-container">
+						<a class="button button-big theme-btn save-btn click-ban" data-type="idImg">上传</a>
+					</div>
+					<div class="col-50 cancel-btn-container">
+						<a class="button button-big theme-btn-hollow cancel-btn close-popup">取消</a>
+					</div>
+				</div>															
+			</div>
+		</div>
+		<!-- 手持身份证照片显示popup -->
+		<div id="idImgHandedUploadPopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">手持身份证照片上传</h1>
+			</header>
+			<div class="content">			
+				<div class="upload-container">
+					<div class="img-container not-uploaded"></div>
+					<form id="idImgHandedForm" name="idImgHanded" enctype="multipart/form-data" method="post">
+						<input class="img-input" type="file" name="file" accept="image/png,image/gif,image/jpeg">
+						<input class="hidden" value="idImgHanded" type="text" name="remotePath">
+					</form>
+				</div>
+				<div class="upload-status text-center init">
+					<i class="img-icon img-uploading"></i>
+				</div>
+				<div class="row operate-container">
+					<div class="col-50 upload-btn-container">
+						<a class="button button-big theme-btn save-btn click-ban" data-type="idImg">上传</a>
+					</div>
+					<div class="col-50 cancel-btn-container">
+						<a class="button button-big theme-btn-hollow cancel-btn close-popup">取消</a>
+					</div>
+				</div>															
+			</div>
+		</div>
+	</div>
+    <!-- 微信开发js -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/business/router.js', '../../js/business/app.min.js']);
+	</script>
+</body>
+</html>

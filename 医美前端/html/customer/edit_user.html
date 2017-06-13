@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>修改资料</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="editUserPage" class="page edit-user-page">
+            <div class="content">
+                <div class="content-block-title">基础信息</div>
+                <!-- userId，自动填写 -->
+                <input class="hidden submit-input" type="text" value="" id="userId">
+                <!-- password，自动填写 -->
+                <input class="hidden submit-input" type="text" value="" id="password">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 真实姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入真实姓名" id="realName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 身份证号 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入身份证号" id="idCard">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 手机号码 -->
+                                        <input readonly="readonly" class="text-right submit-input" type="tel" placeholder="输入实名认证的手机号" id="mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">现居住地</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 现居住地 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入现居住地" id="nowLiveAdress">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位名称</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 工作单位名称 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入工作单位名称" id="jobUnitName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位地址</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 工作单位地址 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入工作单位地址" id="jobUnitAdress">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人1：直系亲属</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人1姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入联系人姓名" id="linkman1Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人1手机号 -->
+                                        <input class="text-right submit-input" type="tel" placeholder="输入联系人手机号" id="linkman1Mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人2：朋友/同事</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人2姓名 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入联系人姓名" id="linkman2Name">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 紧急联系人2手机号 -->
+                                        <input class="text-right submit-input" type="tel" placeholder="输入联系人手机号" id="linkman2Mobile">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block save-btn-container">
+                    <div class="row">
+                        <div class="col-50">
+                            <a id="saveInfoBtn" class="button button-big theme-btn">保存</a>
+                        </div>
+                        <div class="col-50">
+                            <a class="button button-big theme-btn-hollow back">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+
+</html>

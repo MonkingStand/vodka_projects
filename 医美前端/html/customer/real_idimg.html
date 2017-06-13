@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>人相对比认证</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="realIdimgPage" class="page edit-user-page">
+            <div class="content" style="background-color:#fff;">
+                <div class="content-block-title text-center">人相对比认证</div>
+                <!-- userId，自动填写 -->
+                <input class="hidden submit-input" type="text" value="" id="userId">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 真实姓名 -->
+                                        <input class="text-right submit-input" readonly="readonly" type="text" placeholder="还未完善真实姓名" id="realName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 身份证号 -->
+                                        <input class="text-right submit-input" readonly="readonly" type="text" placeholder="还未完善身份证号" id="idCard">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="idCardImgEmblemUploadPopupLink" class="item-content popup-link" data-popup="idCardImgEmblem">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照A面（国徽所在面）</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="idCardImgEmblem" style="display: none;">
+                                    <div id="idCardImgEmblemPreview" class="hidden"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="idCardImgHeadUploadPopupLink" class="item-content popup-link" data-popup="idCardImgHead">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照B面（肖像所在面）</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="idCardImgHead" style="display: none;">
+                                    <div id="idCardImgHeadPreview" class="hidden"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="idCardImgManUploadPopupLink" class="item-content popup-link" data-popup="idCardImgMan">
+                            <div class="item-inner">
+                                <div class="item-title">手持身份证照片</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                    <input class="hidden submit-input" type="text" id="idCardImgMan" style="display: none;">
+                                    <div id="idCardImgManPreview" class="hidden"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block save-btn-container">
+                    <div class="row">
+                        <div class="col-50">
+                            <a id="saveInfoBtn" class="button button-big theme-btn">提交</a>
+                        </div>
+                        <div class="col-50">
+                            <a id="backBtn" class="button button-big theme-btn-hollow">返回</a>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="tips-container text-xs text-yellow text-center" style="padding-left:0.75rem;padding-right:0.75rem;">
+                    若多次提交后仍未通过，请联系《先用着》客服，进行后台人工审核。
+                </p>
+
+                <div class="list-block text-center">
+                    <a id="idCardImgSamplesPopupLink" class="text-orange">照片上传要求</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 照片上传示例popup -->
+        <div id="idCardImgSamplesPopup" class="popup">
+            <header class="bar bar-nav">
+                <a id="idCardImgSamplesPopupCloseLink" class="icon icon-down pull-right text-grey"></a>
+                <h1 class="title">各照片上传示例</h1>
+            </header>
+            <div class="content">
+                <div class="content-padded text-sm">
+                    <p>①请确保身份证上的内容清晰可见</p>
+                    <p>②请确保身份证上的信息没有被遮挡</p>
+                    <p>③请避免证件与头部重叠（手持身份证照片），保证脸部完整地显示在照片中</p>
+                </div>
+                <p class="text-bold text-center">身份证照A面（国徽所在面）</p>
+                <div style="max-width:10rem;margin:0.5rem auto;">
+                    <img style="width:100%;" src="../../images/samples/idCardImgEmblem.jpg">
+                </div>
+                <p class="text-bold text-center">身份证照B面（肖像所在面）</p>
+                <div style="max-width:10rem;margin:0.5rem auto;">
+                    <img style="width:100%;" src="../../images/samples/idCardImgHead.jpg">
+                </div>
+                <p class="text-bold text-center">手持身份证照片</p>
+                <div style="max-width:10rem;margin:0.5rem auto;">
+                    <img style="width:100%;" src="../../images/samples/idCardImgMan.jpg">
+                </div>
+            </div>
+        </div>
+
+        <!-- 身份证照片A面上传popup -->
+        <div id="idCardImgEmblemUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey" data-popup="idCardImgEmblem"></a>
+                <h1 class="title">身份证照A面（国徽所在面）</h1>
+            </header>
+            <div class="content">
+                <iframe id="idCardImgEmblemFrame" src="../upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 身份证照片B面上传popup -->
+        <div id="idCardImgHeadUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey" data-popup="idCardImgHead"></a>
+                <h1 class="title">身份证照B面（肖像所在面）</h1>
+            </header>
+            <div class="content">
+                <iframe id="idCardImgHeadFrame" src="../upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 手持身份证照片上传popup -->
+        <div id="idCardImgManUploadPopup" class="popup upload-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right close-popup text-grey" data-popup="idCardImgMan"></a>
+                <h1 class="title">手持身份证照片</h1>
+            </header>
+            <div class="content">
+                <iframe id="idCardImgManFrame" src="../upload_img.html?init=1" class="upload-iframe">
+				</iframe>
+            </div>
+        </div>
+        <!-- 用户登录弹出框 -->
+		<div id="loginPopup" class="popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">用户登录</h1>
+			</header>
+			<div class="content">
+				<div class="login-container">
+					<div class="login-content">
+						<div class="mobile-input-container">
+							<label for="mobileNumber" class="input-label">	
+								<i class="img-icon img-mobile"></i>
+								<input type="tel" class="mobile-input" id="mobileNumber" placeholder="请输入手机号">
+							</label>
+						</div>
+						<div class="pwd-input-container">
+							<label for="password" class="input-label">
+								<i class="img-icon img-pwd"></i>
+								<input type="password" class="pwd-input" id="password" placeholder="请输入密码">
+							</label>
+						</div>
+						<!-- 用户类型，写死为1，即借款用户 -->
+						<input class="hidden" type="text" class="type-input" id="userType" value="1">
+						<div class="login-btn-container">
+							<a id="loginBtn" class="button button-big theme-btn">登录</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+    
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+
+</html>

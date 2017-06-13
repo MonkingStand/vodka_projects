@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>银行卡号认证</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+        <div id="realBankcardPage" class="page edit-user-page">
+            <div class="content" style="background-color:#fff;">
+                <div class="content-block-title text-center">银行卡号认证</div>
+                <!-- userId，自动填写 -->
+                <input class="hidden submit-input" type="text" value="" id="userId">
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 真实姓名 -->
+                                        <input class="text-right submit-input" readonly="readonly" type="text" placeholder="还未完善真实姓名" id="realName">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 身份证号 -->
+                                        <input class="text-right submit-input" readonly="readonly" type="text" placeholder="还未完善身份证号" id="idCard">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="bankSelectPopupLink" class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">所属银行</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 所属银行名称 -->
+                                        <input class="text-right submit-input" readonly="readonly" type="text" placeholder="请选择银行卡所属银行" id="bankName">
+                                        <!-- 所属银行对应的id -->
+                                        <input class="text-right submit-input hidden" type="text" id="bankId">
+                                        <!-- 所属银行对应的简称 -->
+                                        <input class="hidden" type="text" id="bankAbbr">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">银行卡号</div>
+                                <div class="item-after">
+                                    <div class="item-input">
+                                        <!-- 银行卡号 -->
+                                        <input class="text-right submit-input" type="text" placeholder="输入银行卡号" id="bankCardNum">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <p class="text-xs text-orange" style="padding-left:0.75rem;padding-right:0.75rem;">
+                    ①请填写真实有效的银行卡信息。<br>
+                    ②您的分期款项将从绑定的银行卡中自动代扣，请保证信息的真实性。<br>
+                    ③部分银行暂未做技术支持，请选择列表中的银行进行实名认证。
+                </p>
+
+                <div class="content-block save-btn-container hidden">
+                    <div class="row">
+                        <div class="col-50">
+                            <a id="saveInfoBtn" class="button button-big theme-btn">提交</a>
+                        </div>
+                        <div class="col-50">
+                            <a class="button button-big theme-btn-hollow back">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 银行选择popup -->
+        <div id="bankSelectPopup" class="popup real-bankcard-popup">
+            <header class="bar bar-nav">
+                <a class="icon icon-down pull-right text-grey close-popup"></a>
+                <h1 class="title">请选择银行卡所属银行</h1>
+            </header>
+            <div class="content">
+                <div id="bankSelectContainer" class="list-block">
+                    <!--<ul>
+                        <li class="item-content item-link">
+                            <div class="item-inner">
+                                <div class="item-title">中国工商银行</div>
+                            </div>
+                        </li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+
+</html>

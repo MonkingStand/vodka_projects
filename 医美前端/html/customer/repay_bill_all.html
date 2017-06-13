@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的账单</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+        <!-- 还款账单（针对全部） -->
+        <div id="repayBillAllPage" class="page repay-bill-all-page">
+            <nav class="bar bar-tab text-center">
+                <div class="summary-container active" data-tab="#tab1">
+                    <div class="repay-summary pull-left">
+                        已选<span class="summary-val">0.00</span>
+                    </div>
+                    <div class="repay-btn pull-right">
+                        <a class="click-ban" onclick="$.confirm('确定还款？', function(){$.alert('还款成功!')});">立即还款</a>
+                    </div>
+                </div>
+                <div class="summary-container" data-tab="#tab2">
+                    <div class="repay-summary pull-left">
+                        已选<span class="summary-val">0.00</span>
+                    </div>
+                    <div class="repay-btn pull-right">
+                        <a class="click-ban" onclick="$.confirm('确定还款？', function(){$.alert('还款成功!')});">立即还款</a>
+                    </div>
+                </div>
+            </nav>
+	        <div class="content">
+                <div class="buttons-tab">
+                    <a href="#tab1" class="tab-link active button">最近七天待还</a>
+                    <a href="#tab2" class="tab-link button">全部待还</a>
+                </div>
+                <div class="content-block">
+                    <div class="tabs">
+                        <div id="tab1" class="tab active">
+                            <div class="content-block">
+                                <div class="list-block media-list repay-list">
+                                    <ul>
+                                        <li>
+                                            <label class="label-checkbox item-content">                                
+                                                <div class="item-inner">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <div class="text-left repay-amount text-yellow text-lg text-bold">1000.00</div>
+                                                            <div class="text-right repay-status text-grey text-xs">08.23&nbsp;待还</div>
+                                                        </div>
+                                                        <div class="card-content added-info">
+                                                            <div class="card-content-inner">
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-50 repayed-principal">
+                                                                        本金：<span class="text-lg">901.77</span>元
+                                                                    </div>
+                                                                    <div class="col-50 repayed-interest">
+                                                                        利息：<span class="text-lg">98.23</span>元
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="checkbox" name="repay-item" value="160823" data-amount="1000.00">
+                                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab2" class="tab">
+                            <div class="content-block">
+                                <div class="list-block media-list repay-list">
+                                    <ul>
+                                        <li>
+                                            <label class="label-checkbox item-content">                                
+                                                <div class="item-inner">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <div class="text-left repay-amount text-yellow text-lg text-bold">1000.00</div>
+                                                            <div class="text-right repay-status text-grey text-xs">08.23&nbsp;待还</div>
+                                                        </div>
+                                                        <div class="card-content added-info">
+                                                            <div class="card-content-inner">
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-50 repayed-principal">
+                                                                        本金：<span class="text-lg">901.77</span>元
+                                                                    </div>
+                                                                    <div class="col-50 repayed-interest">
+                                                                        利息：<span class="text-lg">98.23</span>元
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="checkbox" name="repay-item" value="160823" data-amount="1000.00">
+                                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                            </label>
+                                        </li>
+
+                                        <li>
+                                            <label class="label-checkbox item-content">                                
+                                                <div class="item-inner">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <div class="text-left repay-amount text-yellow text-lg text-bold">1000.00</div>
+                                                            <div class="text-right repay-status text-grey text-xs">09.23&nbsp;待还</div>
+                                                        </div>
+                                                        <div class="card-content added-info">
+                                                            <div class="card-content-inner">
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-50 repayed-principal">
+                                                                        本金：<span class="text-lg">901.77</span>元
+                                                                    </div>
+                                                                    <div class="col-50 repayed-interest">
+                                                                        利息：<span class="text-lg">98.23</span>元
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="checkbox" name="repay-item" value="160923" data-amount="1000.00">
+                                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                            </label>
+                                        </li>
+
+                                        <li>
+                                            <label class="label-checkbox item-content">                                
+                                                <div class="item-inner">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <div class="text-left repay-amount text-yellow text-lg text-bold">1000.00</div>
+                                                            <div class="text-right repay-status text-grey text-xs">10.23&nbsp;待还</div>
+                                                        </div>
+                                                        <div class="card-content added-info">
+                                                            <div class="card-content-inner">
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-50 repayed-principal">
+                                                                        本金：<span class="text-lg">901.77</span>元
+                                                                    </div>
+                                                                    <div class="col-50 repayed-interest">
+                                                                        利息：<span class="text-lg">98.23</span>元
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <input type="checkbox" name="repay-item" value="161023" data-amount="1000.00">
+                                                <div class="item-media"><i class="icon icon-form-checkbox"></i></div>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>上传图片</title>
+	<link rel="Shortcut Icon" href="../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../images/favicon.ico"> 
+    <link rel="Bookmark" href="../images/favicon.ico">
+    <!-- 框架相关 -->
+	<link rel="stylesheet" href="../third/sui/css/sm.min.css">
+	<link rel="stylesheet" href="../third/sui/css/sm-extend.css">
+	<!-- 页面样式 -->
+	<link rel="stylesheet" href="../css/common.min.css">
+</head>
+
+<body>
+    <div class="page-group">
+		<div class="page upload-img-page">
+            <div class="content">
+                <div class="upload-container">
+					<div class="img-container not-uploaded"></div>
+                    <form id="uploadForm" enctype="multipart/form-data" method="post">
+                        <input class="hidden" type="text" name="OSSAccessKeyId">
+                        <input class="hidden" type="text" name="policy">
+                        <input class="hidden" type="text" name="Signature">
+                        <input class="hidden" type="text" name="key">
+                        <input class="hidden" type="text" name="success_action_redirect" value="">
+                        <input class="hidden" type="text" name="success_action_status" value="200">
+                        <input class="img-input hidden" type="file" name="file" accept="image/png,image/gif,image/jpeg">
+                    </form>
+				</div>
+				<div class="upload-status text-center init">
+					<i class="img-icon img-uploading"></i>
+				</div>
+				<div class="operate-container">
+					<div class="upload-btn-container">
+						<a class="button button-big theme-btn save-btn click-ban">上传</a>
+					</div>
+				</div>
+				<div class="list-block" style="margin-top: 0.25rem;margin-bottom: 0.25rem;">
+					<ul style="background-color: transparent;">
+						<li>
+							<div class="item-content">
+								<div class="item-media"><i class="icon icon-form-toggle"></i></div>
+								<div class="item-inner" style="margin-left: 0;">
+									<div class="item-title label" style="width: 50%;">慢速稳定</div>
+									<div class="item-input">
+										<label class="label-switch pull-right">
+											<input id="stableTag" name="stable" value="" type="checkbox" checked="checked">
+										<div class="checkbox"></div>
+										</label>
+									</div>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="text-center text-xs content-padded">
+					<span class="text-orange">若上传后发现图片未被替换，请尝试：</span>
+					<br>
+					<span class="text-orange">①在wifi或者4G环境下重新上传</span>
+					<br>
+					<span class="text-orange">②先拍照后,选择图片进行上传</span>
+					<br>
+					<span class="text-orange">③请尝试慢速稳定进行上传</span>
+				</div>
+				<div class="hidden">
+					<canvas id="resizeCanvas" width="1000" height="1000"></canvas>
+				</div>
+            </div>
+		</div>
+    </div>
+    <!-- 框架相关 -->
+	<script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+	<script type="text/javascript" src="../../third/qrcode.min.js"></script>
+	<!-- exif.js插件，用于获取ios拍照旋转参数 -->
+	<script type="text/javascript" src="../../third/exif.js"></script>
+	<!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+	<script>
+		$.uploadImg.init();
+	</script>
+</body>

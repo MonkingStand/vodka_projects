@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>借款信息</title>
+	<link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+	<link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+	<link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+	<!-- 页面样式 -->
+	<link rel="stylesheet" href="../../css/common.min.css">
+	<link rel="stylesheet" href="../../css/business/app.min.css">
+</head>
+
+<body>
+	<div class="page-group">
+		<div id="loanFormPage" class="page loan-form-page">
+			<nav class="bar bar-tab" style="background:transparent;">
+				<p style="padding:0;margin:0;"><a id="generateOrderBtn" href="#" class="button button-fill button-big" style="margin-top:-0.1rem;">生成订单</a></p>
+				<!--<a class="tab-item theme-color text-bold" id="shareWechatBtn">
+					<span class="icon icon-share"></span>
+					<span class="tab-label">微信分享</span>
+				</a>
+				<a class="tab-item theme-color text-bold" id="qrcodeGenerateBtn">
+					<span class="icon icon-code"></span>
+					<span class="tab-label">生成二维码</span>
+				</a>
+				<div class="row">
+					<div class="col-50">
+						<a class="share-btn" onclick="router.linkTo('index_copy.html')">微信分享</a>
+					</div>
+					<div class="col-50">
+						<a class="qrcode-btn" data-popup="#qrcodePopup">生成二维码</a>
+					</div>
+				</div>-->
+			</nav>
+			<div class="content">
+				<div class="content-block-title">消费医院及咨询师</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">医院</div>
+								<div id="merchantName" class="item-after">--</div>
+								<!-- 商户id，由咨询师登录后带过来 -->
+								<input class="hidden submit-input" type="text" name="" value="" id="merchantNo">
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">咨询师</div>
+								<div id="merchantUserName" class="item-after">--</div>
+								<!-- 咨询师id，由咨询师登录后带过来 -->
+								<input class="hidden submit-input" type="text" name="" value="" id="merchantUserId">
+								<!-- 咨询师mobile，由咨询师登录后带过来 -->
+								<input class="hidden submit-input" type="text" name="" value="" id="merchantUserMobile">
+							</div>
+						</li>
+					</ul>
+				</div>
+
+				<div class="content-block-title">借款信息</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title text-must">姓名</div>
+								<div class="item-after">
+									<div class="item-input">
+										<!-- 借款用户真实姓名 -->
+										<input class="text-right submit-input" type="text" placeholder="客户姓名" id="obtainUserName">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title text-must">手机号码</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" type="text" placeholder="仅限客户实名注册号码" id="obtainUserMobile">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title text-must">借款金额</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" type="text" placeholder="借款金额不少于3000" id="applyCapital">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-inner">
+								<div class="item-title">借款用途</div>
+								<div class="item-after">
+									<div class="item-input">
+										<input class="text-right submit-input" type="text" placeholder="请输入借款用途" id="purpose">
+									</div>
+								</div>
+							</div>
+						</li>
+						<li id="peroidRadioModalLink" class="item-content radio-modal-link">
+							<div class="item-inner">
+								<div class="item-title">借期</div>
+								<div class="item-after">
+									<span class="radio-val" data-val="val2">6个月</span>
+									<i class="img-icon img-caret-down"></i>
+									<input class="hidden radio-val submit-input" type="text" value="6个月" data-val="val1" id="period">
+								</div>
+							</div>
+						</li>
+						<li id="refundRadioModalLink" class="item-content radio-modal-link">
+							<div class="item-inner">
+								<div class="item-title">还款方式</div>
+								<div class="item-after">
+									<span class="radio-val" data-val="val1">等额本息</span>
+									<i class="img-icon img-caret-down"></i>
+									<input class="hidden radio-val submit-input" type="text" value="等额本息" data-val="val1" id="refundType">
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<!-- 生成二维码模态框 -->
+		<!--<div id="qrcodePopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">扫码分享</h1>
+			</header>
+			<div class="content text-center">
+				<div id="qrcodeContainer"></div>
+			</div>
+		</div>-->
+	</div>
+    <!-- 微信开发js -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <!-- 框架相关 -->
+	<script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+	<script type="text/javascript" src="../../third/qrcode.min.js"></script>
+	<!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/business/router.js', '../../js/business/app.min.js']);
+	</script>
+</body>

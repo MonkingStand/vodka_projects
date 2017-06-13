@@ -1,0 +1,570 @@
+@charset "utf-8";
+/*
+--common样式目录说明：
+----1.通用全局样式
+----2.字体相关（字号、粗细等等）
+----3.图标相关（用png图片为背景图）
+----4.框架组件（覆盖原sui mobile的部分样式）
+----5.插件相关（自定义的插件；或者套用的插件，修改其默认样式）
+*/
+
+/* 通用全局样式 */
+body {
+    font-family: Tahoma, Arial, Roboto, "Droid Sans", "Helvetica Neue", "Droid Sans Fallback", "Heiti SC", sans-self;
+}
+.hidden {
+    display: none;
+}
+.invisible {
+    opacity: 0;
+}
+.theme-bg {
+    color: #fff;
+    background-color: #003462;
+}
+.info-container {
+    padding: 0.5rem 0;
+    background-color: #fff;
+}
+.info-container p {
+    margin: 0.1rem 0;
+}
+.top-border, 
+.right-border, 
+.bottom-border, 
+.left-border {
+    position: relative;
+}
+.top-border:before {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+}
+.right-border:after {
+    position: absolute;
+    display: block;
+    content: "";
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ddd;
+}
+.bottom-border:after {
+    position: absolute;
+    display: block;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #ddd;
+}
+.left-border:after {
+    position: absolute;
+    display: block;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background-color: #ddd;
+}
+.text-must:after {
+    content: "*";
+    color: #f00;
+    font-size: 0.75em;
+}
+/* 主要用于遍历某个页面中的input，用于ajax提交 */
+.submit-input.hidden {
+    position: absolute;
+}
+
+/* 字体相关 */
+.panel .text-white, 
+.panel .text-white *,
+.popup .text-white, 
+.popup .text-white *, 
+.page .text-white, 
+.page .text-white * {
+    color: #fff;
+}
+.panel .text-darkgrey, 
+.panel .text-darkgrey *,
+.popup .text-darkgrey, 
+.popup .text-darkgrey *, 
+.page .text-darkgrey, 
+.page .text-darkgrey * {
+    color: #606060;
+}
+.panel .text-grey, 
+.panel .text-grey *,
+.popup .text-grey, 
+.popup .text-grey *, 
+.page .text-grey, 
+.page .text-grey * {
+    color: #a0a0a0;
+}
+.panel .text-lightgrey, 
+.panel .text-lightgrey *,
+.popup .text-lightgrey, 
+.popup .text-lightgrey *, 
+.page .text-lightgrey, 
+.page .text-lightgrey * {
+    color: #b5b6b6;
+}
+.panel .text-orange, 
+.panel .text-orange *, 
+.popup .text-orange, 
+.popup .text-orange *, 
+.page .text-orange, 
+.page .text-orange * {
+    color: #e75613;
+}
+.panel .text-yellow, 
+.panel .text-yellow *, 
+.popup .text-yellow, 
+.popup .text-yellow *, 
+.page .text-yellow, 
+.page .text-yellow * {
+    color: #f39800;
+}
+.panel .text-blue, 
+.panel .text-blue *, 
+.popup .text-blue, 
+.popup .text-blue *, 
+.page .text-blue, 
+.page .text-blue * {
+    color: #00a0e8;
+}
+.panel .theme-color, 
+.panel .theme-color *, 
+.popup .theme-color, 
+.popup .theme-color *, 
+.page .theme-color, 
+.page .theme-color * {
+    color: #0894ec;
+}
+.panel .text-gaint,
+.popup .text-gaint, 
+.page .text-gaint {
+    font-size: 1.75em;
+}
+.panel .text-lg, 
+.popup .text-lg, 
+.page .text-lg {
+    font-size: 1.25em;
+}
+.panel .text-sm,
+.popup .text-sm,  
+.page .text-sm {
+    font-size: 0.85em;
+}
+.panel .text-xs,
+.popup .text-xs, 
+.page .text-xs {
+    font-size: 0.75em;
+}
+.panel .text-bold, 
+.popup .text-bold, 
+.page .text-bold {
+    font-weight: 500;
+}
+.panel .text-left,
+.popup .text-left, 
+.page .text-left {
+    text-align: left;
+}
+.panel .text-right,
+.popup .text-right, 
+.page .text-right {
+    text-align: right;
+}
+.text-indent-1 {
+    text-indent: 1em;
+}
+.text-indent-2 {
+    text-indent: 2em;
+}
+
+/* 图片上传 */
+.upload-popup iframe {
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    border-style: none;
+    border-color: none;
+    border-image: none;
+}
+.upload-img-page .upload-container {
+    position: relative;
+    max-width: 15rem;
+    height: 10rem;
+    margin: 0.75rem auto;
+    border: 1px dotted #ddd;
+    text-align: center;
+}
+.upload-img-page .upload-container .img-input {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 11;
+}
+.upload-img-page .upload-container .img-container.not-uploaded {
+    background: url(../images/icons/add.png) no-repeat center center;
+    background-size: 3rem 2rem;
+}
+.upload-img-page .upload-container .img-container {
+    position: absolute;
+    width: 15rem;
+    height: 10rem;
+    line-height: 10rem;
+    top: -1px;
+    left: -1px;
+    text-align: center;
+    z-index: 1;
+}
+.upload-img-page .upload-container img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.upload-img-page .upload-status, 
+.upload-img-page .operate-container {
+    max-width: 15rem;
+    margin: 1.5rem auto 0;
+}
+.upload-img-page .upload-status.init {
+    visibility: hidden;
+}
+.upload-img-page .upload-status.not-uploaded:after {
+    display: block;
+    content: "待上传";
+    text-align: center;
+    font-size: 0.75em;
+}
+.upload-img-page .upload-status.has-uploaded:after {
+    display: block;
+    content: "已上传";
+    text-align: center;
+    font-size: 0.75em;
+}
+/* 显示照片的popup框 */
+.show-popup .img-container {
+    position: relative;
+    max-width: 15rem;
+    height: 10rem;
+    margin: 0.75rem auto;
+    border: 1px dotted #ddd;
+    text-align: center;
+}
+.show-popup .img-container img {
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.show-popup .img-container.not-uploaded img {
+    display: none;
+}
+.show-popup .img-container.not-uploaded:after {
+    content: "照片还未上传";
+    line-height: 10rem;
+    color: #aaa;
+}
+
+/* 图标相关 */
+.icon-link {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    text-align: center;
+    cursor: pointer;
+}
+.img-icon {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    line-height: 1.2rem;
+}
+.img-icon img {
+    max-width: 100%;
+    max-height: 100%;
+}
+.img-icon.img-user-info {
+    background: url(../images/icons/user_info.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-user-info-active {
+    background: url(../images/icons/user_info_active.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-arrow-left {
+    background: url(../images/icons/arrow_left.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-caret-down {
+    background: url(../images/icons/caret_down.png) no-repeat center center;
+    background-size: contain;
+    background-clip: content-box;
+}
+.img-icon.img-rmb-active {
+    background: url(../images/icons/rmb_active.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-user {
+    background: url(../images/icons/user.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-camera {
+    background: url(../images/icons/camera.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-camera-active {
+    background: url(../images/icons/camera_active.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-mobile {
+    background: url(../images/icons/mobile.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-pwd {
+    background: url(../images/icons/pwd.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-hospital-01 {
+    background: url(../images/icons/hospital_01.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-consultant {
+    background: url(../images/icons/consultant.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-project-01 {
+    background: url(../images/icons/project_01.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-repay-method {
+    background: url(../images/icons/repay_method.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-loan-amount {
+    background: url(../images/icons/loan_amount.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-contract-period {
+    background: url(../images/icons/contract_period.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-loan-contract {
+    background: url(../images/icons/loan_contract.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-loan-info {
+    background: url(../images/icons/loan_info.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-repayed-principal {
+    background: url(../images/icons/repayed_principal.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-repayed-interest {
+    background: url(../images/icons/repayed_interest.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-handling-charge {
+    background: url(../images/icons/handling_charge.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-repay-record {
+    background: url(../images/icons/repay_record.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-uploading {
+    background: url(../images/icons/uploading.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-my-bill {
+    background: url(../images/icons/my_bill.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-my-loan {
+    background: url(../images/icons/my_loan.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-settings {
+    background: url(../images/icons/settings.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-business-info {
+    background: url(../images/icons/business_info.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-phone-num-sp {
+    background: url(../images/icons/phone_num_sp.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-taobao {
+    background: url(../images/icons/taobao.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-zhifubao {
+    background: url(../images/icons/zhifubao.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-app {
+    background: url(../images/icons/app.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-android-logo-origin {
+    background: url(../images/icons/android_logo_origin.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-apple-logo-origin {
+    background: url(../images/icons/app_logo_origin.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-android-logo {
+    background: url(../images/icons/android_logo.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-apple-logo {
+    background: url(../images/icons/apple_logo.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-download {
+    background: url(../images/icons/download.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-yingyongbao-market {
+    background: url(../images/icons/yingyongbao_market.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-360-market {
+    background: url(../images/icons/360_market.png) no-repeat center center;
+    background-size: contain;
+}
+.img-icon.img-anzhi-market {
+    background: url(../images/icons/anzhi_market.png) no-repeat center center;
+    background-size: contain;
+}
+
+/* 框架相关 */
+.button.theme-btn {
+    color: #fff;
+    background-color: #0894ec;
+    border-color: #0894ec;
+}
+.button.theme-btn-hollow {
+    color: #0894ec;
+    background-color: #fff;
+    border-color: #0894ec;
+}
+/*针对action操作表*/
+.bg-theme {
+    color: #fff;
+    background-color: #0894ec;
+}
+.button.click-ban {
+    color: #fff;
+    background-color: #a0a0a0;
+    border-color: #a0a0a0;
+    pointer-events: none;
+}
+.page .custom-item-content .item-after input {
+    width: 6em;
+    height: 1.45rem;    /* 2.2 - 0.4 - 0.35 */
+    line-height: 1.45rem;
+}
+.page .custom-item-content .text-btn {
+    display: inline-block;
+    height: 1.45rem;
+    line-height: 1.45rem;
+    margin-left: 0.25rem;
+    cursor: pointer;
+}
+.toast {
+    border-radius: 0.25rem;
+}
+
+/* 插件相关 */
+/* 上传iframe */
+.page .upload-iframe, 
+.popup .upload-iframe {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+/* 弹出的单选模态框 */
+.radio-modal .modal-inner {
+    padding: 0;
+}
+.radio-modal .radio-list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+}
+.radio-modal .radio-list li {
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+.radio-modal .radio-list li:not(:last-child):after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -1px;
+    background-color: #bbb;
+}
+.radio-modal .radio-list label {
+    display: block;
+    padding: 0.75rem;
+}
+.radio-modal .radio-list input[type="radio"] {
+    display: none;
+}
+.radio-modal .radio-list input[type="radio"]:checked + .item-media .selected-icon {
+    background-color: #0894ec;
+}
+.radio-modal .radio-list .item-title-row {
+    line-height: 1.5rem;
+    margin-right: 1.5rem;
+    text-align: left;
+}
+.radio-modal .radio-list .item-media {
+    box-sizing: content-box;
+    position: relative;
+    float: right;
+    width: 1rem;
+    height: 1rem;
+    margin-top: -1.25rem;
+    border: 1px solid #bbb;
+    border-radius: 50%;
+    text-align: center;
+}
+.radio-modal .radio-list .selected-icon {
+    position: absolute;
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.25rem;
+    margin-left: -0.25rem;
+    border-radius: 50%;
+}

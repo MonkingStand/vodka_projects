@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>先用着</title>
+	<link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+	<link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+	<link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+	<!-- 页面样式 -->
+	<link rel="stylesheet" href="../../css/common.min.css">
+	<link rel="stylesheet" href="../../css/business/app.min.css">
+</head>
+
+<body>
+	<div class="page-group">
+		<div id="indexPage" class="page index-page">
+			<div class="content infinite-scroll infinite-scroll-bottom" data-distance="50">
+				<div class="index-header text-center">
+                    <div class="index-header-content">
+                        <div class="user-img"><img src="../../images/business/default_user.jpg"></div>
+                        <p class="consult-name">
+                            <span id="businessName">--</span>
+                            <span id="realCheck" class="no-user-name"></span>
+                        </p>
+                        <p id="merchantName" class="consult-hospital">--</p>
+                    </div>
+                    <div class="index-header-operate row no-gutter">
+                        <div class="operate-item text-white col-33">
+                            <a class="operate-link" onclick="$.toast('搜索功能正在完善中');">
+                                <div class="operate-icon text-lg"><i class="icon icon-search"></i></div>
+                                <div class="operate-text text-bold text-sm">客户查询</div>
+                            </a>
+                        </div>
+                        <div class="operate-item text-white col-33">
+                            <a id="addCustomer" class="operate-link" onclick="router.linkTo('loan_form.html')">
+                                <div class="operate-icon text-lg"><i class="icon icon-edit"></i></div>
+                                <div class="operate-text text-bold text-sm">新增订单</div>
+                            </a>
+                        </div>
+                        <div class="operate-item text-white col-33">
+                            <a class="operate-link" onclick="router.linkTo('user_info.html')">
+                                <div class="operate-icon text-lg"><i class="img-icon img-settings"></i></div>
+                                <div class="operate-text text-bold text-sm">个人资料</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="index-body">
+                    <div class="content-block-title">客户列表</div>
+                    <div id="obtainUserList" class="list-block">
+                        <ul class="init" data-begin="0">
+                            <!--<li class="item-content item-link customer-item open-panel" data-panel="#customerManagePanel">
+                                <div class="item-inner">
+                                    <div class="item-title">张三</div>
+                                    <div class="item-after">
+                                        <i class="img-icon img-user-info"></i>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                        <!-- 加载提示符 -->
+                        <div id="loaderContainer">
+                            <div class="infinite-scroll-preloader"><div class="preloader"></div></div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+
+        <div class="panel-overlay"></div>
+        <div id="customerManagePanel" class="panel panel-left panel-reveal customer-manage-panel">
+            <header class="bar bar-nav">
+				<a class="icon icon-left pull-right close-panel text-grey"></a>
+				<h1 class="title">客户管理</h1>
+			</header>
+            <div class="content">
+                <div class="content-block-title">客户资料</div>
+                <div class="list-block text-sm">
+                    <ul>
+                        <li id="editCustomer" class="item-content">
+                            <div class="item-inner">
+                                <div id="theObtainUserName" class="item-title">--</div>
+                                <div id="theObtainRealCheck" class="item-after text-sm">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">
+                    借款项目
+                </div>
+                <div id="theObtainOrderList" class="list-block text-sm">
+                    <!-- <ul>
+                        <li class="item-content loan-project">
+                            <div class="item-inner">
+                                <div class="item-title">【医疗】抽脂</div>
+                                <div class="item-after loan-status">已分享</div>
+                            </div>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 二维码分享popup -->
+        <div id="qrcodePopup" class="popup upload-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">扫码分享</h1>
+			</header>
+			<div class="content text-center">
+				<div id="qrcodeContainer"></div>
+			</div>
+		</div>
+	</div>
+    <!-- 微信开发js -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+	<!-- 框架相关 -->
+	<script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+	<script type="text/javascript" src="../../third/qrcode.min.js"></script>
+	<!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/business/router.js', '../../js/business/app.min.js']);
+	</script>
+</body>
+
+</html>

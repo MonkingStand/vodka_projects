@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>订单详情</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/customer/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="orderDetailPage" class="page order-detail-page">
+			<div class="content">
+				<!-- loanPolicyNo输入框，自动填写 -->
+				<input class="hidden submit-input" type="text" value="" id="loanPolicyNo">
+				<div class="info-container text-center summary-info">
+					<p id="usingCapital" class="text-gaint text-yellow text-bold">--</p>
+					<p class="text-xs text-lightgrey">使用中金额(元)</p>
+					<p class="text-sm repay-info">该笔额度将分<span id="periodVal">--</span>期还完</p>
+				</div>
+
+				<div class="content-block-title text-grey text-xs">借款明细</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-loan-amount"></i></div>
+							<div class="item-inner">
+								<div class="item-title">借款金额</div>
+								<div id="applyCapital" class="item-after">--</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-contract-period"></i></div>
+							<div class="item-inner">
+								<div class="item-title">合同期限</div>
+								<div id="contractExpire" class="item-after">--</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repay-method"></i></div>
+							<div class="item-inner">
+								<div class="item-title">还款方式</div>
+								<div id="refundType" class="item-after">--</div>
+							</div>
+						</li>
+						<li id="contractPopupLink" class="item-content item-link">
+							<div class="item-media"><i class="img-icon img-loan-contract"></i></div>
+							<div class="item-inner">
+								<div class="item-title">借款合同</div>								
+							</div>						
+						</li>
+					</ul>
+				</div>
+
+				<div class="content-block-title text-grey text-xs">还款明细</div>
+				<div class="list-block">
+					<ul>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repayed-principal"></i></div>
+							<div class="item-inner">
+								<div class="item-title">已还本金</div>
+								<div id="refundedPrincipal" class="item-after">0.00</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-repayed-interest"></i></div>
+							<div class="item-inner">
+								<div class="item-title">已还利息</div>
+								<div id="refundedInterest" class="item-after">0.00</div>
+							</div>
+						</li>
+						<li class="item-content">
+							<div class="item-media"><i class="img-icon img-handling-charge"></i></div>
+							<div class="item-inner">
+								<div class="item-title">手续费</div>
+								<div id="serviceFee" class="item-after">0.00</div>
+							</div>
+						</li>
+						<!-- 还款记录链接 -->
+						<li id="repayRecordLink" class="item-content item-link">
+							<div class="item-media"><i class="img-icon img-repay-record"></i></div>
+							<div class="item-inner">
+								<div class="item-title">还款记录</div>								
+							</div>						
+						</li>
+					</ul>
+				</div>
+
+				<div class="repay-operate-container">
+					<div class="repay-advance">
+						<!-- 还款账单链接 -->
+						<a id="repayBillLink" class="button button-big theme-btn">还款</a>
+					</div>
+					<div class="text-center text-xs">
+						<a id="repayDetailLink" class="theme-color">
+							<!-- 还款详情链接 -->
+							查看还款详情<i class="icon icon-right"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="contractPopup" class="popup init">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">先用着医疗费用分期借款协议</h1>
+			</header>
+			<div class="content">
+				<div class="content-header">
+					<p class="text-center">
+						<span class="text-bold">合同编号：</span>
+						<span id="orderNo" class="contract-num contract-text">--</span>
+					</p>
+				</div>
+				<div class="content-body">
+					<span class="space-division"></span>
+					<p class="contract-tips text-bold">
+						重要提示：本协议采用电子合同形式，各方在操作之前均需仔细阅读并确认同意本协议各条款，并在先用着平台上以线上点击相关按钮的方式签署本协议，本协议经乙方借款人点击确认按钮后立即成立且生效。
+					</p>
+					<span class="space-division"></span>
+					<p>甲方（出借人）：<span class="text-bold contract-text">胡慧慧</span></p>
+					<p>身份证号：<span class="text-bold contract-text">330727197704302928</span></p>
+					<p>乙方（借款人）：<span id="obtainUserName" class="text-bold contract-text">--</span></p>
+					<p>身份证号：<span id="obtainUserCard" class="text-bold contract-text"></span></p>
+					<p>丙方（以下简称“沃德加”）：杭州沃德加资产管理有限公司</p>
+					<p>统一社会信用代码：91330102MA27YYF19T</p>
+					<span class="space-division"></span>
+					<p>（出借人、借款人和丙方在本协议中合称为“各方”）</p>
+					<span class="space-division"></span>
+					<p><span class="text-bold">鉴于：</span></p>
+					<p>1、乙方具有完全民事权利能力和民事行为能力，拟通过“先用着”平台借入资金，已经按照平台规则提交相应的信息，并授权丙方核实乙方的借款信息，拟通过借款的方式向丙方的合作医疗美容机构购买相关商品或服务。</p>
+					<p>2、丙方是依法成立且有效存续的有限公司，运营“先用着”平台应用程序，为拟购买医疗美容机构商品或服务的乙方提供融资信息的居间服务，通过对乙方的信息进行审查评估，根据乙方需求寻求合格的出借人，提供其他相应的居间服务。</p>
+					<p>3、甲方同意提供本协议项下的借款（以下简称“标的借款”），并接受乙方的付款委托，为乙方将借款支付给乙方指定的医疗美容机构。</p>
+					<span class="space-division"></span>
+					<p>现甲方、乙方就标的借款的委托支付与还款事宜达成以下协议，以资共同遵守：</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第一条 标的借款的内容</p>
+					<p>1、借款的基本信息</p>
+					<div class="table-container">
+						<table class="border-table loan-info-table">
+							<tr>
+								<td class="td-title">项目名称</td><td><span id="projectName" class="text-bold contract-text">--</span></td>
+							</tr>
+							<tr>
+								<td class="td-title">标的借款金额</td><td><span id="verifyCapital" class="text-bold contract-text">--</span>元</td>
+							</tr>
+							<tr>
+								<td class="td-title">总价款（含税费）</td><td><span id="capitalWithInterest" class="text-bold contract-text">--</span>元</td>
+							</tr>
+							<tr>
+								<td class="td-title">服务费</td><td><span id="loanInterestObtainFinal" class="text-bold contract-text">--</span>元</td>
+							</tr>
+							<tr>
+								<td class="td-title">每月还款金额</td><td><span id="monthlyInstalmentTotal" class="text-bold contract-text">--</span>元</td>
+							</tr>
+							<tr>
+								<td class="td-title">还款期限</td>
+								<td>
+									<span id="period" class="text-bold contract-text">--</span>个月，自
+									<span id="startEndDateContainer">
+									</span>
+									<!--<span class="text-bold">2016</span>年
+									<span class="text-bold">01</span>月
+									<span class="text-bold">11</span>日起至
+									<span class="text-bold">2017</span>年
+									<span class="text-bold">01</span>月
+									<span class="text-bold">11</span>日止-->
+								</td>
+							</tr>
+							<tr>
+								<td class="td-title">还款方式</td>
+								<td>等额本息：按月支付本金及利息（如有），到期时利随本清。还款日为借款发放日的对应日，无对应日的，当月最后一日为还款日。乙方从借款发放的次月开始还款。</td>
+							</tr>
+						</table>
+					</div>
+					<span class="space-division"></span>
+					<p>2、借款流程：乙方经按照先用着平台的规则提交相应信息，确认了已经委托丙方发布拟借款的要约。该要约不可撤销且不可撤回。丙方审核相关资料和信息后作出资信评估并提交甲方。甲方同意借款后，由丙方在平台上提供本协议。当乙方点击相关按钮表示接受时，本协议立即成立且生效，借款人借入资金的意思表示不可撤销。本协议生效后，乙方同意并不可撤销地授权甲方将该笔标的借款扣除服务费后直接支付给指定的机构（即医疗美容机构）。款项到达账户，视为甲方出借已完成，丙方届时会以短信或平台信息推送的方式告知借款人借款成功的信息。</p>
+					<span class="space-division"></span>
+					<p>3、乙方同意，因丙方为乙方撮合借款产生的形成的本协议第一条中的服务费由乙方承担，由丙方从甲方提供给乙方的标的借款中直接扣除。</p>
+					<span class="space-division"></span>
+					<p>4、还款流程：乙方应该按照本协议所载的月还款额，于还款日之前将应付款项偿还至丙方指定的银行账户（包括支付宝账户、第三方通道账户中），当乙方按照平台规则成功偿还借款的，丙方届时会以短信或平台信息推送的方式告知乙方还款成功和剩余应付款项的信息。丙方有权在还款日之前向乙方发出还款提示，乙方同意并授权丙方将偿还的借款通过银行或第三方支付公司的专款账户返还给甲方和丙方。</p>
+					<p>各方确认，还款的账户信息如下：</p>
+					<div class="table-container">
+						<table class="border-table account-info-table">
+							<tbody>
+								<tr>
+									<td>户名</td>
+									<td>胡慧慧</td>
+								</tr>
+								<tr>
+									<td>开户行</td>
+									<td>中国银行横店支行</td>
+								</tr>
+								<tr>
+									<td>账号</td>
+									<td>6216616202002494189</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第二条 资信证明及借款用途</p>
+					<p>1、各方同意，本协议签订时，乙方应当按照丙方的指示，如实提交所需的相关审核文件和资料，并保证其真实性、有效性及完整性，因材料瑕疵引起的责任及费用由乙方自行承担，丙方只作形式审查，对文件、资料的真实与否不承担责任。</p>
+					<p>2、乙方承诺本协议项下的借款资金用途为专项用于本协议第一条列名的医疗美容项目，且只能为前款提交审核的文件资料所确定的借款人乙方所用于购买医疗美容项目。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第三条 免责事由</p>
+					<p>1、甲方仅作为标的借款的提供方，不对标的借款用于购买的医疗美容商品、服务承担责任。乙方在医疗美容机构或乙方自行选择的医疗机构通过先用着平台购买的医疗美容商品、服务，该商品、服务均由具体的医疗美容机构提供，由此产生的医疗流程、质量、售后等相关风险，均由乙方、医疗美容机构承担。若乙方与医疗机构存在纠纷，不影响本协议项下乙方向甲方的还款义务。</p>
+					<p>2、丙方仅作为标的借款的居间方，不对标的借款用于购买的医疗美容商品、服务承担责任。乙方在医疗美容机构或乙方自行选择的医疗机构通过先用着平台购买的医疗美容商品、服务，该商品、服务均由具体的医疗美容机构提供，由此产生的医疗流程、质量、售后等相关风险，均由乙方、医疗美容机构承担。对于乙方与医疗机构的纠纷，丙方均不承担责任。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第四条 甲方的权利和义务</p>
+					<p>1、若乙方借款用于购买的医疗美容商品、服务存在瑕疵或者改商品、服务造成乙方其他财产损害或人身损害的，甲方均不承担任何责任。乙方若对商品、服务提出异议，应由乙方与医疗美容机构自行解决。</p>
+					<p>2、甲方在此不可撤销地授权丙方：（1）与银行或第三方支付公司签订资金存款协议及类似协议，委托银行或第三方支付公司为甲方办理代收代付业务，由银行或第三方支付公司将出借资金直接划转给指定的账户，以及在还款日或之前将乙方偿还的借款本金、利息、罚息，通过银行或第三方支付公司的专款账户返还给甲方；（2）贷后管理、坏账催收事宜。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第五条 乙方、丙方的权利和义务</p>
+					<p>1、乙方有义务向丙方提供真实的、完整、准确的信息，资料填写必须完整无误，必须时需配合丙方审核所留信息的完整性，并授权丙方读取乙方手机等通讯工具中的相关信息。</p>
+					<p>2、乙方所留联系方式包括本人与紧急联系人的联系方式必须是真实有效的，如乙方更换联系方式，应第一时间通过电子邮件或电话主动及时通知丙方。如因乙方更换联系方式未及时通知丙方，造成未及时还款而产生责任，需乙方自行承担。在紧急或丙方认为确有必要情况下，乙方同意授权丙方通过乙方提供的紧急联系人，告知与本协议相关的信息。</p>
+					<p>3、当乙方出现可能导致其财务状况严重恶化的情况（如涉及纠纷诉讼等）以致无法按时偿还所欠本息、服务费及违约金（如有）时，乙方应当在有关情况发生后3日内书面或其他方式通知丙方，丙方得到通知，与乙方进行协商，保证乙方所欠甲方款项仍可全部按期偿还。</p>
+					<p>4、在还款期内如医疗美容效果、医疗美容投诉等，乙方需自行解决并承担所发生的后果，同时应继续履行本协议项下的责任和义务。</p>
+					<p>5、在还款期内如因医疗美容投诉、医疗美容纠纷等，导致医疗美容机构退还乙方相关费用的，乙方同意并授权丙方/甲方从医疗美容机构应退还的款项中优先划扣，用以抵充乙方在本协议下应偿还的借款本金和利息（如有），若划扣金额不足以清偿全部借款本息的，乙方应在3日内付清剩余款项，若划扣完成后应退款项尚有剩余的，乙方有权收取剩余应退款项。</p>
+					<p>6、乙方在分期期限内，可以提前还款，若提前还款，乙方已支付的服务费用不予退回。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第六条 违约责任</p>
+					<p>1、乙方若未能依本协议约定按时还款，则须向甲方支付逾期利息，逾期利息的金额以本协议标的借款总金额，按日息0.1 %进行征收。</p>
+					<p>2、甲方授权丙方有权以自己名义对乙方进行债权催收。如乙方有下列违反本协议约定的任一情形，丙方可通过书面、短信、电子邮件、电话等任一形式通知乙方解除本协议，乙方全部未还款项必须在本协议解除日起3日内一次付清。同时，乙方必须在本协议解除3 日内，另向甲方支付不低于本协议借款总金额的20 %作为违约金。如乙方延迟支付未偿还价款和违约金，每延迟1日，甲方有权加收应付款项（未偿还价款加违约金之和）的0.1%作为逾期利息。</p>
+					<p>&nbsp;（1）标的借款挪作他用的；</p>
+					<p>&nbsp;（2）连续两期未按时还款或累计拖欠甲方款项、服务费及滞纳金（如有）达8 日或以上；</p>
+					<p>&nbsp;（3）取消关注先用着公众号或卸载先用着APP应用程序，经丙方催告后在3日内仍然未予关注或重新安装使用先用着APP应用程序的；</p>
+					<p>&nbsp;（4）其他违反本协议事项。</p>
+					<p>3、如乙方有逾期还款行为，在追款中产生的费用（包括但不限于往返路费、餐费、住宿费、电话费等）全部由乙方承担，最低为人民币1000元起。</p>
+					<p>4、乙方应保证其向丙方提供的信息真实有效、合法合规且全面，不存在任何虚假，遗漏或重大错误。如丙方发现乙方提供虚假或错误信息，将视为合同欺诈，乙方必须在自丙方或甲方提出清偿请求之日起3 日内付清全部未偿还本息，并另向甲方支付不低于本协议标的借款的20 %作为损害赔偿金，已经收取的款项不予退回。如乙方延迟支付未偿还价款和赔偿金，每延迟1日加收应付款项（未偿还本息加赔偿金之和）的0.1 %作为逾期利息。</p>
+					<p>5、乙方如有违约行为，丙方有权将乙方的个人信息及其信用信息向征信机关披露，并有权公布其相关信息，并追究乙方的违约责任。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第七条 合同的变更和解除</p>
+					<p>除非本合同另有约定，任何一方均不得单方面变更或解除本合同，对本合同或其内容的任何补充、修改或变更，必须双方事先达成书面协议方可作实。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第八条 争议的解决方式</p>
+					<p>1、乙方如对医疗项目、效果等有异议，应当自行与医疗机构协商解决。</p>
+					<p>2、本合同在履行过程中发生任何争议，应当由双方当事人协商解决，协商或调解不成的，任何一方可依法向甲方所在地人民法院提起诉讼。</p>
+					<span class="space-division"></span>
+					<p class="text-lg text-bold">第九条 其他约定</p>
+					<p>本协议采用电子文本形式制成，经乙方通过先用着平台在线同意发布并以甲方将出借资金支付至乙方指定医疗美容机构的银行账户之日起生效。双方均认可电子文本形式的协议效力。各方均同意先用着平台通过其设立的专用服务器保管所有与本协议有关的书面文件和电子信息。本协议任何一方下载打印本协议文本，均不得添加、修改或者涂改任何条款。本协议的任何修改、补充均以先用着电子文本形式作出。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 框架相关 -->
+	<script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+	<script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+	<!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/customer/router.js', '../../js/customer/app.min.js']);
+	</script>
+</body>
+</html>

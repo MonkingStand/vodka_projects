@@ -1,0 +1,1051 @@
+@charset "utf-8";
+/*
+--app样式目录说明（针对客户，C端）：
+----1.一个html文件对应一个.xxx-page
+----2.通用的class样式
+*/
+
+/* index.html */
+.index-page .index-header {
+    height: 10rem;
+    background: url(../../images/business/index_header.jpg) no-repeat center center;
+    background-size: cover;
+}
+.index-page .index-header .index-header-content {
+    display: inline-block;
+    height: 6.5rem;
+}
+.index-page .index-header .index-header-content .user-img {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 1rem 0 0.5rem;
+}
+.index-page .index-header .index-header-content .user-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+.index-page .index-header .index-header-content p {
+    margin: 0;
+}
+.index-page .index-header .index-header-content .user-name {
+    height: 1.5rem;
+    font-size: 1rem;
+}
+.index-page .index-header .index-header-content #customerName {
+    display: inline-block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.index-page .index-header .index-header-content #realCheck.not-checked:not(.no-user-name):after, 
+.index-page .index-header .index-header-content #realCheck.has-checked:not(.no-user-name):after {
+    display: inline-block;
+    content: "v";
+    width: 0.75rem;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    margin: 0.75rem 0 0;
+    font-size: 0.65em;
+    font-style: italic;
+    font-weight: bold;
+    border-radius: 50%;
+}
+.index-page .index-header .index-header-content #realCheck.not-checked:not(.no-user-name):after {
+    color: #fff;
+    background-color: #aaa;
+} 
+.index-page .index-header .index-header-content #realCheck.has-checked:not(.no-user-name):after {
+    color: #0894ec;
+    background-color: #fff;
+}
+.index-page .index-header .index-header-content .space-div {
+    height: 1rem;
+    line-height: 1rem;
+}
+.index-page .index-header .index-header-operate {
+    height: 3.5rem;
+    padding: 0.25rem 0;
+    background-color: rgba(0, 0, 0, 0.125);
+}
+.index-page .index-header .index-header-operate .operate-item {
+    height: 3rem;
+    text-align: center;
+}
+.index-page .index-header .operate-item .operate-link {
+    display: inline-block;
+    height: 3rem;
+}
+.index-page .index-header .operate-link .operate-icon, 
+.index-page .index-header .operate-item .operate-text {
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+.index-page .index-header .operate-link .operate-icon .img-icon {
+    margin-top: 0.3rem; /* 1.5 - 1.2 */
+}
+.index-page .index-body .list-block {
+    margin: 0.5rem 0;
+}
+
+/* loan_form.html */
+#loanFormPage .submit-input.hidden {
+    display: none;
+}
+/* 主体内容部分 */
+.loan-form-page .content .content-block-title {
+    margin: 0.5rem 0.75rem;
+}
+.loan-form-page .content .list-block {
+    margin: 0.5rem 0;
+}
+.loan-form-page .content .content-block {
+    padding: 0;
+    margin: 0.5rem 0;
+}
+.loan-form-page .buttons-tab .img-icon {
+    width: 0.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    margin: 0 0.25rem;
+}
+.loan-form-page .list-block .item-title,
+.loan-form-page .list-block .item-after, 
+.loan-form-page .list-block .item-input input {
+    font-size: 0.85em;
+}
+.loan-form-page .radio-modal-link .img-icon {
+    padding: 0 5px;
+}
+/* 同意协议的操作按钮所在的div */
+.loan-form-page .agreement-checkbox-container {
+    background-color: #fff;
+}
+.loan-form-page .agreement-checkbox-container .list-block {
+    margin: 0.15rem 0; /* (2.5 - 2.2) / 2 */
+}
+.loan-form-page .agreement-checkbox-container .list-block ul:before, 
+.loan-form-page .agreement-checkbox-container .list-block ul:after {
+    height: 0;
+}
+.loan-form-page .agreement-checkbox-container .item-content {
+    padding-left: 0.25rem;
+}
+.loan-form-page .agreement-checkbox-container .item-inner {
+    padding-right: 0.25rem;
+    margin-left: 0.25rem;
+}
+.loan-form-page .agreement-checkbox-container .item-inner .item-title {
+    height: 1.25rem; /* 2.2 - 0.5 - 0.45 */
+    line-height: 1.25rem;
+}
+.loan-form-page .agreement-checkbox-container .apply-status .item-inner {
+    margin: 0;
+}
+/* 订单状态显示框 */
+#orderStatus .status-container {
+    position: absolute;
+    width: 15rem;
+    height: 10rem;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    margin-left: -7.5rem;
+    margin-top: -7.5rem;
+}
+#orderStatus .status-container .icon-container {
+    height: 4.75rem;
+    margin: 0.25rem 0;
+    background: url(../../images/icons/order_success.png) no-repeat center center;
+    background-size: contain;
+}
+#orderStatus .status-container p {
+    padding: 0.25rem 0;
+    margin: 0;
+    font-size: 0.85em;
+}
+#orderStatus .status-container .text-info {
+    height: 3rem;
+    line-height: 1.25rem;
+}
+#orderStatus .status-container .repay-info.text-info:after {
+    content: "您的账单已还款成功";
+}
+#orderStatus .status-container .repay-info.text-info.insurance-pay-success:after {
+    content: "您的车险订单已支付成功";
+}
+#orderStatus .status-container .back-index.text-info:after {
+    content: "返回首页";
+}
+#orderStatus .status-container .order-num {
+    height: 1.75rem;
+    line-height: 1.25rem;
+    color: #0894ec;
+}
+#orderStatus .status-container .order-num:before {
+    content: "订单号：";
+    color: #000;
+}
+/* 授权委托书 */
+#authorizePopup .content {
+    padding: 0.25rem;
+}
+#authorizePopup p {
+    margin: 0;
+}
+#authorizePopup {
+    font-size: 0.75em;
+}
+#authorizePopup .content .space-division {
+    display: block;
+    height: 0.5rem;
+}
+#authorizePopup .content p {
+    text-indent: 2em;
+}
+/* 手机验证弹出框 */
+#mobileVerificationPopup .verify-content {
+    display: inline-block;
+    margin: 0 auto;
+}
+#mobileVerificationPopup .verify-content .verify-title, 
+#mobileVerificationPopup .verify-content .verify-code {
+    margin: 0.75rem 0 1.75rem;
+}
+#mobileVerificationPopup .verify-code {
+    position: relative;
+    height: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+}
+#mobileVerificationPopup .verify-code label {
+    display: block;
+    height: 2rem;
+    margin-right: 4rem;
+}
+#mobileVerificationPopup .verify-code input {
+    width: 100%;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding-left: 0.75rem;
+    margin: 0.25rem 0;
+    border: none;
+    text-align: left;
+    background-color: transparent;
+}
+#mobileVerificationPopup .verify-code #resendCodeBtn {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+    width: 5rem;
+    height: 2rem;
+    line-height: 2rem;
+    margin-top: -1px;
+    margin-right: -1px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+/* 二维码模态框 */
+#qrcodePopup #qrcodeContainer {
+    display: inline-block;
+}
+#qrcodePopup #qrcodeContainer img {
+    max-width: 10rem;
+    margin-top: 2.5rem;
+}
+/* 登录popup框 */
+#loginPopup .content {
+    background: #fff url(../../images/login_bg.jpg) no-repeat center center;
+    background-size: cover;
+}
+#loginPopup .logo-container {
+    width: 7.5rem;
+    margin: 2rem auto 1.5rem;
+}
+#loginPopup .logo-container img {
+    width: 100%;
+}
+#loginPopup .login-container {
+    margin: 2rem 1rem auto;
+}
+#loginPopup .login-container .login-content {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+#loginPopup .login-container .login-content .input-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#loginPopup .login-content .mobile-input-container,
+#loginPopup .login-content .pwd-input-container {
+    margin: 0.5rem 0;
+    border: 1px solid #e0e0e0;
+}
+#loginPopup .login-content .login-btn-container {
+    margin: 2rem 0 0;
+}
+#loginPopup .mobile-input-container, 
+#loginPopup .pwd-input-container {
+    position: relative;
+    height: 2rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+#loginPopup .mobile-input-container .img-icon, 
+#loginPopup .pwd-input-container .img-icon {
+    margin: 0.4rem 0.5rem;
+}
+#loginPopup .mobile-input-container .mobile-input, 
+#loginPopup .pwd-input-container .pwd-input {
+    position: absolute;
+    width: 80%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    margin: 0.4rem 0;
+    border: none;
+}
+
+/* user_info.html、edit_user.html */
+/* 通用部分 */
+.edit-user-page .content-block-title, 
+.user-info-page .content-block-title {
+    margin: 0.5rem 0.75rem;
+}
+.edit-user-page .list-block, 
+.user-info-page .list-block {
+    margin: 0.5rem 0;
+}
+.edit-user-page .content-block, 
+.user-info-page .content-block {
+    padding: 0;
+    margin: 0.5rem 0;
+}
+.edit-user-page .buttons-tab .img-icon, 
+.user-info-page .buttons-tab .img-icon {
+    width: 0.6rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    margin: 0 0.25rem;
+}
+.user-info-page .list-block .item-title,
+.user-info-page .list-block .item-after, 
+.edit-user-page .list-block .item-title, 
+.edit-user-page .list-block .item-after, 
+.edit-user-page .list-block .item-input input {
+    font-size: 0.85em;
+}
+.edit-user-page .save-btn-container, 
+.user-info-page .link-btn-container {
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+}
+/* 增加submit-input的权重 */
+#userInfoPage .submit-input.hidden, 
+#editUserPage .submit-input.hidden {
+    display: none;
+}
+
+/* loan.html */
+.loan-page .list-block {
+    margin: 0;
+}
+.loan-page .card {
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    box-shadow: none;
+}
+.loan-page .card .card-header {
+    padding: 0.5rem 0;
+}
+.loan-page .card-header .loan-amount:after {
+    content: "元";
+    font-size: 0.75em;
+}
+.loan-page .card .card-content-inner {
+    padding: 0.5rem 0;
+}
+.loan-page .card p {
+    height: 1.25rem;
+    line-height: 1.25rem;
+    margin: 0;
+}
+.loan-page .card-content-inner .business-info, 
+.loan-page .card-content-inner .loan-project, 
+.loan-page .card-content-inner .loan-date {
+    position: relative;
+    margin-left: 1.25rem;
+}
+.loan-page .card-content-inner .loan-project {
+    margin-right: 1.25rem;
+}
+.loan-page .card-content-inner .loan-project,
+.loan-page .card-content-inner .loan-date {
+    display: inline-block;
+}
+.loan-page .card-content-inner .business-info:before, 
+.loan-page .card-content-inner .loan-project:before,
+.loan-page .card-content-inner .loan-date:before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 0.85rem;
+    height: 0.85rem;
+    top: 0;
+    left: 0;
+    margin-top: 0.2rem;
+    margin-left: -1.25rem;
+}
+.loan-page .card-content-inner .business-info:before {
+    background: url(../../images/icons/business_info.png) no-repeat center center;
+    background-size: contain;
+}
+.loan-page .card-content-inner .loan-project:before {
+    background: url(../../images/icons/loan_project.png) no-repeat center center;
+    background-size: contain;
+}
+.loan-page .card-content-inner .loan-date:before {
+    background: url(../../images/icons/loan_date.png) no-repeat center center;
+    background-size: contain;
+}
+.loan-page .no-orders:after {
+    position: absolute;
+    display: inline-block;
+    content: "暂无订单";
+    width: 4rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.75rem;
+    margin-left: -2rem;
+    text-align: center;
+}
+.loan-page .no-more-orders:after {
+    display: block;
+    content: "没有更多订单了";
+    margin-top: 0.25rem ;
+    margin-bottom: 0.25rem;
+    text-align: center;
+    font-size: 0.75em;
+}
+
+/* order.html */
+.order-page .summary-info {
+    padding: 0 0.75rem;
+    background-color: #fff;
+}
+.order-page .summary-info .apply-result {
+    position: relative;
+    display: inline-block;
+}
+.order-page .summary-info .apply-result:after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    right: 0;
+    top: 0;
+    margin-right: -1.25rem;
+    background: url(../../images/icons/congratulate.png) no-repeat center center;
+    background-size: contain;
+}
+.order-page .credit-info .info-item {
+    display: inline-block;
+    text-align: left;
+}
+.order-page .credit-info .info-item p {
+    margin: 0;
+}
+.order-page .info-item .info-item-left, 
+.order-page .info-item .info-item-right {
+    display: inline-block;
+}
+.order-page .info-item.final-amount .info-item-left {
+    height: 2.4rem;
+    width: 1.5rem;
+    margin: 0 0.25rem;
+    background: url(../../images/icons/final_amount.png) no-repeat center center;
+    background-size: contain;
+}
+.order-page .info-item.loan-period .info-item-left {
+    height: 2.4rem;
+    width: 1.5rem;
+    margin: 0 0.25rem;
+    background: url(../../images/icons/loan_period.png) no-repeat center center;
+    background-size: contain;
+}
+.order-page .info-item .info-desc {
+    height: 1.15rem;
+    line-height: 1.15rem;
+    color: #a0a0a0;
+    font-size: 0.75em;
+}
+.order-page .info-item .info-val {
+    height: 1.25rem;
+    line-height: 1.25rem;
+}
+.order-page .credit-info .col-50, 
+.order-page .amount-info {
+    padding: 0.75rem 0;
+}
+.order-page .detail-info {
+    margin: 0.75rem 0;
+    background-color: #fff;
+}
+.order-page .detail-info .list-block {
+    margin: 0;
+}
+.order-page .list-block .item-title,
+.order-page .list-block .item-after {
+    font-size: 0.85em;
+}
+/* 查看分期详情 */
+.repay-detail-popup .content {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+.repay-detail-popup .list-block {
+    margin: 0;
+}
+.repay-detail-popup .card {
+    margin: 0 0 0.25rem;
+    box-shadow: none;
+}
+.repay-detail-popup .card {
+    background-color: #fff;
+}
+.repay-detail-popup .card .card-header {
+    position: relative;
+    padding: 0.5rem 0 0;
+    margin: 0 0.75rem;
+}
+.repay-detail-popup .card-header .repay-amount {
+    height: 2rem;
+    line-height: 2rem;
+}
+.repay-detail-popup .card-header .repay-amount:after {
+    content: "元";
+    font-size: 0.55em;
+}
+.repay-detail-popup .card-header .repay-status {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+    padding: 0.25rem 0.75rem 0.25rem 0.5rem;
+    margin-right: -0.75rem;
+    border-bottom-left-radius: 0.5rem;
+    color: #fff;
+    font-size: 0.75em;
+}
+.repay-detail-popup .repay-status {
+    background-color: #60bda0; 
+}
+.repay-detail-popup .card .card-content-inner {
+    padding: 0.25rem 0.75rem;
+    color: #7d7d7d;
+}
+
+/* order_detail.html */
+.order-detail-page .summary-info .repay-info {
+    position: relative;
+    display: inline-block;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    margin-left: 1.25rem;
+}
+.order-detail-page .summary-info .repay-info:before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 0.85rem;
+    height: 0.85rem;
+    top: 0;
+    left: 0;
+    margin-top: 0.2rem;
+    margin-left: -1.25rem;
+    background: url(../../images/icons/repay_info.png) no-repeat center center;
+    background-size: contain;
+}
+.order-detail-page .content-block-title {
+    margin: 0.5rem 0.75rem;
+}
+.order-detail-page .list-block {
+    margin: 0;
+}
+.order-detail-page .item-title {
+	color: #a0a0a0;
+}
+.order-detail-page .item-after {
+	color: #000;
+}
+.order-detail-page .list-block .item-title,
+.order-detail-page .list-block .item-after {
+    font-size: 0.85em;
+}
+.order-detail-page .repay-operate-container {
+    padding: 0.75rem;
+    margin: 0.75rem 0;
+}
+.order-detail-page .repay-operate-container .repay-advance {
+    margin: 0.75rem 0;
+}
+/* 借款合同 */
+#contractPopup .content {
+    padding: 0.25rem;
+}
+#contractPopup p {
+    margin: 0;
+}
+#contractPopup .content-body {
+    font-size: 0.75em;
+}
+#contractPopup .content-body .space-division {
+    display: block;
+    height: 0.5rem;
+}
+#contractPopup .content-body .contract-tips {
+    text-indent: 2em;
+}
+#contractPopup .content-body .table-container table {
+    width: 100%;
+}
+#contractPopup .content-body .border-table td, 
+#contractPopup .content-body .border-table th {
+    padding: 0.25rem;
+    border: 1px solid #ddd;
+}
+#contractPopup .content-body .loan-info-table .td-title {
+    width: 10em;
+}
+#contractPopup .content-body .account-info-table th {
+    width: 50%;
+}
+
+/* repay-record.html */
+.repay-record-page .list-block {
+    margin: 0;
+}
+.repay-record-page .card {
+    padding: 0 0.5rem;
+    margin: 0.5rem 0;
+    box-shadow: none;
+}
+.repay-record-page .card .card-header, 
+.repay-record-page .card .card-content-inner {
+    padding: 0.5rem 0;
+    color: #7d7d7d
+}
+.repay-record-page .card .repay-amount {
+    position: relative;
+    display: inline-block;
+}
+.repay-record-page .card .repay-amount:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 0.85rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    bottom: 0;
+    left: 0;
+    margin-left: -1rem;
+    background: url(../../images/icons/repay_trans.png) no-repeat center center;
+    background-size: contain;
+}
+.repay-record-page .card .repay-amount:after {
+    content: "元";
+    font-size: 0.5em;
+}
+.repay-record-page .repayed-principal, 
+.repay-record-page .handling-charge {
+    position: relative;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    padding-left: 1.25rem;
+}
+.repay-record-page .repayed-principal:before, 
+.repay-record-page .handling-charge:before {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 1.2rem;
+    height: 1.2rem;
+    top: 0;
+    left: 0;
+    margin-top: 0.15rem;
+}
+.repay-record-page .repayed-principal:before {
+    background: url(../../images/icons/repayed_principal_grey.png) no-repeat center center;
+    background-size: contain;
+} 
+.repay-record-page .handling-charge:before {
+    background: url(../../images/icons/handling_charge_grey.png) no-repeat center center;
+    background-size: contain;
+}
+.repay-record-page .no-records:after {
+    position: absolute;
+    display: inline-block;
+    content: "暂无还款记录";
+    width: 6rem;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    top: 50%;
+    left: 50%;
+    margin-top: -0.75rem;
+    margin-left: -3rem;
+    text-align: center;
+}
+
+/* repay_detail.html */
+.repay-detail-page .summary-info .remind-info {
+    position: relative;
+    display: inline-block;
+    height: 1.5rem;
+    line-height: 1.5rem;
+    margin-left: 1.25rem;
+}
+.repay-detail-page .summary-info .remind-info:before {
+    position: absolute;
+    display: inline-block;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    top: 0;
+    left: 0;
+    margin-top: 0.25rem;
+    margin-left: -1.25rem;
+    background: url(../../images/icons/reminder.png) no-repeat center center;
+    background-size: contain; 
+}
+.repay-detail-page .list-block {
+    margin: 0;
+}
+.repay-detail-page .card {
+    margin: 0 0 0.25rem;
+    box-shadow: none;
+}
+.repay-detail-page .card.not-repayed {
+    background-color: #fff;
+}
+.repay-detail-page .card.has-repayed {
+    background-color: #f0f0f0;
+}
+.repay-detail-page .card .card-header {
+    position: relative;
+    padding: 0.5rem 0 0;
+    margin: 0 0.75rem;
+}
+.repay-detail-page .card-header .repay-amount {
+    height: 2rem;
+    line-height: 2rem;
+}
+.repay-detail-page .card-header .repay-amount:after {
+    content: "元";
+    font-size: 0.55em;
+}
+.repay-detail-page .card-header .repay-status {
+    position: absolute;
+    display: inline-block;
+    right: 0;
+    top: 0;
+    padding: 0.25rem 0.75rem 0.25rem 0.5rem;
+    margin-right: -0.75rem;
+    border-bottom-left-radius: 0.5rem;
+    color: #fff;
+    font-size: 0.75em;
+}
+.repay-detail-page .has-repayed .repay-status {
+    background-color: #60bda0; 
+}
+.repay-detail-page .not-repayed .repay-status {
+    background-color: #13ae84; 
+}
+.repay-detail-page .card .card-content-inner {
+    padding: 0.25rem 0.75rem;
+    color: #7d7d7d;
+}
+
+/* repay_bill_per.html */
+.repay-bill-per-page .repay-summary {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 0.75rem;
+    font-size: 0.75em;
+}
+.repay-bill-per-page .repay-summary .summary-val {
+    color: #f39800;
+    font-size: 1.25rem;
+}
+.repay-bill-per-page .repay-summary .summary-val:after {
+    content: "元";
+    font-size: 0.5em;
+}
+.repay-bill-per-page .repay-btn {
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+.repay-bill-per-page .repay-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem;
+    color: #fff;
+    background-color: #0894ec;
+}
+.repay-bill-per-page .repay-btn a.click-ban {
+    color: #fff;
+    background-color: #a0a0a0;
+    border-color: #a0a0a0;
+    pointer-events: none;
+}
+.repay-bill-per-page .content-block-title {
+    margin: 1rem 0.75rem 0.5rem;
+}
+.repay-bill-per-page .list-block {
+    margin: 0;
+}
+.repay-bill-per-page .card {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.repay-bill-per-page .card .card-header, 
+.repay-bill-per-page .card .card-content-inner {
+    padding: 0;
+}
+.repay-bill-per-page .card .card-content-inner {
+    color: #7d7d7d;
+}
+.repay-bill-per-page .label-checkbox {
+    padding-left: 0;
+    padding-right: 0.75rem;
+}
+.repay-bill-per-page .list-block.media-list .item-inner {
+    padding: 0 0.75rem;
+}
+.repay-bill-per-page .repay-amount:after {
+    content: "元";
+    font-size: 0.75em;
+}
+.repay-bill-per-page .repay-amount, 
+.repay-bill-per-page .repay-status {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    flex: 1;
+}
+.repay-bill-per-page .added-info {
+    margin-bottom: 0.5rem;
+}
+.repay-bill-per-page .added-info .repayed-principal, 
+.repay-bill-per-page .added-info .repayed-interest {
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+
+/* repay_bill_all.html */
+.repay-bill-all-page .summary-container {
+    display: none;
+}
+.repay-bill-all-page .summary-container.active {
+    display: block;
+}
+.repay-bill-all-page .repay-summary {
+    height: 2.5rem;
+    line-height: 2.5rem;
+    padding-left: 0.75rem;
+    font-size: 0.75em;
+}
+.repay-bill-all-page .repay-summary .summary-val {
+    color: #f39800;
+    font-size: 1.25rem;
+}
+.repay-bill-all-page .repay-summary .summary-val:after {
+    content: "元";
+    font-size: 0.5em;
+}
+.repay-bill-all-page .repay-btn {
+    height: 2.5rem;
+    line-height: 2.5rem;
+}
+.repay-bill-all-page .repay-btn a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 1.5rem;
+    color: #fff;
+    background-color: #0894ec;
+}
+.repay-bill-all-page .repay-btn a.click-ban {
+    color: #fff;
+    background-color: #a0a0a0;
+    border-color: #a0a0a0;
+    pointer-events: none;
+}
+.repay-bill-all-page .content-block {
+    padding: 0;
+    margin: 0;
+}
+.repay-bill-all-page .list-block {
+    margin: 0;
+}
+.repay-bill-all-page .card {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    background-color: transparent;
+}
+.repay-bill-all-page .card .card-header, 
+.repay-bill-all-page .card .card-content-inner {
+    padding: 0;
+}
+.repay-bill-all-page .card .card-content-inner {
+    color: #7d7d7d;
+}
+.repay-bill-all-page .label-checkbox {
+    padding-left: 0;
+    padding-right: 0.75rem;
+}
+.repay-bill-all-page .list-block.media-list .item-inner {
+    padding: 0 0.75rem;
+}
+.repay-bill-all-page .repay-amount:after {
+    content: "元";
+    font-size: 0.75em;
+}
+.repay-bill-all-page .repay-amount, 
+.repay-bill-all-page .repay-status {
+    height: 1.5rem;
+    line-height: 1.5rem;
+    flex: 1;
+}
+.repay-bill-all-page .added-info {
+    margin-bottom: 0.5rem;
+}
+.repay-bill-all-page .added-info .repayed-principal, 
+.repay-bill-all-page .added-info .repayed-interest {
+    height: 1.5rem;
+    line-height: 1.5rem;
+}
+
+/* 信用管理 */
+.credit-management-page .content-block-title {
+    margin: 0.5rem 0.75rem;
+}
+.credit-management-page .list-block {
+    margin: 0.5rem 0;
+}
+.credit-management-page .authorize-status.not-authorize:after {
+    content: "未授权";
+}
+.credit-management-page .authorize-status.being-authorize:after {
+    content: "授权中";
+}
+.credit-management-page .authorize-status.has-authorize:after {
+    content: "已授权";
+}
+
+/* 银行卡实名 */
+#bankSelectPopup.real-bankcard-popup .list-block {
+    margin-top: 0.25rem;
+}
+
+/* 运营商提交管理页面 */
+.credit-mobile-page {
+    background-color: #fff;
+}
+.credit-mobile-page .submit-container{
+    margin: 1.25rem 1rem;
+}
+.credit-mobile-page .submit-container .submit-content {
+    width: 100%;
+    max-width: 20rem;
+    margin: 0 auto;
+}
+.credit-mobile-page .submit-container .submit-content .input-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.credit-mobile-page  .submit-content .mobile-input-container,
+.credit-mobile-page  .submit-content .pwd-input-container,
+.credit-mobile-page  .submit-content .verify-code-container {
+    margin: 0.5rem 0;
+    border: 1px solid #e0e0e0;
+}
+.credit-mobile-page .mobile-input-container, 
+.credit-mobile-page .pwd-input-container,
+.credit-mobile-page .verify-code-container {
+    position: relative;
+    height: 2rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.credit-mobile-page .verify-code-container {
+	background-color: transparent;
+}
+.credit-mobile-page .verify-code-container label {
+	height: 2rem;
+	margin-right: 0.5rem;
+    border-radius: 0.25rem;
+    background-color: #fff;
+    overflow: hidden;
+}
+.credit-mobile-page .verify-code-container #requestCodeBtn {
+	height: 2rem;
+	line-height: 2rem;
+	margin-left: 0.5rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+.credit-mobile-page .mobile-input-container .mobile-input, 
+.credit-mobile-page .pwd-input-container .pwd-input, 
+.credit-mobile-page .verify-code-container .verify-code {
+    width: 100%;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    padding: 0 0.75rem;
+    margin: 0.4rem 0;
+    border: none;
+}
+.credit-mobile-page .promise-container, 
+.credit-mobile-page .added-info {
+    padding: 0 0.5rem;
+}
+.credit-mobile-page .operate-container {
+    margin: 0 1rem;
+}
+.credit-mobile-page .operate-container .operate-content {
+    max-width: 20rem;
+    margin: 0 auto;
+}
+.credit-mobile-page .operate-container .btn-container {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+.credit-mobile-page .operate-container .left-container {
+    margin-left: 0;
+    margin-right: 4%;
+}
+.credit-mobile-page .operate-container .right-container {
+    margin-left: 4%;
+    margin-right: 0;
+}
+.credit-mobile-page .operate-container .center-container {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+/* tips内容显示popup */
+.tips-popup .tips-container {
+    max-width: 17.5rem;
+    padding: 0 0.5rem;
+    margin: 0.75rem auto;
+    font-size: 0.85em;
+}

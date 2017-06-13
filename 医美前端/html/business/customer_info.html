@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的</title>
+    <link rel="Shortcut Icon" href="../../images/favicon.ico">
+    <link rel="Shortcut Icon" href="../../images/favicon.ico"> 
+    <link rel="Bookmark" href="../../images/favicon.ico">
+    <!-- 框架相关 -->
+    <link rel="stylesheet" href="../../third/sui/css/sm.min.css">
+    <link rel="stylesheet" href="../../third/sui/css/sm-extend.css">
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../../css/common.min.css">
+    <link rel="stylesheet" href="../../css/business/app.min.css">
+</head>
+<body>
+	<div class="page-group">
+		<div id="customerInfoPage" class="page customer-info-page">
+			<div class="content">
+                <div class="content-block-title">基础信息</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">真实姓名</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">身份证号</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">银行卡号</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">现居住地</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位名称</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">工作单位地址</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人1：直系亲属</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">紧急联系人2：朋友/同事</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">姓名</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">手机号码</div>
+                                <div class="item-after">--</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block-title">图片/照片附件上传</div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content  popup-link" data-popup="#idImgAShowPopup">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照A面</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content popup-link" data-popup="#idImgBShowPopup">
+                            <div class="item-inner">
+                                <div class="item-title">身份证照B面</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content popup-link" data-popup="#idImgHandedShowPopup">
+                            <div class="item-inner">
+                                <div class="item-title">手持身份证照片</div>
+                                <div class="item-after">
+                                    <a class="icon-link">
+                                        <i class="img-icon img-camera"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="content-block edit-btn-container">
+                    <a class="button button-big theme-btn" onclick="router.linkTo('edit_customer.html');">修改资料</a>
+                </div>					
+			</div>
+		</div>
+
+        <!-- 身份证照片A面显示popup -->
+		<div id="idImgAShowPopup" class="popup show-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">身份证照A面</h1>
+			</header>
+			<div class="content">			
+				<div class="img-container not-uploaded"><img src=""></div>															
+			</div>
+		</div>
+		<!-- 身份证照片B面显示popup -->
+		<div id="idImgBShowPopup" class="popup show-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">身份证照B面</h1>
+			</header>
+			<div class="content">			
+				<div class="img-container not-uploaded"><img src=""></div>															
+			</div>
+		</div>
+		<!-- 手持身份证照片显示popup -->
+		<div id="idImgHandedShowPopup" class="popup show-popup">
+			<header class="bar bar-nav">
+				<a class="icon icon-down pull-right close-popup text-grey"></a>
+				<h1 class="title">手持身份证照片</h1>
+			</header>
+			<div class="content">			
+				<div class="img-container not-uploaded"><img src=""></div>															
+			</div>
+		</div>
+	</div>
+    <!-- 微信开发js -->
+    <script type="text/javascript" src="../../js/jsweixin.js"></script>
+    <!-- 框架相关 -->
+    <script type="text/javascript" src="../../third/zepto/zepto.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm.min.js"></script>
+    <script type="text/javascript" src="../../third/sui/js/sm-extend.min.js"></script>
+    <!-- 通用公共 -->
+    <script type="text/javascript" src="../../js/modules.min.js?2017_06_01"></script>
+    <!-- 业务逻辑 -->
+    <script>
+		$.loadJsFiles(['../../js/business/router.js', '../../js/business/app.min.js']);
+	</script>
+</body>
+</html>

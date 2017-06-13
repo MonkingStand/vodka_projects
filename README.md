@@ -1,2 +1,2 @@
 # vodka_projects
-some projects(about Front-End static resources) when hired by 【VODKA】
+给老东家做的项目的一些前端静态资源，因为赶进度，还有部分原因是两个人编写，有些地方没统一，把项目放上来单纯为了方便以后查询。
